@@ -216,10 +216,13 @@ git push origin feature/api-integration
     ```
 
 4.  **Frontend Testing & Polish:**
-    - React Testing Library hoặc Vue Test Utils
-    - Styling với Tailwind CSS hoặc Material-UI
-    - Responsive design
-    - Loading states và error handling
+   Kiểm thử giao diện:
+   - Sử dụng React Testing Library (với React) hoặc Vue Test Utils (với Vue) để kiểm thử các component, hành vi tương tác và hiển thị dữ liệu.
+   - Mục tiêu là đảm bảo giao diện hoạt động ổn định, các thành phần hiển thị chính xác và phản hồi đúng với thao tác của người dùng.
+   Cải thiện giao diện:
+   - Áp dụng Tailwind CSS hoặc Material-UI để thống nhất phong cách và nâng cao trải nghiệm người dùng.
+   - Đảm bảo thiết kế đáp ứng (responsive design) trên mọi kích thước màn hình (desktop, tablet, mobile).
+   - Thêm trạng thái tải (loading states) và xử lý lỗi (error handling) rõ ràng, thân thiện với người dùng nhằm cải thiện trải nghiệm tổng thể.
 
 #### Git Workflow:
 ```bash
