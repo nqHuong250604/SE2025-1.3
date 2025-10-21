@@ -11,7 +11,7 @@
 ## 👥 Phân Công Chi Tiết Với FastAPI & GitHub
 
 ### 1. Vũ Bá Anh: FastAPI Backend & Swagger
-  **Thiết Kế API Structure:**
+2.  **Cấu Trúc API:**
     ```
     warehouse-backend/
     ├── app/
