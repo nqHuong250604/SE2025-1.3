@@ -1,0 +1,101 @@
+STT,Mã hàng,Tên hàng,Loại hàng,Đơn vị tính,Giá nhập,Giá bán,Tồn kho,Tồn tối thiểu,Nhà cung cấp,Ngày nhập,Trạng thái
+1,SP001,Điện thoại iPhone 15,Điện tử,Cái,18000000,22000000,25,5,Apple Vietnam,01/01/2024,Còn hàng
+2,SP002,Laptop Dell XPS 13,Điện tử,Cái,25000000,32000000,15,3,Dell Vietnam,02/01/2024,Còn hàng
+3,SP003,Máy tính bảng Samsung Tab S9,Điện tử,Cái,12000000,15000000,30,5,Samsung VN,03/01/2024,Còn hàng
+4,SP004,Tai nghe Sony WH-1000XM4,Điện tử,Cái,3500000,5200000,45,10,Sony Vietnam,04/01/2024,Còn hàng
+5,SP005,Smartwatch Apple Watch S9,Điện tử,Cái,8000000,11900000,20,4,Apple Vietnam,05/01/2024,Còn hàng
+6,SP006,Chuột không dây Logitech MX,Điện tử,Cái,450000,690000,60,15,Logitech VN,06/01/2024,Còn hàng
+7,SP007,Bàn phím cơ Akko,Điện tử,Cái,850000,1250000,35,8,Akko Vietnam,07/01/2024,Còn hàng
+8,SP008,Màn hình LG 27inch,Điện tử,Cái,4200000,5800000,18,3,LG Electronics,08/01/2024,Còn hàng
+9,SP009,Loa JBL Flip 6,Điện tử,Cái,1800000,2500000,28,6,JBL Vietnam,09/01/2024,Còn hàng
+10,SP010,Ổ cứng SSD Samsung 1TB,Điện tử,Cái,1500000,2200000,50,12,Samsung VN,10/01/2024,Còn hàng
+11,SP011,Máy ảnh Canon EOS R6,Điện tử,Cái,28000000,35000000,8,2,Canon Vietnam,11/01/2024,Còn hàng
+12,SP012,Ống kính Canon 50mm,Điện tử,Cái,4500000,6200000,12,3,Canon Vietnam,12/01/2024,Còn hàng
+13,SP013,Tivi Samsung 55 inch,Điện tử,Cái,12500000,16800000,22,4,Samsung VN,13/01/2024,Còn hàng
+14,SP014,Tủ lạnh Panasonic Inverter,Điện tử,Cái,8500000,11500000,16,3,Panasonic VN,14/01/2024,Còn hàng
+15,SP015,Máy giặt LG 10kg,Điện tử,Cái,7200000,9500000,14,3,LG Electronics,15/01/2024,Còn hàng
+16,SP016,Máy lọc không khí Xiaomi,Điện tử,Cái,1800000,2600000,35,8,Xiaomi Vietnam,16/01/2024,Còn hàng
+17,SP017,Robot hút bụi Ecovacs,Điện tử,Cái,3200000,4500000,18,4,Ecovacs VN,17/01/2024,Còn hàng
+18,SP018,Bếp từ Taka,Điện tử,Cái,1500000,2200000,25,5,Taka Vietnam,18/01/2024,Còn hàng
+19,SP019,Lò vi sóng Sharp,Điện tử,Cái,1200000,1850000,30,6,Sharp Vietnam,19/01/2024,Còn hàng
+20,SP020,Máy xay sinh tố Sunhouse,Điện tử,Cái,450000,750000,40,10,Sunhouse,20/01/2024,Còn hàng
+21,SP021,Bàn làm việc văn phòng,Nội thất,Cái,1200000,1800000,22,5,Công ty ABC,21/01/2024,Còn hàng
+22,SP022,Ghế xoay văn phòng,Nội thất,Cái,850000,1350000,30,8,Công ty XYZ,22/01/2024,Còn hàng
+23,SP023,Tủ tài liệu 3 ngăn,Nội thất,Cái,950000,1450000,15,3,Công ty DEF,23/01/2024,Còn hàng
+24,SP024,Sofa da cao cấp,Nội thất,Bộ,8500000,12500000,8,2,Công ty GHI,24/01/2024,Còn hàng
+25,SP025,Bàn ăn gỗ sồi,Nội thất,Bộ,3200000,4800000,12,3,Công ty JKL,25/01/2024,Còn hàng
+26,SP026,Ghế ăn gỗ,Nội thất,Cái,350000,550000,45,10,Công ty MNO,26/01/2024,Còn hàng
+27,SP027,Giường ngủ gỗ,Nội thất,Cái,4500000,6800000,10,2,Công ty PQR,27/01/2024,Còn hàng
+28,SP028,Tủ quần áo 4 cánh,Nội thất,Cái,2800000,4200000,14,3,Công ty STU,28/01/2024,Còn hàng
+29,SP029,Kệ sách 5 tầng,Nội thất,Cái,650000,980000,25,6,Công ty VWX,29/01/2024,Còn hàng
+30,SP030,Bàn trang điểm,Nội thất,Cái,750000,1150000,18,4,Công ty YZ,30/01/2024,Còn hàng
+31,SP031,Tủ đầu giường,Nội thất,Cái,420000,650000,32,8,Công ty ABC,31/01/2024,Còn hàng
+32,SP032,Kệ TV gỗ công nghiệp,Nội thất,Cái,580000,890000,20,5,Công ty XYZ,01/02/2024,Còn hàng
+33,SP033,Bàn cafe phòng khách,Nội thất,Cái,320000,520000,28,7,Công ty DEF,02/02/2024,Còn hàng
+34,SP034,Ghế thư giãn,Nội thất,Cái,850000,1350000,15,4,Công ty GHI,03/02/2024,Còn hàng
+35,SP035,Tủ giày gỗ,Nội thất,Cái,450000,720000,22,6,Công ty JKL,04/02/2024,Còn hàng
+36,SP036,Đèn bàn LED,Văn phòng phẩm,Cái,120000,250000,75,20,Công ty GHI,05/02/2024,Còn hàng
+37,SP037,Sổ tay da cao cấp,Văn phòng phẩm,Quyển,65000,120000,120,30,Công ty JKL,06/02/2024,Còn hàng
+38,SP038,Bút bi Parker,Văn phòng phẩm,Cây,280000,450000,85,25,Parker VN,07/02/2024,Còn hàng
+39,SP039,Máy in HP LaserJet,Văn phòng phẩm,Máy,3200000,4200000,12,2,HP Vietnam,08/02/2024,Còn hàng
+40,SP040,Mực in HP 85A,Văn phòng phẩm,Hộp,480000,750000,40,10,HP Vietnam,09/02/2024,Còn hàng
+41,SP041,Giấy A4 Double A,Văn phòng phẩm,Ram,55000,85000,200,50,Double A VN,10/02/2024,Còn hàng
+42,SP042,Máy tính Casio fx-580VN,Văn phòng phẩm,Máy,320000,480000,45,12,Casio VN,11/02/2024,Còn hàng
+43,SP043,Bút highlight 6 màu,Văn phòng phẩm,Bộ,45000,80000,150,40,Staedtler VN,12/02/2024,Còn hàng
+44,SP044,Kim bấm số 10,Văn phòng phẩm,Cái,25000,45000,180,50,Brother VN,13/02/2024,Còn hàng
+45,SP045,Keo dán hồ sơ,Văn phòng phẩm,Chai,15000,30000,220,60,Henkel VN,14/02/2024,Còn hàng
+46,SP046,Kéo văn phòng,Văn phòng phẩm,Cái,35000,65000,95,25,Fiskars VN,15/02/2024,Còn hàng
+47,SP047,Bảng trắng từ tính,Văn phòng phẩm,Cái,280000,450000,25,8,3M Vietnam,16/02/2024,Còn hàng
+48,SP048,Bìa hồ sơ còng sắt,Văn phòng phẩm,Cái,12000,25000,300,80,Công ty ABC,17/02/2024,Còn hàng
+49,SP049,Túi đựng tài liệu,Văn phòng phẩm,Cái,8000,15000,250,70,Công ty XYZ,18/02/2024,Còn hàng
+50,SP050,Ghim bấm,Văn phòng phẩm,Hộp,10000,20000,400,100,Công ty DEF,19/02/2024,Còn hàng
+51,SP051,Nồi cơm điện Toshiba,Đồ gia dụng,Cái,650000,950000,35,8,Toshiba VN,20/02/2024,Còn hàng
+52,SP052,Ấm đun siêu tốc Sunhouse,Đồ gia dụng,Cái,180000,280000,50,12,Sunhouse,21/02/2024,Còn hàng
+53,SP053,Bình thủy điện Lock&Lock,Đồ gia dụng,Cái,450000,680000,28,7,Lock&Lock VN,22/02/2024,Còn hàng
+54,SP054,Lò nướng Electrolux,Đồ gia dụng,Cái,1200000,1850000,16,4,Electrolux VN,23/02/2024,Còn hàng
+55,SP055,Máy ép trái cây Bluestone,Đồ gia dụng,Cái,350000,520000,32,8,Bluestone VN,24/02/2024,Còn hàng
+56,SP056,Nồi chiên không dầu,Đồ gia dụng,Cái,850000,1250000,24,6,Philips VN,25/02/2024,Còn hàng
+57,SP057,Máy pha cafe Delonghi,Đồ gia dụng,Máy,3200000,4500000,9,2,Delonghi VN,26/02/2024,Còn hàng
+58,SP058,Máy sấy tóc Panasonic,Đồ gia dụng,Cái,280000,420000,40,10,Panasonic VN,27/02/2024,Còn hàng
+59,SP059,Bàn ủi hơi nước,Đồ gia dụng,Cái,350000,520000,30,8,Philips VN,28/02/2024,Còn hàng
+60,SP060,Quạt điều hòa Kangaroo,Đồ gia dụng,Cái,1200000,1850000,18,4,Kangaroo,29/02/2024,Còn hàng
+61,SP061,Bộ nồi inox 5 món,Đồ gia dụng,Bộ,850000,1350000,22,5,Lock&Lock VN,01/03/2024,Còn hàng
+62,SP062,Chảo chống dính,Đồ gia dụng,Cái,150000,250000,45,12,Tefal VN,02/03/2024,Còn hàng
+63,SP063,Bình giữ nhiệt Stanley,Đồ gia dụng,Cái,450000,680000,35,9,Stanley VN,03/03/2024,Còn hàng
+64,SP064,Máy xay thịt,Đồ gia dụng,Cái,280000,420000,28,7,Bluestone VN,04/03/2024,Còn hàng
+65,SP065,Đèn sưởi nhà tắm,Đồ gia dụng,Cái,320000,480000,20,5,Kangaroo,05/03/2024,Còn hàng
+66,SP066,Áo thun nam basic,Thời trang,Cái,85000,150000,120,30,Uniqlo VN,06/03/2024,Còn hàng
+67,SP067,Quần jeans nam,Thời trang,Cái,180000,320000,85,25,Levi's VN,07/03/2024,Còn hàng
+68,SP068,Áo sơ mi công sở,Thời trang,Cái,120000,220000,95,28,Việt Tiến,08/03/2024,Còn hàng
+69,SP069,Đầm công sở nữ,Thời trang,Cái,250000,450000,65,18,Canifa,09/03/2024,Còn hàng
+70,SP070,Giày tây nam da,Thời trang,Đôi,350000,620000,45,12,Biti's,10/03/2024,Còn hàng
+71,SP071,Giày cao gót nữ,Thời trang,Đôi,280000,480000,55,15,Vincy,11/03/2024,Còn hàng
+72,SP072,Túi xách nữ da,Thời trang,Cái,450000,780000,35,9,MLB VN,12/03/2024,Còn hàng
+73,SP073,Ví nam da bò,Thời trang,Cái,180000,320000,60,16,Coach VN,13/03/2024,Còn hàng
+74,SP074,Áo khoác denim,Thời trang,Cái,220000,380000,40,11,Zara VN,14/03/2024,Còn hàng
+75,SP075,Quần shorts nữ,Thời trang,Cái,95000,165000,75,22,H&M VN,15/03/2024,Còn hàng
+76,SP076,Sữa tươi Vinamilk,Thực phẩm,Thùng,120000,185000,80,20,Vinamilk,16/03/2024,Còn hàng
+77,SP077,Mì tôm Hảo Hảo,Thực phẩm,Thùng,85000,135000,150,40,Acecook VN,17/03/2024,Còn hàng
+78,SP078,Dầu ăn Simply,Thực phẩm,Chai,45000,75000,100,25,Cargill VN,18/03/2024,Còn hàng
+79,SP079,Nước mắm Nam Ngư,Thực phẩm,Chai,32000,55000,120,30,Masan Consumer,19/03/2024,Còn hàng
+80,SP080,Cafe Trung Nguyên,Thực phẩm,Hộp,65000,110000,90,25,Trung Nguyên,20/03/2024,Còn hàng
+81,SP081,Bánh kẹo Bibica,Thực phẩm,Thùng,280000,450000,60,15,Bibica,21/03/2024,Còn hàng
+82,SP082,Nước ngọt Coca Cola,Thực phẩm,Thùng,95000,150000,110,30,Coca Cola VN,22/03/2024,Còn hàng
+83,SP083,Bia Heineken,Thực phẩm,Thùng,180000,280000,75,20,Heineken VN,23/03/2024,Còn hàng
+84,SP084,Trà lipton túi lọc,Thực phẩm,Hộp,45000,78000,85,22,Unilever VN,24/03/2024,Còn hàng
+85,SP085,Đường Biên Hòa,Thực phẩm,Túi,22000,38000,200,50,Bien Hoa Sugar,25/03/2024,Còn hàng
+86,SP086,Dầu gội Clear,Chăm sóc cá nhân,Chai,65000,110000,95,25,Unilever VN,26/03/2024,Còn hàng
+87,SP087,Sữa tắm Lifebuoy,Chăm sóc cá nhân,Chai,55000,95000,105,28,Unilever VN,27/03/2024,Còn hàng
+88,SP088,Kem đánh răng P/S,Chăm sóc cá nhân,Tuýp,25000,45000,180,45,P&G VN,28/03/2024,Còn hàng
+89,SP089,Bàn chải đánh răng,Chăm sóc cá nhân,Cái,15000,28000,220,60,Colgate VN,29/03/2024,Còn hàng
+90,SP090,Sữa rửa mặt Cetaphil,Chăm sóc cá nhân,Chai,85000,145000,65,18,Galderma VN,30/03/2024,Còn hàng
+91,SP091,Kem dưỡng ẩm,Chăm sóc cá nhân,Tuýp,95000,165000,55,15,La Roche Posay,31/03/2024,Còn hàng
+92,SP092,Nước hoa hồng,Chăm sóc cá nhân,Chai,65000,115000,70,20,Simple VN,01/04/2024,Còn hàng
+93,SP093,Khẩu trang y tế,Y tế,Hộp,45000,75000,300,80,Khẩu trang VN,02/04/2024,Còn hàng
+94,SP094,Nước rửa tay khô,Y tế,Chai,25000,45000,250,70,Lifebuoy VN,03/04/2024,Còn hàng
+95,SP095,Băng gạc y tế,Y tế,Hộp,35000,62000,120,30,Band-Aid VN,04/04/2024,Còn hàng
+96,SP096,Thuốc bổ vitamin C,Y tế,Hộp,85000,145000,85,25,Bayer VN,05/04/2024,Còn hàng
+97,SP097,Nhiệt kế điện tử,Y tế,Cái,120000,220000,45,12,Omron VN,06/04/2024,Còn hàng
+98,SP098,Máy đo huyết áp,Y tế,Cái,350000,580000,25,8,Omron VN,07/04/2024,Còn hàng
+99,SP099,Xe đạp thể thao,Thể thao,Xe,1850000,2850000,12,3,Trek VN,08/04/2024,Còn hàng
+100,SP100,Vợt cầu lông Yonex,Thể thao,Cái,850000,1350000,28,7,Yonex VN,09/04/2024,Còn hàng

@@ -1,0 +1,29 @@
+Generic single-database configuration for Alembic migrations.
+
+## Sử dụng Alembic
+
+### Tạo migration mới
+```bash
+alembic revision --autogenerate -m "Description of changes"
+```
+
+### Chạy migrations
+```bash
+alembic upgrade head
+```
+
+### Rollback migration
+```bash
+alembic downgrade -1
+```
+
+### Xem lịch sử migrations
+```bash
+alembic history
+```
+
+### Xem trạng thái hiện tại
+```bash
+alembic current
+```
+
