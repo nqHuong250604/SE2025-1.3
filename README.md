@@ -45,7 +45,7 @@
 
 
 
-### 2. Nguyễn Quang Hướng: Frontend (React/Vue)
+### 2. Nguyễn Quang Hướng: Frontend (React)
 
 #### Các Bước Với GitHub:
 
@@ -53,14 +53,14 @@
     ```bash
     # Cách 1: Repository riêng
     git clone <frontend-repo-url>
-    npx create-react-app warehouse-frontend  # hoặc vue create warehouse-frontend
+    npx create-react-app warehouse-frontend
     cd warehouse-frontend
     
     # Cách 2: Monorepo (recommended)
     # Trong repository chính
     mkdir frontend
     cd frontend
-    npx create-react-app .  # hoặc vue create .
+    npx create-react-app . 
     ```
 
 2.  **Cấu Trúc Dự Án Frontend:**
