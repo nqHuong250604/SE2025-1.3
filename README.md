@@ -45,7 +45,7 @@
 
 
 
-### 2. Thành Viên B: Frontend (React/Vue)
+### 2. Nguyễn Quang Hướng: Frontend (React/Vue)
 
 #### Các Bước Với GitHub:
 
@@ -128,7 +128,7 @@ git push origin feature/product-crud
 
 ---
 
-### 3. Thành Viên C: Kết Nối API & Frontend
+### 3. Hồ Thái Đức: Kết Nối API & Frontend
 
 #### Trách Nhiệm Chính:
 
@@ -173,7 +173,7 @@ git push origin feature/api-integration
 
 ---
 
-### 4. Thành Viên D: Testing & Frontend Polish
+### 4. Nguyễn Minh Dương: Testing & Frontend Polish
 
 #### Testing Cho FastAPI Backend:
 
