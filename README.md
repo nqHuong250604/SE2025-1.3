@@ -8,56 +8,10 @@
   - **Database:** PostgreSQL (khuyến nghị) hoặc MySQL
   - **Version Control:** GitHub
 
-## 🗄️ Database Schema Đề Xuất
-
-```sql
--- Bảng sản phẩm
-Products (id, name, description, sku, created_at, updated_at)
-
--- Bảng kho hàng (nếu có nhiều kho)
-Warehouses (id, name, location)
-
--- Bảng tồn kho (quan hệ nhiều-nhiều giữa product và warehouse)
-Inventory (id, product_id, warehouse_id, quantity)
-
--- Bảng giao dịch nhập/xuất
-Transactions (id, product_id, warehouse_id, quantity, type['import', 'export'], note, created_at)
-```
-
----
-
 ## 👥 Phân Công Chi Tiết Với FastAPI & GitHub
 
-### 1. Thành Viên A: FastAPI Backend & Swagger
-
-#### Các Bước Thực Hiện:
-
-1.  **Khởi Tạo Dự Án & GitHub:**
-    ```bash
-    # Tạo repository trên GitHub trước
-    mkdir warehouse-backend
-    cd warehouse-backend
-    git init
-    git remote add origin <your-github-repo-url>
-    
-    # Tạo virtual environment
-    python -m venv venv
-    source venv/bin/activate  # Linux/Mac
-    # venv\Scripts\activate  # Windows
-    
-    # Tạo requirements.txt
-    echo "fastapi==0.104.1
-    uvicorn==0.24.0
-    sqlalchemy==2.0.23
-    psycopg2-binary==2.9.9
-    pydantic==2.5.0
-    python-multipart==0.0.6
-    alembic==1.12.1" > requirements.txt
-    
-    pip install -r requirements.txt
-    ```
-
-2.  **Thiết Kế API Structure:**
+### 1. Vũ Bá Anh: FastAPI Backend & Swagger
+  **Thiết Kế API Structure:**
     ```
     warehouse-backend/
     ├── app/
@@ -89,100 +43,7 @@ Transactions (id, product_id, warehouse_id, quantity, type['import', 'export'], 
     └── README.md
     ```
 
-3.  **Triển Khai Code Với FastAPI:**
-    - **`app/main.py`:**
-    ```python
-    from fastapi import FastAPI
-    from fastapi.middleware.cors import CORSMiddleware
-    from app.api.endpoints import products, transactions
-    
-    app = FastAPI(
-        title="Warehouse Management API",
-        description="API for managing warehouse operations",
-        version="1.0.0"
-    )
-    
-    # CORS middleware
-    app.add_middleware(
-        CORSMiddleware,
-        allow_origins=["http://localhost:3000"],  # Frontend URL
-        allow_credentials=True,
-        allow_methods=["*"],
-        allow_headers=["*"],
-    )
-    
-    app.include_router(products.router, prefix="/api/products", tags=["products"])
-    app.include_router(transactions.router, prefix="/api/transactions", tags=["transactions"])
-    
-    @app.get("/")
-    async def root():
-        return {"message": "Warehouse Management API"}
-    ```
 
-    - **Pydantic Schemas (trong `app/schemas/product.py`):**
-    ```python
-    from pydantic import BaseModel
-    from datetime import datetime
-    from typing import Optional
-    
-    class ProductBase(BaseModel):
-        name: str
-        description: Optional[str] = None
-        sku: str
-    
-    class ProductCreate(ProductBase):
-        pass
-    
-    class Product(ProductBase):
-        id: int
-        created_at: datetime
-        updated_at: datetime
-        
-        class Config:
-            from_attributes = True
-    ```
-
-    - **API Endpoint (trong `app/api/endpoints/products.py`):**
-    ```python
-    from fastapi import APIRouter, HTTPException, Depends
-    from sqlalchemy.orm import Session
-    from app.schemas.product import Product, ProductCreate
-    from app.crud import product as product_crud
-    from app.database import get_db
-    
-    router = APIRouter()
-    
-    @router.get("/", response_model=list[Product])
-    def read_products(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
-        products = product_crud.get_products(db, skip=skip, limit=limit)
-        return products
-    
-    @router.post("/", response_model=Product)
-    def create_product(product: ProductCreate, db: Session = Depends(get_db)):
-        return product_crud.create_product(db=db, product=product)
-    
-    @router.get("/{product_id}", response_model=Product)
-    def read_product(product_id: int, db: Session = Depends(get_db)):
-        db_product = product_crud.get_product(db, product_id=product_id)
-        if db_product is None:
-            raise HTTPException(status_code=404, detail="Product not found")
-        return db_product
-    ```
-
-4.  **Swagger Tự Động:**
-    - FastAPI tự động tạo Swagger UI tại `http://localhost:8000/docs`
-    - Không cần cấu hình thêm!
-
-#### Git Workflow:
-```bash
-git checkout -b feature/backend-setup
-git add .
-git commit -m "feat: initialize FastAPI backend with product endpoints"
-git push origin feature/backend-setup
-# Tạo Pull Request trên GitHub
-```
-
----
 
 ### 2. Thành Viên B: Frontend (React/Vue)
 
