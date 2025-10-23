@@ -52,7 +52,7 @@ Cụ thể, dự án hướng tới việc hoàn thành các mục tiêu sau:
   - Tích hợp **CI/CD pipelines** để kiểm thử và triển khai tự động với **GitHub Actions**,  
   - Đồng thời, sử dụng tài liệu API tự sinh từ **Swagger/OpenAPI** như một cầu nối giao tiếp giữa backend developer, frontend developer, và tester, giúp đội nhóm làm việc hiệu quả, thống nhất và tránh hiểu nhầm trong quá trình phát triển.
 
-Tổng thể, việc kết hợp **FastAPI + Swagger/OpenAPI + ReactJS** không chỉ giúp dự án đạt được tính **tự động hóa, trực quan và chuyên nghiệp**, mà còn phản ánh đúng xu hướng phát triển phần mềm hiện đại – nơi **API được mô tả rõ ràng, có thể kiểm thử trực tiếp và dễ dàng tích hợp với các hệ thống khác**.
+Việc kết hợp **FastAPI + Swagger/OpenAPI + ReactJS** không chỉ giúp dự án đạt được tính **tự động hóa, trực quan và chuyên nghiệp**, mà còn phản ánh đúng xu hướng phát triển phần mềm hiện đại – nơi **API được mô tả rõ ràng, có thể kiểm thử trực tiếp và dễ dàng tích hợp với các hệ thống khác**.
 
 ---
 
