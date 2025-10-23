@@ -21,16 +21,38 @@ Hệ thống được phát triển trên nền tảng **FastAPI (Python)** cho 
 
 ## 🎯 MỤC TIÊU DỰ ÁN
 
-Mục tiêu chính của dự án là **xây dựng một hệ thống quản lý kho hàng thông minh**, có khả năng ghi nhận, lưu trữ, và theo dõi toàn bộ quá trình nhập – xuất hàng hóa theo thời gian thực. Hệ thống hướng đến việc hỗ trợ doanh nghiệp **giảm thiểu sai sót thủ công**, **nâng cao hiệu suất làm việc**, **tăng tính chính xác của dữ liệu tồn kho**, và **tối ưu hóa quy trình vận hành kho**.
+Mục tiêu chính của dự án là **xây dựng một hệ thống quản lý kho hàng thông minh**, có khả năng ghi nhận, lưu trữ và theo dõi toàn bộ quá trình **nhập – xuất – tồn kho** theo thời gian thực. Hệ thống hướng đến việc hỗ trợ doanh nghiệp **giảm thiểu sai sót thủ công**, **nâng cao hiệu suất làm việc**, **tăng tính chính xác của dữ liệu tồn kho**, và **tối ưu hóa quy trình vận hành kho hàng**.
 
-Bên cạnh đó, dự án còn giúp sinh viên **nắm vững quy trình phát triển phần mềm hiện đại**, từ giai đoạn thiết kế hệ thống, xây dựng cơ sở dữ liệu, triển khai API backend, phát triển giao diện frontend, cho đến kiểm thử, triển khai và quản lý phiên bản trên GitHub.  
+Song song đó, dự án còn giúp sinh viên **nắm vững toàn bộ quy trình phát triển phần mềm hiện đại**, từ thiết kế mô hình dữ liệu, xây dựng RESTful API, thiết kế giao diện người dùng, kiểm thử hệ thống, cho đến triển khai và quản lý mã nguồn trên GitHub. Đây là một dự án mang tính thực hành cao, kết hợp cả kỹ năng kỹ thuật và kỹ năng làm việc nhóm chuyên nghiệp.
 
 Cụ thể, dự án hướng tới việc hoàn thành các mục tiêu sau:
 
-- **Về kỹ thuật:** xây dựng được hệ thống API hoàn chỉnh với FastAPI, hỗ trợ đầy đủ CRUD (Create, Read, Update, Delete) cho các đối tượng quản lý như sản phẩm, giao dịch nhập – xuất và tồn kho; đồng thời tích hợp Swagger UI để mô tả API tự động và kiểm thử trực tiếp.
-- **Về giao diện:** phát triển một ứng dụng ReactJS có khả năng tương tác mượt mà với backend thông qua Axios, hiển thị dữ liệu động theo thời gian thực, hỗ trợ thao tác nhanh với sản phẩm, giao dịch và báo cáo.
-- **Về vận hành:** đảm bảo hệ thống hoạt động ổn định, xử lý lỗi hợp lý, có xác nhận người dùng trước các thao tác quan trọng như xóa hay nhập hàng, đồng thời hỗ trợ mở rộng cho các module nâng cao như thống kê doanh thu hoặc dự đoán nhu cầu hàng tồn trong tương lai.
-- **Về cộng tác:** áp dụng mô hình phát triển phần mềm nhóm chuyên nghiệp thông qua GitHub, bao gồm quản lý nhánh (branching), review code, pull request, và CI/CD tự động kiểm thử bằng GitHub Actions.
+- **Về kỹ thuật:**  
+  Xây dựng **hệ thống API hoàn chỉnh với FastAPI**, hỗ trợ đầy đủ các chức năng CRUD (Create – Read – Update – Delete) cho các đối tượng quản lý như **sản phẩm, giao dịch nhập – xuất, người dùng và tồn kho**.  
+  Đặc biệt, dự án **tích hợp Swagger UI và chuẩn OpenAPI** nhằm:
+  - Tự động **mô tả toàn bộ hệ thống API** theo chuẩn quốc tế OpenAPI Specification (OAS), giúp người phát triển dễ dàng hiểu rõ cấu trúc, phương thức, tham số và phản hồi của từng endpoint.
+  - Cho phép **kiểm thử trực tiếp các API** ngay trên giao diện Swagger mà không cần công cụ ngoài (như Postman), giúp quá trình phát triển và debug nhanh chóng, thuận tiện hơn.
+  - Đảm bảo **tính minh bạch, khả năng mở rộng và khả năng tích hợp liên hệ thống**, vì OpenAPI là chuẩn mô tả được các dịch vụ khác (như hệ thống ERP hoặc thương mại điện tử) dễ dàng kết nối đến thông qua tài liệu mô tả chung.
+  - Góp phần **tự động sinh tài liệu kỹ thuật** (API Documentation), giúp giảm tải việc viết mô tả thủ công và nâng cao khả năng bảo trì hệ thống trong dài hạn.
+
+- **Về giao diện:**  
+  Phát triển **ứng dụng ReactJS** có khả năng tương tác mượt mà với backend thông qua thư viện **Axios**, hiển thị dữ liệu động theo thời gian thực và hỗ trợ người dùng thao tác dễ dàng trên các bảng dữ liệu sản phẩm, giao dịch, và báo cáo thống kê tồn kho. Giao diện được thiết kế hiện đại, rõ ràng, đảm bảo **trải nghiệm người dùng trực quan và hiệu quả**.
+
+- **Về vận hành:**  
+  Đảm bảo hệ thống hoạt động **ổn định, phản hồi nhanh và có cơ chế xử lý lỗi rõ ràng**, chẳng hạn xác nhận người dùng trước khi thực hiện các thao tác quan trọng như xóa hoặc nhập hàng.  
+  Ngoài ra, hệ thống được thiết kế theo hướng **mở rộng linh hoạt**, cho phép bổ sung các module nâng cao như:
+  - Phân tích và **thống kê doanh thu theo thời gian**,  
+  - **Dự đoán nhu cầu hàng tồn**,  
+  - hoặc **tích hợp IoT** để theo dõi lượng hàng trong kho thực tế.
+
+- **Về cộng tác và phát triển nhóm:**  
+  Áp dụng **quy trình phát triển phần mềm chuyên nghiệp** thông qua nền tảng **GitHub**, bao gồm:
+  - Quản lý nhánh (branching model),  
+  - Tạo và review **pull request**,  
+  - Tích hợp **CI/CD pipelines** để kiểm thử và triển khai tự động với **GitHub Actions**,  
+  - Đồng thời, sử dụng tài liệu API tự sinh từ **Swagger/OpenAPI** như một cầu nối giao tiếp giữa backend developer, frontend developer, và tester, giúp đội nhóm làm việc hiệu quả, thống nhất và tránh hiểu nhầm trong quá trình phát triển.
+
+Tổng thể, việc kết hợp **FastAPI + Swagger/OpenAPI + ReactJS** không chỉ giúp dự án đạt được tính **tự động hóa, trực quan và chuyên nghiệp**, mà còn phản ánh đúng xu hướng phát triển phần mềm hiện đại – nơi **API được mô tả rõ ràng, có thể kiểm thử trực tiếp và dễ dàng tích hợp với các hệ thống khác**.
 
 ---
 
