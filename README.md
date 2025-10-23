@@ -7,6 +7,78 @@
   - **Frontend:** ReactJS hoặc VueJS
   - **Database:** PostgreSQL (khuyến nghị) hoặc MySQL
   - **Version Control:** GitHub
+## 🧩 1. ĐỀ BÀI DỰ ÁN
+
+Trong bối cảnh nền kinh tế hiện đại và sự phát triển nhanh chóng của thương mại điện tử, hoạt động logistics đóng vai trò cực kỳ quan trọng trong việc vận hành chuỗi cung ứng và đảm bảo hiệu quả phân phối sản phẩm. Một trong những thách thức lớn nhất của các doanh nghiệp hiện nay là việc quản lý kho hàng – nơi lưu trữ, điều phối và kiểm soát luồng hàng hóa giữa nhà sản xuất, đại lý và người tiêu dùng.  
+
+Phần lớn các doanh nghiệp nhỏ và vừa hiện vẫn đang thực hiện việc quản lý kho bằng các phương pháp thủ công như bảng tính Excel hoặc ghi chép giấy tờ, dẫn đến nhiều rủi ro như thất thoát hàng hóa, sai lệch số liệu, chậm trễ trong việc nắm bắt thông tin tồn kho và khó khăn khi cần báo cáo nhanh. Chính vì vậy, nhóm chúng em lựa chọn đề tài **“Hệ thống Quản lý Kho Hàng (Warehouse Management System)”**, với mục tiêu xây dựng một nền tảng ứng dụng web hiện đại, giúp tự động hóa các hoạt động nhập – xuất – kiểm kho, quản lý sản phẩm và thống kê tình hình tồn hàng một cách chính xác và minh bạch.  
+
+Hệ thống được phát triển trên nền tảng **FastAPI (Python)** cho phần backend, đảm bảo tốc độ xử lý nhanh, khả năng mở rộng cao, và dễ dàng tích hợp với các hệ thống khác. Song song đó, phần **frontend** được xây dựng bằng **ReactJS**, giúp tạo ra giao diện người dùng thân thiện, trực quan và phản hồi tức thì với thao tác của nhân viên kho hoặc nhà quản lý. Tất cả dữ liệu được lưu trữ trong **PostgreSQL** hoặc **MySQL**, giúp đảm bảo tính toàn vẹn và an toàn của thông tin.
+
+---
+
+## 🎯 2. MỤC TIÊU DỰ ÁN
+
+Mục tiêu chính của dự án là **xây dựng một hệ thống quản lý kho hàng thông minh**, có khả năng ghi nhận, lưu trữ, và theo dõi toàn bộ quá trình nhập – xuất hàng hóa theo thời gian thực. Hệ thống hướng đến việc hỗ trợ doanh nghiệp **giảm thiểu sai sót thủ công**, **nâng cao hiệu suất làm việc**, **tăng tính chính xác của dữ liệu tồn kho**, và **tối ưu hóa quy trình vận hành kho**.
+
+Bên cạnh đó, dự án còn giúp sinh viên **nắm vững quy trình phát triển phần mềm hiện đại**, từ giai đoạn thiết kế hệ thống, xây dựng cơ sở dữ liệu, triển khai API backend, phát triển giao diện frontend, cho đến kiểm thử, triển khai và quản lý phiên bản trên GitHub.  
+
+Cụ thể, dự án hướng tới việc hoàn thành các mục tiêu sau:
+
+- **Về kỹ thuật:** xây dựng được hệ thống API hoàn chỉnh với FastAPI, hỗ trợ đầy đủ CRUD (Create, Read, Update, Delete) cho các đối tượng quản lý như sản phẩm, giao dịch nhập – xuất và tồn kho; đồng thời tích hợp Swagger UI để mô tả API tự động và kiểm thử trực tiếp.
+- **Về giao diện:** phát triển một ứng dụng ReactJS có khả năng tương tác mượt mà với backend thông qua Axios, hiển thị dữ liệu động theo thời gian thực, hỗ trợ thao tác nhanh với sản phẩm, giao dịch và báo cáo.
+- **Về vận hành:** đảm bảo hệ thống hoạt động ổn định, xử lý lỗi hợp lý, có xác nhận người dùng trước các thao tác quan trọng như xóa hay nhập hàng, đồng thời hỗ trợ mở rộng cho các module nâng cao như thống kê doanh thu hoặc dự đoán nhu cầu hàng tồn trong tương lai.
+- **Về cộng tác:** áp dụng mô hình phát triển phần mềm nhóm chuyên nghiệp thông qua GitHub, bao gồm quản lý nhánh (branching), review code, pull request, và CI/CD tự động kiểm thử bằng GitHub Actions.
+
+---
+
+## 🧱 3. PHẠM VI VÀ YÊU CẦU CỦA HỆ THỐNG
+
+Hệ thống được thiết kế nhằm đáp ứng các nhu cầu thực tế trong việc quản lý kho hàng của một doanh nghiệp nhỏ đến trung bình, bao gồm quản lý danh mục sản phẩm, giao dịch nhập – xuất hàng, theo dõi tồn kho và lập báo cáo tổng hợp.  
+Ứng dụng được triển khai dưới dạng **nền tảng web**, người dùng có thể truy cập thông qua trình duyệt, không cần cài đặt phức tạp.
+
+### 3.1. Phạm vi chức năng
+
+Hệ thống tập trung vào bốn nhóm chức năng chính:
+
+1. **Quản lý sản phẩm:**  
+   Hệ thống cho phép người dùng thêm mới, chỉnh sửa, tìm kiếm hoặc xóa sản phẩm. Mỗi sản phẩm bao gồm các thông tin như mã SKU, tên sản phẩm, mô tả, giá nhập, giá bán và số lượng tồn hiện tại. Tính năng tìm kiếm giúp người quản lý dễ dàng lọc và truy cập sản phẩm cần thiết theo tên hoặc mã.
+
+2. **Quản lý giao dịch nhập – xuất kho:**  
+   Người dùng có thể ghi nhận các giao dịch nhập hoặc xuất hàng từ kho. Khi thực hiện thao tác này, hệ thống sẽ tự động cập nhật số lượng tồn tương ứng của từng sản phẩm, đảm bảo dữ liệu kho luôn phản ánh đúng thực tế. Mỗi giao dịch được lưu lại với thời gian thực hiện, người thao tác và loại giao dịch (nhập hoặc xuất).
+
+3. **Theo dõi tồn kho và thống kê:**  
+   Ứng dụng hiển thị danh sách toàn bộ sản phẩm kèm số lượng tồn hiện tại. Các mặt hàng sắp hết hàng sẽ được cảnh báo để nhà quản lý chủ động nhập thêm. Ngoài ra, hệ thống cung cấp biểu đồ thống kê nhập – xuất theo thời gian, giúp hỗ trợ ra quyết định nhanh chóng và chính xác hơn.
+
+4. **Báo cáo và xuất dữ liệu:**  
+   Người dùng có thể tạo báo cáo tổng hợp theo ngày, tuần hoặc tháng, với các chỉ tiêu như tổng số lượng nhập, tổng số lượng xuất và giá trị tồn kho. Các báo cáo này có thể được trích xuất ra file CSV hoặc Excel để phục vụ công tác lưu trữ hoặc trình bày nội bộ.
+
+---
+
+## ⚙️ 4. YÊU CẦU PHI CHỨC NĂNG
+
+Bên cạnh các chức năng chính, dự án cũng phải đáp ứng một số yêu cầu phi chức năng nhằm đảm bảo hệ thống hoạt động hiệu quả và có khả năng mở rộng trong tương lai:
+
+- **Hiệu năng:** thời gian phản hồi API phải nhanh (dưới 200ms với thao tác CRUD cơ bản), giao diện frontend phải mượt và đồng bộ với backend.
+- **Bảo mật:** đảm bảo các endpoint API chỉ nhận dữ liệu hợp lệ, có xác thực và kiểm tra đầu vào; tránh SQL injection và lỗi định dạng JSON.
+- **Tính mở rộng:** cấu trúc mã nguồn backend và frontend được tách biệt rõ ràng, dễ dàng mở rộng thêm các module như quản lý nhà cung cấp, quản lý nhân viên hoặc tích hợp phân quyền người dùng.
+- **Khả năng triển khai:** có thể triển khai hệ thống trên máy chủ nội bộ hoặc cloud (Heroku, Render, hoặc AWS) với quy trình CI/CD tự động.
+- **Khả năng bảo trì:** mã nguồn được tổ chức khoa học, có ghi chú, đặt tên biến rõ ràng, và tuân thủ quy chuẩn PEP8 (Python) cũng như ESLint (React).
+
+---
+
+## 💡 5. Ý NGHĨA ỨNG DỤNG
+
+Dự án không chỉ là một bài thực hành kỹ thuật, mà còn có giá trị thực tiễn cao trong việc **ứng dụng công nghệ vào quản trị kho logistics**. Việc xây dựng hệ thống này giúp sinh viên hiểu rõ hơn về **luồng dữ liệu trong vận hành chuỗi cung ứng**, **các thao tác nghiệp vụ kho hàng** và **cách tối ưu hóa hoạt động lưu trữ – vận chuyển bằng phần mềm**.  
+
+Trong tương lai, hệ thống có thể được phát triển mở rộng với các tính năng nâng cao như **phân quyền người dùng**, **tích hợp mã QR cho sản phẩm**, **định vị hàng hóa theo khu vực lưu trữ (zone tracking)**, hoặc **tích hợp AI để dự đoán xu hướng tiêu thụ và điều chỉnh tồn kho tự động**. Điều này mở ra hướng tiếp cận hiện đại trong việc chuyển đổi số ngành logistics – một lĩnh vực đang tăng trưởng mạnh mẽ tại Việt Nam.
+
+---
+
+## 🚀 6. KẾT LUẬN
+
+Với việc kết hợp giữa **FastAPI, ReactJS và PostgreSQL**, dự án “Hệ thống Quản lý Kho Hàng” thể hiện quy trình phát triển một ứng dụng web hoàn chỉnh từ backend đến frontend, vừa đảm bảo tính thực tế, vừa mang ý nghĩa học thuật cao. Dự án giúp người học củng cố kiến thức về phát triển API, thiết kế hệ thống, lập trình hướng đối tượng, xử lý dữ liệu, và làm việc nhóm trong môi trường phần mềm chuyên nghiệp.  
+Đây là bước khởi đầu quan trọng cho việc ứng dụng công nghệ vào quản lý logistics hiện đại, góp phần thúc đẩy quá trình số hóa và tự động hóa trong doanh nghiệp.
 
 ## 👥 Phân Công Chi Tiết Với FastAPI & GitHub
 
