@@ -79,6 +79,7 @@ Trong tương lai, hệ thống có thể được phát triển mở rộng v�
 
 Với việc kết hợp giữa **FastAPI, ReactJS và PostgreSQL**, dự án “Hệ thống Quản lý Kho Hàng” thể hiện quy trình phát triển một ứng dụng web hoàn chỉnh từ backend đến frontend, vừa đảm bảo tính thực tế, vừa mang ý nghĩa học thuật cao. Dự án giúp người học củng cố kiến thức về phát triển API, thiết kế hệ thống, lập trình hướng đối tượng, xử lý dữ liệu, và làm việc nhóm trong môi trường phần mềm chuyên nghiệp.  
 Đây là bước khởi đầu quan trọng cho việc ứng dụng công nghệ vào quản lý logistics hiện đại, góp phần thúc đẩy quá trình số hóa và tự động hóa trong doanh nghiệp.
+
 ---
 
 ## 👥 Phân Công Chi Tiết Với FastAPI & GitHub
