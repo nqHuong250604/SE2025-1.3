@@ -7,7 +7,9 @@
   - **Frontend:** ReactJS hoặc VueJS
   - **Database:** PostgreSQL (khuyến nghị) hoặc MySQL
   - **Version Control:** GitHub
-## 🧩 1. ĐỀ BÀI DỰ ÁN
+---
+
+## 🧩 ĐỀ BÀI DỰ ÁN
 
 Trong bối cảnh nền kinh tế hiện đại và sự phát triển nhanh chóng của thương mại điện tử, hoạt động logistics đóng vai trò cực kỳ quan trọng trong việc vận hành chuỗi cung ứng và đảm bảo hiệu quả phân phối sản phẩm. Một trong những thách thức lớn nhất của các doanh nghiệp hiện nay là việc quản lý kho hàng – nơi lưu trữ, điều phối và kiểm soát luồng hàng hóa giữa nhà sản xuất, đại lý và người tiêu dùng.  
 
@@ -17,7 +19,7 @@ Hệ thống được phát triển trên nền tảng **FastAPI (Python)** cho 
 
 ---
 
-## 🎯 2. MỤC TIÊU DỰ ÁN
+## 🎯 MỤC TIÊU DỰ ÁN
 
 Mục tiêu chính của dự án là **xây dựng một hệ thống quản lý kho hàng thông minh**, có khả năng ghi nhận, lưu trữ, và theo dõi toàn bộ quá trình nhập – xuất hàng hóa theo thời gian thực. Hệ thống hướng đến việc hỗ trợ doanh nghiệp **giảm thiểu sai sót thủ công**, **nâng cao hiệu suất làm việc**, **tăng tính chính xác của dữ liệu tồn kho**, và **tối ưu hóa quy trình vận hành kho**.
 
@@ -32,12 +34,10 @@ Cụ thể, dự án hướng tới việc hoàn thành các mục tiêu sau:
 
 ---
 
-## 🧱 3. PHẠM VI VÀ YÊU CẦU CỦA HỆ THỐNG
+## 🧱 PHẠM VI VÀ YÊU CẦU CỦA HỆ THỐNG
 
 Hệ thống được thiết kế nhằm đáp ứng các nhu cầu thực tế trong việc quản lý kho hàng của một doanh nghiệp nhỏ đến trung bình, bao gồm quản lý danh mục sản phẩm, giao dịch nhập – xuất hàng, theo dõi tồn kho và lập báo cáo tổng hợp.  
 Ứng dụng được triển khai dưới dạng **nền tảng web**, người dùng có thể truy cập thông qua trình duyệt, không cần cài đặt phức tạp.
-
-### 3.1. Phạm vi chức năng
 
 Hệ thống tập trung vào bốn nhóm chức năng chính:
 
@@ -55,7 +55,7 @@ Hệ thống tập trung vào bốn nhóm chức năng chính:
 
 ---
 
-## ⚙️ 4. YÊU CẦU PHI CHỨC NĂNG
+## ⚙️ YÊU CẦU PHI CHỨC NĂNG
 
 Bên cạnh các chức năng chính, dự án cũng phải đáp ứng một số yêu cầu phi chức năng nhằm đảm bảo hệ thống hoạt động hiệu quả và có khả năng mở rộng trong tương lai:
 
@@ -67,7 +67,7 @@ Bên cạnh các chức năng chính, dự án cũng phải đáp ứng một s�
 
 ---
 
-## 💡 5. Ý NGHĨA ỨNG DỤNG
+## 💡 Ý NGHĨA ỨNG DỤNG
 
 Dự án không chỉ là một bài thực hành kỹ thuật, mà còn có giá trị thực tiễn cao trong việc **ứng dụng công nghệ vào quản trị kho logistics**. Việc xây dựng hệ thống này giúp sinh viên hiểu rõ hơn về **luồng dữ liệu trong vận hành chuỗi cung ứng**, **các thao tác nghiệp vụ kho hàng** và **cách tối ưu hóa hoạt động lưu trữ – vận chuyển bằng phần mềm**.  
 
@@ -75,10 +75,11 @@ Trong tương lai, hệ thống có thể được phát triển mở rộng v�
 
 ---
 
-## 🚀 6. KẾT LUẬN
+## 🚀 KẾT LUẬN
 
 Với việc kết hợp giữa **FastAPI, ReactJS và PostgreSQL**, dự án “Hệ thống Quản lý Kho Hàng” thể hiện quy trình phát triển một ứng dụng web hoàn chỉnh từ backend đến frontend, vừa đảm bảo tính thực tế, vừa mang ý nghĩa học thuật cao. Dự án giúp người học củng cố kiến thức về phát triển API, thiết kế hệ thống, lập trình hướng đối tượng, xử lý dữ liệu, và làm việc nhóm trong môi trường phần mềm chuyên nghiệp.  
 Đây là bước khởi đầu quan trọng cho việc ứng dụng công nghệ vào quản lý logistics hiện đại, góp phần thúc đẩy quá trình số hóa và tự động hóa trong doanh nghiệp.
+---
 
 ## 👥 Phân Công Chi Tiết Với FastAPI & GitHub
 
