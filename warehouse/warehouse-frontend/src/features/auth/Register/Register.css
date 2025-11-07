@@ -1,0 +1,203 @@
+/* --- RESET --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* --- CONTAINER CHÍNH --- */
+.register-container {
+  display: flex;
+  width: 100vw;
+  height: 50vh; /* nửa trên màn hình */
+  background-color: #0089ed;
+  font-family: "Poppins", sans-serif;
+  position: relative;
+}
+
+/* --- BÊN TRÁI --- */
+.register-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 5%;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Logo */
+.register-logo {
+  position: absolute;
+  top: 25px;
+  left: 40px;
+  width: 120px;
+  height: auto;
+  cursor: pointer;
+  z-index: 10;
+}
+
+/* Text phần giới thiệu */
+.register-text {
+  max-width: 450px;
+  margin-top: 120px;
+}
+
+.register-text h1 {
+  font-size: 2.2rem;
+  font-weight: 600;
+}
+
+.register-text h2 {
+  font-size: 1.6rem;
+  font-weight: 300;
+  margin-top: 0.5rem;
+}
+
+.register-text p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-top: 1rem;
+  opacity: 0.9;
+}
+
+/* Ảnh minh họa */
+.register-left img:last-child {
+  width: 320px;
+  height: auto;
+  object-fit: contain;
+  position: absolute;
+  right: 0;
+  bottom: 36.5px;
+  z-index: 1;
+}
+
+/* --- BÊN PHẢI --- */
+.register-right {
+  flex: 1;
+  background-color: #0089ed;
+}
+
+/* --- FORM ĐĂNG KÝ --- */
+.register-form {
+  position: absolute;
+  right: 5%;
+  bottom: -80%;
+  width: 450px;
+  height: 600px;
+  background: #fff;
+  border-radius: 20px;
+  padding: 30px 25px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* --- Header form --- */
+.register-form-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.register-form-header h4 {
+  font-size: 1.3rem;
+  display: flex;
+  gap: 5px;
+  font-weight: normal;
+}
+
+.register-form-header .black {
+  color: #000;
+}
+
+.register-form-header .blue {
+  color: #0089ed;
+  font-weight: 600;
+}
+
+/* No Account section */
+.register-no-account {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.register-no-account p {
+  font-size: 14px;
+  color: #555;
+  cursor: pointer;
+}
+
+.register-no-account a {
+  color: #0089ed;
+  font-weight: 400;
+  text-decoration: none;
+  margin-right: 64px;
+}
+
+.register-no-account a:hover {
+  text-decoration: none;
+}
+
+/* --- Tiêu đề chính --- */
+.register-form h1 {
+  font-size: 3rem;
+  font-weight: 600;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+/* --- FORM INPUT --- */
+.register-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.register-form form label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-top: 0.7rem;
+}
+
+.register-form form input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.register-form form input:focus {
+  border-color: #0089ed;
+  box-shadow: 0 0 3px rgba(0, 137, 237, 0.3);
+}
+
+/* --- 2 INPUT CÙNG HÀNG --- */
+.register-row-inputs {
+  display: flex;
+  gap: 10px;
+}
+
+.register-row-inputs .register-row1,
+.register-row-inputs .register-row2 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 190px;
+}
+
+/* --- BUTTON --- */
+.register-form form button {
+  margin-top: 10px;
+  background-color: #0089ed;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.register-form form button:hover {
+  background-color: #006fcc;
+}
