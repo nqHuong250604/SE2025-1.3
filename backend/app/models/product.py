@@ -30,6 +30,15 @@ class Product(Base):
     inventory = relationship("Inventory", back_populates="product", uselist=False, cascade="all, delete-orphan")
     transactions = relationship("Transaction", back_populates="product", cascade="all, delete-orphan")
 
+    @property
+    def quantity(self):
+        """
+        Trả về số lượng tồn kho hiện tại (từ bảng Inventory)
+        """
+        if self.inventory:
+            return self.inventory.quantity
+        return 0
+
     def __repr__(self):
         return f"<Product {self.sku}: {self.name}>"
 
