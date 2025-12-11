@@ -23,6 +23,16 @@ config = context.config
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
+# ---------------- ADDED FOR DYNAMIC URL ----------------
+from dotenv import load_dotenv
+load_dotenv()
+
+# Override sqlalchemy.url with environment variable
+db_url = os.getenv("DATABASE_URL")
+if db_url:
+    config.set_main_option("sqlalchemy.url", db_url)
+# -------------------------------------------------------
+
 # add your model's MetaData object here
 # for 'autogenerate' support
 target_metadata = Base.metadata
