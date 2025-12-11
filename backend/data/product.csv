@@ -1,0 +1,22 @@
+sku,name,description,category,unit,price,cost
+LAPTOP001,Laptop Dell XPS 13,Laptop cao cấp 13 inch,Electronics,pcs,25000000,20000000
+LAPTOP002,Laptop HP Pavilion 15,Laptop văn phòng 15 inch,Electronics,pcs,18000000,15000000
+LAPTOP003,MacBook Pro M3,MacBook Pro chip M3 14 inch,Electronics,pcs,45000000,38000000
+PHONE001,iPhone 15 Pro,Điện thoại iPhone 15 Pro 256GB,Electronics,pcs,28000000,24000000
+PHONE002,Samsung Galaxy S24,Điện thoại Samsung flagship,Electronics,pcs,22000000,18000000
+PHONE003,Xiaomi 14,Điện thoại Xiaomi cao cấp,Electronics,pcs,15000000,12000000
+MOUSE001,Logitech MX Master 3,Chuột không dây cao cấp,Accessories,pcs,2500000,2000000
+MOUSE002,Razer DeathAdder V3,Chuột gaming chuyên nghiệp,Accessories,pcs,1800000,1400000
+KEYBOARD001,Keychron K8,Bàn phím cơ wireless,Accessories,pcs,2200000,1800000
+KEYBOARD002,Logitech MX Keys,Bàn phím văn phòng cao cấp,Accessories,pcs,2800000,2300000
+MONITOR001,Dell UltraSharp 27,Màn hình 27 inch 4K,Electronics,pcs,8500000,7000000
+MONITOR002,LG UltraWide 34,Màn hình 34 inch curved,Electronics,pcs,12000000,10000000
+HEADPHONE001,Sony WH-1000XM5,Tai nghe chống ồn cao cấp,Accessories,pcs,8000000,6500000
+HEADPHONE002,AirPods Pro 2,Tai nghe Apple không dây,Accessories,pcs,6500000,5500000
+CHARGER001,Anker 65W GaN,Sạc nhanh 65W,Accessories,pcs,850000,650000
+CABLE001,USB-C to USB-C 2m,Cáp sạc USB-C chất lượng cao,Accessories,pcs,250000,150000
+DESK001,Standing Desk Electric,Bàn làm việc điều chỉnh điện,Furniture,pcs,7500000,6000000
+CHAIR001,Herman Miller Aeron,Ghế văn phòng ergonomic,Furniture,pcs,25000000,20000000
+WEBCAM001,Logitech Brio 4K,Webcam 4K cho họp online,Accessories,pcs,4500000,3500000
+PRINTER001,HP LaserJet Pro,Máy in laser đen trắng,Electronics,pcs,5500000,4500000
+
