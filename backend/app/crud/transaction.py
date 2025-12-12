@@ -78,6 +78,13 @@ class TransactionCRUD:
             inventory = Inventory(product_id=obj_in.product_id, quantity=0)
             db.add(inventory)
         
+        # Validate số lượng cho giao dịch OUT
+        if obj_in.transaction_type == TransactionType.OUT:
+            # available_quantity might not be set if it's a new inventory object (0)
+            available = inventory.available_quantity if inventory.available_quantity is not None else 0
+            if available < obj_in.quantity:
+                raise ValueError(f"Không đủ hàng. Số lượng khả dụng: {available}")
+
         # Cập nhật số lượng tồn kho
         if obj_in.transaction_type == TransactionType.IN:
             inventory.quantity += obj_in.quantity

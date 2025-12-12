@@ -80,18 +80,15 @@ def create_transaction(
             detail=f"Không tìm thấy sản phẩm với ID {transaction_in.product_id}"
         )
     
-    # Validate số lượng cho giao dịch OUT
-    if transaction_in.transaction_type == TransactionType.OUT:
-        from app.crud.inventory import inventory_crud
-        inventory = inventory_crud.get_by_product(db, transaction_in.product_id)
-        if inventory and inventory.available_quantity < transaction_in.quantity:
-            raise HTTPException(
-                status_code=status.HTTP_400_BAD_REQUEST,
-                detail=f"Không đủ hàng. Số lượng khả dụng: {inventory.available_quantity}"
-            )
-    
-    transaction = transaction_crud.create(db, transaction_in)
-    return transaction
+    # Create transaction (validation handled in CRUD)
+    try:
+        transaction = transaction_crud.create(db, transaction_in)
+        return transaction
+    except ValueError as e:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=str(e)
+        )
 
 
 @router.get("/{transaction_id}", response_model=TransactionResponse, summary="Lấy thông tin giao dịch")
