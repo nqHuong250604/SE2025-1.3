@@ -56,12 +56,24 @@ class ProductCRUD:
     
     def create(self, db: Session, obj_in: ProductCreate) -> Product:
         """
-        Tạo sản phẩm mới
+        Tạo sản phẩm mới và tự động khởi tạo inventory
         """
         db_obj = Product(**obj_in.model_dump())
         db.add(db_obj)
         db.commit()
         db.refresh(db_obj)
+        
+        # Tự động tạo inventory rỗng
+        from app.models.inventory import Inventory
+        inventory = Inventory(
+            product_id=db_obj.id,
+            quantity=0,
+            reserved_quantity=0,
+            available_quantity=0
+        )
+        db.add(inventory)
+        db.commit()
+        
         return db_obj
     
     def update(

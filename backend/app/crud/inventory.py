@@ -63,6 +63,21 @@ class InventoryCRUD:
         db.commit()
         db.refresh(db_obj)
         return db_obj
+
+    def create_init(self, db: Session, product_id: int) -> Inventory:
+        """
+        Tạo bản ghi inventory khởi tạo cho sản phẩm mới (số lượng 0)
+        """
+        db_obj = Inventory(
+            product_id=product_id,
+            quantity=0,
+            reserved_quantity=0,
+            available_quantity=0
+        )
+        db.add(db_obj)
+        db.commit()
+        db.refresh(db_obj)
+        return db_obj
     
     def reserve_stock(
         self, 
