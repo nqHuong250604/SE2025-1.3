@@ -112,6 +112,14 @@ def custom_openapi():
         {
             "name": "system",
             "description": "Quản lý hệ thống - Import CSV, reset database, thống kê"
+        },
+        {
+            "name": "auth",
+            "description": "Xác thực & Phân quyền - Đăng ký, Đăng nhập, lấy Token"
+        },
+        {
+            "name": "statistics",
+            "description": "Báo cáo thống kê - KPI Dashboard, doanh thu, đơn hàng"
         }
     ]
     
