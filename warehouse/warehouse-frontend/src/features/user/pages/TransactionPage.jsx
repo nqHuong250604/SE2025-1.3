@@ -91,7 +91,6 @@ export default function TransactionPage() {
     }
   };
 
-  // Search products (autocomplete)
   const searchProducts = async (qStr) => {
     setSearch(qStr);
     if (!qStr.trim()) return setSearchResult([]);
