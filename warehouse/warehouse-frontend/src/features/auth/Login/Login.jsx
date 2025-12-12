@@ -74,7 +74,7 @@ const Login = () => {
           <label>Enter your password</label>
           <input type="password" placeholder="Enter your password" required />
           <a href="/forgot_password" className="forgot-password">Forgot password</a>
-          <button type="submit">Login</button>
+          <button onClick={() => navigate("/user")} type="submit">Login</button>
         </form>
       </div>
     </div>

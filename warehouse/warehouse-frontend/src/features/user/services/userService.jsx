@@ -1,39 +1,83 @@
 import axios from "axios";
 
-// Base URL backend
-const API = axios.create({
-  baseURL: "http://localhost:3000/api/v1",
-});
+const REST_API_LOGISTICS_BASE_URL = "http://localhost:3000/api/v1";
 
-// ------------------------
-// Products
-// ------------------------
+const createAxiosInstance = () => {
+    const username = localStorage.getItem("username");
+    const password = localStorage.getItem("password");
 
-// Lấy danh sách sản phẩm
-export const getProducts = async () => {
-  const res = await API.get("/products/");
-  return res.data;
+    return axios.create({
+        baseURL: REST_API_LOGISTICS_BASE_URL,
+        auth: { username, password },
+    });
 };
 
-// Lấy thông tin 1 sản phẩm
-export const getProductById = async (productId) => {
-  const res = await API.get(`/products/${productId}`);
-  return res.data;
-};
+// =========================
+// INVENTORY ENDPOINTS
+// =========================
+export const listRawInventory = () =>
+    createAxiosInstance().get("/inventory");
 
-// Lấy tồn kho 1 sản phẩm
-export const getInventory = async (productId) => {
-  const res = await API.get(`/products/${productId}/inventory`);
-  return res.data;
-};
+export const getInventoryDetail = (inventoryId) =>
+    createAxiosInstance().get(`/inventory/${inventoryId}`);
 
-// ------------------------
-// Transactions
-// ------------------------
+export const updateInventory = (inventoryId, updateData) =>
+    createAxiosInstance().put(`/inventory/${inventoryId}`, updateData);
 
-// Tạo giao dịch mới (xuất, nhập, điều chỉnh)
-export const createTransaction = async (payload) => {
-  // payload = { type: 'export', product_id, quantity }
-  const res = await API.post("/transactions/", payload);
-  return res.data;
+export const reserveProduct = (productId, reserveAmount) =>
+    createAxiosInstance().post(`/inventory/reserve/${productId}`, reserveAmount);
+
+// =========================
+// PRODUCTS ENDPOINTS
+// =========================
+export const listProducts = () =>
+    createAxiosInstance().get("/products");
+
+export const getProductDetail = (productId) =>
+    createAxiosInstance().get(`/products/${productId}`);
+
+export const createProduct = (product) =>
+    createAxiosInstance().post("/products", product);
+
+export const updateProduct = (productId, product) =>
+    createAxiosInstance().put(`/products/${productId}`, product);
+
+export const deleteProduct = (productId) =>
+    createAxiosInstance().delete(`/products/${productId}`);
+
+// =========================
+// TRANSACTIONS ENDPOINTS
+// =========================
+export const listTransactions = (limit = 20) =>
+    createAxiosInstance().get(`/transactions?limit=${limit}`);
+
+export const getTransactionDetail = (transactionId) =>
+    createAxiosInstance().get(`/transactions/${transactionId}`);
+
+export const createTransaction = (payload) =>
+    createAxiosInstance().post(`/transactions`, payload);
+
+// =========================
+// COMPLEX LOGIC
+// =========================
+
+/**
+ * load inventory + product detail
+ */
+export const fetchInventoryWithDetails = async () => {
+    const invRes = await listRawInventory();
+    const inventory = invRes.data.items || invRes.data;
+
+    const detailed = await Promise.all(
+        inventory.map(async (item) => {
+            const product = await getProductDetail(item.product_id);
+            return {
+                ...item,
+                product_name: product.data?.name || "Unknown",
+                product_info: product.data || null,
+            };
+        })
+    );
+
+    return detailed;
 };

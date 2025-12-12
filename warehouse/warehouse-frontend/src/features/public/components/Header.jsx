@@ -6,17 +6,17 @@ const Header = ({ disableScrollEffect = false }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const navigate = useNavigate();
 
-  const menuItems = [
-    { label: "Trang chủ", path: "/" },
-    { label: "Dịch vụ", path: "/services" },
-    { label: "Theo dõi", path: "/tracking" },
-    { label: "Đơn hàng", path: "/orders" },
-    { label: "Địa chỉ", path: "/contact" },
-  ];
+  // const menuItems = [
+  //   { label: "Trang chủ", path: "/" },
+  //   { label: "Dịch vụ", path: "/services" },
+  //   { label: "Theo dõi", path: "/tracking" },
+  //   { label: "Đơn hàng", path: "/orders" },
+  //   { label: "Địa chỉ", path: "/contact" },
+  // ];
 
-  const navigateTo = (path) => {
-    navigate(path);
-  };
+  // const navigateTo = (path) => {
+  //   navigate(path);
+  // };
 
   useEffect(() => {
     if (disableScrollEffect) {
@@ -39,13 +39,13 @@ const Header = ({ disableScrollEffect = false }) => {
         }`}
       >
         <img
-          onClick={() => navigateTo("/")}
+          // onClick={() => navigateTo("/")}
           src={logo}
           alt="logo"
           className="h-10 w-auto object-contain cursor-pointer"
         />
 
-        <nav
+        {/* <nav
           className={`hidden md:flex gap-8 font-medium transition-colors duration-300 ${
             isScrolled ? "text-gray-800" : "text-white"
           }`}
@@ -60,20 +60,20 @@ const Header = ({ disableScrollEffect = false }) => {
               <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-[#0089ed] group-hover:w-full transition-all duration-200"></span>
             </span>
           ))}
-        </nav>
+        </nav> */}
 
         <div className="flex items-center gap-4">
-          <ShoppingCart
+          {/* <ShoppingCart
             onClick={() => navigateTo("/cart")}
             className={`w-6 h-6 transition-colors duration-300 cursor-pointer ${
               isScrolled
                 ? "text-gray-800 hover:text-[#0089ed]"
                 : "text-white hover:text-[#0089ed]"
             }`}
-          />
+          /> */}
 
           <button
-            onClick={() => navigateTo("/login")}
+            onClick={() => navigate("/login")}
             className="text-white px-4 py-2 rounded-md hover:opacity-90 duration-150"
             style={{ backgroundColor: "#0089ed" }}
           >

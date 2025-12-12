@@ -13,10 +13,11 @@ import NotificationDashboard from './features/admin/pages/notifications/Notifica
 import SettingDashboard from './features/admin/pages/settings/SettingDashboard';
 import SupportDashboard from './features/admin/pages/support/SupportDashboard';
 import UserManagementDashboard from './features/admin/pages/management/UserManagementDashboard';
-import CartPage from './features/user/pages/CartPage';
-import OrderHistory from './features/user/pages/OrderHistory';
-import TrackingPage from './features/user/pages/TrackingPage';
-import ContactPage from './features/user/pages/ContactPage';
+import DashboardUser from './features/user/pages/DashboardUser';
+import InventoryManagementPage from './features/user/pages/InventoryManagementPage';
+import ProfileUser from './features/user/pages/ProfileUser';
+import SettingUser from './features/user/pages/SettingUser';
+import TransactionPage from './features/user/pages/TransactionPage';
 export default function App() {
   return (
     <>
@@ -27,11 +28,11 @@ export default function App() {
           <Route path='/register' element={<Register />}></Route>
           <Route path='/forgot_password' element={<ForgotPassword />}></Route>
 
-          <Route path='/user' element={<Home />}></Route>
-          <Route path='/cart' element={<CartPage />}></Route>
-          <Route path='/orders' element={<OrderHistory />}></Route>
-          <Route path='/tracking' element={<TrackingPage />}></Route>
-          <Route path='/contact' element={<ContactPage />}></Route>
+          <Route path='/user' element={<DashboardUser />}></Route>
+          <Route path='/transaction' element={<TransactionPage />}></Route>
+          <Route path='/inventory' element={<InventoryManagementPage />}></Route>
+          <Route path='/profile' element={<ProfileUser />}></Route>
+          <Route path='/settings' element={<SettingUser />}></Route>
 
           <Route path='/admin' element={<Dashboard />}></Route>
           <Route path='/admin/dashboard' element={<Dashboard />}></Route>

@@ -142,7 +142,7 @@ export default function Footer() {
       {/* Bottom */}
       <div className="mt-10 border-t pt-5 text-center text-sm text-gray-500">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between px-6">
-          <p>© 2024 FastShip. All rights reserved.</p>
+          <p>© 2025 FastShip. All rights reserved.</p>
 
           <div className="flex gap-6 mt-3 md:mt-0">
             <span className="cursor-pointer transition hover:text-[#0089ed]">
