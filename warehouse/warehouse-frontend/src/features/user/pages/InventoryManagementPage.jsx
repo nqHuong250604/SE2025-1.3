@@ -86,8 +86,6 @@ function InventoryManagementPage() {
     setMessage(null);
     try {
       const detailedData = await fetchInventoryWithDetails();
-      // giữ nguyên cấu trúc bạn mong đợi (nếu API trả { data: ... } thì bạn cần điều chỉnh)
-      // trước mình dùng setInventory(detailedData); — giữ như bạn đã viết trước đây
       setInventory(detailedData);
     } catch {
       setMessage({ text: "Lỗi tải dữ liệu", type: "error" });
