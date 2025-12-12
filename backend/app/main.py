@@ -154,6 +154,13 @@ app.include_router(
     tags=["auth"]
 )
 
+from app.api.endpoints import statistics
+app.include_router(
+    statistics.router,
+    prefix="/api/v1/stats",
+    tags=["statistics"]
+)
+
 
 # Root endpoint
 @app.get("/", tags=["system"])
