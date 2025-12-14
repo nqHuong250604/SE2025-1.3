@@ -146,7 +146,7 @@ export default function Footer() {
 
           <div className="flex gap-6 mt-3 md:mt-0">
             <span className="cursor-pointer transition hover:text-[#0089ed]">
-              Chính sách bảo mật
+              Chính sách bảo mật  
             </span>
             <span className="cursor-pointer transition hover:text-[#0089ed]">
               Điều khoản sử dụng

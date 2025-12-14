@@ -1,19 +1,56 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../../../assets/icons/logo.svg";
 import Saly from "../../../assets/icons/Saly-1.svg";
 import { useNavigate } from "react-router-dom";
 import "./Register.css";
+import { registerAPI } from "../authServices"; 
 
 const Register = () => {
   const navigate = useNavigate();
+
+  // 1. Khởi tạo state CHỈ VỚI email, username (full_name), và password
+  const [formData, setFormData] = useState({
+    email: "",
+    username: "", 
+    password: ""
+  });
+
+  const [error, setError] = useState(""); 
 
   const handleClickLogin = () => {
     navigate("/login");
   };
 
+  // 2. Hàm xử lý khi người dùng nhập liệu
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  // 3. Hàm xử lý khi nhấn nút Sign up
+  const handleSubmit = async (e) => {
+    e.preventDefault(); 
+    setError(""); 
+
+    try {
+      // Gọi API đăng ký với 3 trường dữ liệu cần thiết
+      await registerAPI(formData.email, formData.username, formData.password);
+      
+      alert("Đăng ký thành công! Vui lòng đăng nhập.");
+      navigate("/login"); 
+    } catch (err) {
+      console.error("Lỗi đăng ký:", err);
+      // Đảm bảo thông báo lỗi được hiển thị dễ hiểu
+      setError(err.message || "Đã xảy ra lỗi không xác định."); 
+    }
+  };
+
   return (
     <div className="register-container">
-      {/* Bên trái */}
+      {/* Bên trái giữ nguyên */}
       <div className="register-left">
         <img src={logo} alt="logo" className="register-logo" onClick={handleClickLogin} />
         <div className="register-text">
@@ -47,25 +84,51 @@ const Register = () => {
 
         <h1>Sign up</h1>
 
-        <form>
-          <label>Enter your email address</label>
-          <input type="email" placeholder="Email address" required />
+        {/* Hiển thị lỗi nếu có */}
+        {error && <p style={{ color: "red", marginBottom: "10px", textAlign: "center" }}>{error}</p>}
 
+        <form onSubmit={handleSubmit}>
+          {/* Email */}
+          <label>Enter your email address</label>
+          <input 
+            type="email" 
+            name="email" 
+            placeholder="Email address" 
+            required 
+            value={formData.email}
+            onChange={handleChange}
+          />
+
+          {/* User Name (Full Name) */}
+          {/* Thay vì dùng register-row-inputs 2 cột, giờ ta chỉ cần 1 cột cho User name */}
+          {/* Hoặc nếu bạn muốn giữ layout 2 cột, bạn chỉ cần giữ lại register-row1 */}
           <div className="register-row-inputs">
-            <div className="register-row1">
+            <div className="register-row1" style={{ width: '100%' }}> 
               <label>User name</label>
-              <input type="text" placeholder="User name" />
+              <input 
+                type="text" 
+                name="username" 
+                placeholder="User name" 
+                required
+                value={formData.username}
+                onChange={handleChange}
+              />
             </div>
-            <div className="register-row2">
-              <label>Phone Number</label>
-              <input type="text" placeholder="Phone Number" />
-            </div>
+            {/* Đã loại bỏ register-row2 (Phone Number) */}
           </div>
 
+          {/* Password */}
           <label>Enter your Password</label>
-          <input type="password" placeholder="Password" required />
+          <input 
+            type="password" 
+            name="password"
+            placeholder="Password" 
+            required 
+            value={formData.password}
+            onChange={handleChange}
+          />
 
-          <button type="submit" onClick={handleClickLogin}>
+          <button type="submit">
             Sign up
           </button>
         </form>

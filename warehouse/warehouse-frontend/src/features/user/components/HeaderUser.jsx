@@ -4,7 +4,13 @@ import { useNavigate } from "react-router-dom";
 import { LogOut, Settings, UserCircle, ChevronDown } from "lucide-react"; 
 import logo from "../../../assets/icons/logo.svg";
 
-// Logo
+// BỔ SUNG IMPORTS TỪ FILE API SERVICE CỦA BẠN
+import { getCurrentUserAPI, logout } from "../../auth/authServices"; 
+
+
+// ==========================================================
+// 1. Logo Component
+// ==========================================================
 const FastShipLogo = ({ navigateTo }) => {
   return (
     <div
@@ -17,13 +23,45 @@ const FastShipLogo = ({ navigateTo }) => {
   );
 };
 
-// Profile Dropdown
+
+// ==========================================================
+// 2. Profile Dropdown Component (Đã cập nhật logic API)
+// ==========================================================
 const ProfileDropdown = ({ navigateTo }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
+  
+  // --- STATE ĐỂ LƯU THÔNG TIN NGƯỜI DÙNG TỪ API ---
+  const [userData, setUserData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  // ----------------------------------------------------
 
-  const userName = "Nguyễn Văn A";
+  // --- LOGIC GỌI API LẤY THÔNG TIN NGƯỜI DÙNG (CHỈ GỌI 1 LẦN) ---
+  useEffect(() => {
+    const fetchUser = async () => {
+      // Bỏ qua nếu không có token trong LocalStorage
+      if (!localStorage.getItem('accessToken')) {
+        setIsLoading(false);
+        return;
+      }
 
+      try {
+        // Gọi API /api/v1/auth/me (token được gửi tự động qua Interceptor)
+        const data = await getCurrentUserAPI(); 
+        setUserData(data);
+      } catch (error) {
+        console.error("Lỗi lấy thông tin người dùng:", error);
+        // Nếu token hết hạn/không hợp lệ, tự động đăng xuất
+        handleLogout(false); // Xóa token
+        navigateTo("/login"); // Chuyển hướng
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchUser();
+  }, [navigateTo]); // navigateTo là dependency vì nó được dùng trong useEffect
+
+  // Logic đóng dropdown khi click ra ngoài (giữ nguyên)
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
@@ -33,27 +71,49 @@ const ProfileDropdown = ({ navigateTo }) => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+  // ----------------------------------------------------
+
+  // --- HÀM XỬ LÝ ĐĂNG XUẤT ---
+  const handleLogout = (shouldRedirect = true) => {
+    logout(); // Hàm xóa token khỏi Local Storage
+    if (shouldRedirect) {
+      navigateTo("/login");
+    }
+  };
+  // ---------------------------
+
+  // Dữ liệu hiển thị (Đã thay thế giá trị mặc định bằng userData)
+  const userName = userData?.full_name || (isLoading ? "Đang tải..." : "Khách");
+  const userEmail = userData?.email || (isLoading ? "..." : "Người dùng");
+  
+  // Lấy chữ cái đầu tiên của từ cuối cùng trong tên (hoặc '?' nếu không có tên)
+  const userInitial = userName.split(" ").slice(-1)[0].charAt(0).toUpperCase() || '?';
+  
+  // Nếu đang tải và chưa có dữ liệu, hiển thị placeholder
+  if (isLoading && !userData) {
+    // Hiển thị một placeholder đơn giản (Spinner/Skeleton)
+    return <div className="w-8 h-8 rounded-full bg-gray-200 animate-pulse"></div>;
+  }
 
   const menuItems = [
     { label: "Hồ sơ cá nhân", icon: UserCircle, path: "/profile" },
     { label: "Cài đặt", icon: Settings, path: "/settings" },
-    { label: "Đăng xuất", icon: LogOut, path: "/login", isLogout: true },
+    { label: "Đăng xuất", icon: LogOut, action: () => handleLogout(true), isLogout: true }, // Gọi hàm đăng xuất
   ];
 
   return (
     <div className="relative" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        // Đã cập nhật styling để chỉ hiển thị avatar và icon
-        // Tương thích với hình ảnh mẫu bạn gửi: Avatar + Icon
         className="flex items-center gap-1 p-1 pr-2 rounded-full border border-gray-200 bg-white hover:bg-gray-50 transition duration-200 focus:outline-none"
+        disabled={isLoading} 
       >
         {/* Avatar/Initial */}
         <div className="w-8 h-8 flex items-center justify-center rounded-full bg-indigo-500 text-white font-medium text-sm shadow-sm">
-          {userName.split(" ").slice(-1)[0].charAt(0)}
+          {userInitial} 
         </div>
 
-        {/* Icon dropdown (chỉ giữ lại icon) */}
+        {/* Icon dropdown */}
         <ChevronDown 
           className={`w-4 h-4 text-gray-500 transition-transform duration-200 ${isOpen ? "rotate-180" : "rotate-0"}`} 
         />
@@ -64,8 +124,8 @@ const ProfileDropdown = ({ navigateTo }) => {
           <div className="p-4 border-b border-gray-100 flex items-center space-x-3">
             <UserCircle className="w-7 h-7 text-indigo-500" />
             <div>
-              <p className="font-semibold text-gray-900">{userName}</p>
-              <p className="text-xs text-gray-500">Người dùng</p>
+              <p className="font-semibold text-gray-900">{userName}</p> 
+              <p className="text-xs text-gray-500">{userEmail}</p> 
             </div>
           </div>
 
@@ -75,7 +135,11 @@ const ProfileDropdown = ({ navigateTo }) => {
                 key={item.label}
                 onClick={() => {
                   setIsOpen(false);
-                  navigateTo(item.path);
+                  if (item.action) {
+                    item.action(); // Thực hiện hành động (handleLogout)
+                  } else {
+                    navigateTo(item.path);
+                  }
                 }}
                 className={`w-full text-left flex items-center p-3 rounded-lg text-sm transition ${
                   item.isLogout
@@ -87,6 +151,7 @@ const ProfileDropdown = ({ navigateTo }) => {
                 {item.label}
               </button>
             ))}
+            {/* Đảm bảo không hiển thị thông tin nếu không có dữ liệu */}
           </div>
         </div>
       )}
@@ -94,7 +159,10 @@ const ProfileDropdown = ({ navigateTo }) => {
   );
 };
 
-// Header chính
+
+// ==========================================================
+// 3. Header Chính Component (Giữ nguyên)
+// ==========================================================
 const HeaderUser = () => {
   const navigate = useNavigate();
 
@@ -109,7 +177,7 @@ const HeaderUser = () => {
   return (
     <header
       className="fixed top-0 left-0 w-full flex items-center justify-between px-10 py-4 z-50 
-                   bg-white shadow-lg border-b border-gray-100"
+               bg-white shadow-lg border-b border-gray-100"
     >
       <FastShipLogo navigateTo={navigateTo} />
 
