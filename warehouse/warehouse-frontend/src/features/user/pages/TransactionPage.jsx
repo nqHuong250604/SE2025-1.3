@@ -13,10 +13,13 @@ import TransactionList from "./transactions/TransactionList";
 import TransactionCreate from "./transactions/TransactionCreate";
 import TransactionDetail from "./transactions/TransactionDetail";
 import formatCurrency from "./transactions/formatCurrency";
-
+import { useAuth } from '../../../services/AuthContext';
 const safeLower = (v) => String(v || "").toLowerCase();
 
 export default function TransactionPage() {
+  const { user } = useAuth();
+  const performedBy = user?.full_name || "Admin";
+
   const [view, setView] = useState("list");
   const [transactions, setTransactions] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -130,7 +133,7 @@ export default function TransactionPage() {
       unit_price: Math.max(0, Number(item.unit_price) || 0),
       reference_number: `WEB-TXN-${Date.now()}`,
       notes: `Giao dịch ${type} - ${item.product_name || item.name} (SL: ${item.quantity})`,
-      performed_by: localStorage.getItem("username") || "Admin",
+      performed_by: performedBy,
     };
     try {
       setLoading(true);

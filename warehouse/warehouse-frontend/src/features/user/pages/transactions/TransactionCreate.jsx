@@ -4,7 +4,7 @@ import ModernInput from "./ModernInput";
 import ModernSelect from "./ModernSelect";
 import Badge from "./Badge";
 import formatCurrency from "./formatCurrency";
-
+import { useAuth } from '../../../../services/AuthContext';
 const TransactionCreate = ({
   type,
   setType,
@@ -20,6 +20,10 @@ const TransactionCreate = ({
   setView,
 }) => {
   const [searchLocal, setSearchLocal] = useState("");
+
+  // BỔ SUNG: Lấy thông tin người dùng từ Context
+  const { user } = useAuth();
+  const performedBy = user?.full_name || "Đang tải / Admin";
 
   const handleSearchChange = (e) => {
     const val = e.target.value;
@@ -73,7 +77,7 @@ const TransactionCreate = ({
               </label>
               <ModernInput
                 readOnly
-                value={localStorage.getItem("username") || "Admin"}
+                value={performedBy}
               />
             </div>
 
