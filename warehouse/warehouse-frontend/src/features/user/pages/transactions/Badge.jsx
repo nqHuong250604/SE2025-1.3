@@ -13,7 +13,7 @@ const Badge = ({ type }) => {
     content = (
       <>
         <CheckCircle className="w-3 h-3 mr-1" />
-        NHẬP
+        IN
       </>
     );
   } else if (type === "OUT") {
@@ -21,7 +21,7 @@ const Badge = ({ type }) => {
     content = (
       <>
         <XCircle className="w-3 h-3 mr-1" />
-        XUẤT
+        OUT
       </>
     );
   } else if (type === "ADJUSTMENT") {
@@ -29,7 +29,7 @@ const Badge = ({ type }) => {
     content = (
       <>
         <Settings className="w-3 h-3 mr-1" />
-        ĐIỀU CHỈNH
+        ADJUSTMENT
       </>
     );
   } else if (type === "RETURN") {
@@ -37,7 +37,7 @@ const Badge = ({ type }) => {
     content = (
       <>
         <CornerDownLeft className="w-3 h-3 mr-1" />
-        TRẢ HÀNG
+        RETURN
       </>
     );
   } else {

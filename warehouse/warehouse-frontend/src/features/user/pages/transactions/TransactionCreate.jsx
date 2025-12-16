@@ -38,7 +38,15 @@ const TransactionCreate = ({
   };
 
   const updateQuantity = (idx, newQty) => {
-    const qty = Math.max(1, Number(newQty) || 1);
+    let qty = Math.max(1, Number(newQty) || 1);
+    const item = items[idx];
+
+    // Nếu là xuất kho, tự động gán về số lượng tối đa nếu nhập quá
+    if (type === "OUT" && qty > (item.stock_quantity || 0)) {
+      qty = item.stock_quantity;
+      // Có thể thêm một cái toast hoặc thông báo nhỏ ở đây
+    }
+
     setItems((prev) =>
       prev.map((it, i) => (i === idx ? { ...it, quantity: qty } : it))
     );
@@ -60,7 +68,7 @@ const TransactionCreate = ({
         <div className="flex-[2] w-full">
           <div className="flex items-center justify-between">
             <h2 className="text-3xl font-extrabold text-slate-900 flex items-center gap-3">
-              <Plus className="w-7 h-7 text-indigo-600" /> Tạo Giao dịch
+              <Plus className="w-7 h-7 text-indigo-600" /> Tạo giao dịch
             </h2>
             <Badge type={type} />
           </div>
@@ -101,7 +109,7 @@ const TransactionCreate = ({
             {/* Tìm & Thêm sản phẩm */}
             <div className="md:col-span-2">
               <label className="block text-sm font-bold text-slate-700 mb-2">
-                Tìm & Thêm sản phẩm vào danh sách
+                Tìm & thêm sản phẩm vào danh sách
               </label>
 
               <div className="relative w-full">
@@ -118,41 +126,76 @@ const TransactionCreate = ({
 
                 {searchResult.length > 0 && (
                   <div className="absolute left-0 right-0 mt-2 bg-white border border-slate-200 rounded-xl shadow-2xl z-50 max-h-64 overflow-y-auto overflow-x-hidden">
-                    {searchResult.map((p) => (
-                      <div
-                        key={p.id}
-                        onClick={() => {
-                          addProduct(p);
-                          setSearchLocal("");
-                        }}
-                        className="p-3 hover:bg-indigo-50 cursor-pointer flex items-center justify-between transition duration-150 border-b last:border-b-0"
-                      >
-                        <div className="flex items-center gap-3 truncate mr-4">
-                          <Package className="w-5 h-5 text-indigo-500 flex-shrink-0" />
-                          <div className="truncate">
-                            <div className="font-bold text-slate-800 truncate">
-                              {p.name}
-                            </div>
-                            <div className="text-xs text-slate-500">
-                              {/* Đoạn này sẽ hiển thị số thực sau khi fetch ở Page */}
-                              SKU: {p.sku || p.id} | Kho:{" "}
-                              <span
-                                className={`${
-                                  p.stock_quantity > 0
-                                    ? "text-emerald-600"
-                                    : "text-orange-600"
-                                } font-bold`}
+                    {searchResult.map((p) => {
+                      const isOutOfStock =
+                        (p.stock_quantity <= 0 || !p.stock_quantity) &&
+                        type === "OUT";
+
+                      return (
+                        <div
+                          key={p.id}
+                          onClick={() => {
+                            if (isOutOfStock) return; // Không cho click nếu hết hàng
+                            addProduct(p);
+                            setSearchLocal("");
+                          }}
+                          className={`p-3 flex items-center justify-between transition duration-150 border-b last:border-b-0 ${
+                            isOutOfStock
+                              ? "bg-slate-50 opacity-60 cursor-not-allowed"
+                              : "hover:bg-indigo-50 cursor-pointer"
+                          }`}
+                        >
+                          <div className="flex items-center gap-3 truncate mr-4">
+                            <Package
+                              className={`w-5 h-5 flex-shrink-0 ${
+                                isOutOfStock
+                                  ? "text-slate-400"
+                                  : "text-indigo-500"
+                              }`}
+                            />
+                            <div className="truncate">
+                              <div
+                                className={`font-bold truncate ${
+                                  isOutOfStock
+                                    ? "text-slate-400"
+                                    : "text-slate-800"
+                                }`}
                               >
-                                {p.stock_quantity ?? 0}
-                              </span>
+                                {p.name}{" "}
+                                {isOutOfStock && (
+                                  <span className="text-[10px] text-rose-500 font-black">
+                                    (HẾT HÀNG)
+                                  </span>
+                                )}
+                              </div>
+                              <div className="text-xs text-slate-500">
+                                SKU: {p.sku || p.id} | Kho:{" "}
+                                <span
+                                  className={`${
+                                    p.stock_quantity > 0
+                                      ? "text-emerald-600"
+                                      : "text-rose-600"
+                                  } font-bold`}
+                                >
+                                  {p.stock_quantity ?? 0}
+                                </span>
+                              </div>
                             </div>
                           </div>
+
+                          {/* Ẩn giá hoặc hiển thị giá mờ đi nếu hết hàng */}
+                          <div
+                            className={`text-sm font-bold whitespace-nowrap px-3 py-1 rounded-full border ${
+                              isOutOfStock
+                                ? "text-slate-400 bg-slate-100 border-slate-200"
+                                : "text-indigo-600 bg-indigo-50 border-indigo-100"
+                            }`}
+                          >
+                            {formatCurrency(p.price ?? p.unit_price)}
+                          </div>
                         </div>
-                        <div className="text-sm font-bold text-indigo-600 whitespace-nowrap bg-indigo-50 px-3 py-1 rounded-full border border-indigo-100">
-                          {formatCurrency(p.price ?? p.unit_price)}
-                        </div>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 )}
               </div>

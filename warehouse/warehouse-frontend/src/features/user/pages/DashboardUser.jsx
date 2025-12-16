@@ -211,7 +211,7 @@ const DashboardUser = () => {
               {/* ===== DASHBOARD CARDS ===== */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                 <DashboardCard
-                  title="Tổng Giao Dịch"
+                  title="Tổng giao dịch"
                   value={stats.totalOrders}
                   subtext="Tổng số giao dịch gần đây"
                   icon={<Truck className="w-6 h-6 text-indigo-600" />}
@@ -219,7 +219,7 @@ const DashboardUser = () => {
                 />
 
                 <DashboardCard
-                  title="Tổng Số Lượng Tồn Kho"
+                  title="Tổng số lượng tồn kho"
                   value={`${stats.totalInventory} SP`}
                   subtext="Tổng số lượng sản phẩm trong kho"
                   icon={<Package className="w-6 h-6 text-teal-600" />}
@@ -227,7 +227,7 @@ const DashboardUser = () => {
                 />
 
                 <DashboardCard
-                  title="Doanh Thu Ước Tính"
+                  title="Doanh thu ước tính"
                   value={formatCurrency(stats.revenue)}
                   subtext="Dựa trên giá trị xuất kho (OUT)"
                   icon={<DollarSign className="w-6 h-6 text-green-600" />}
@@ -238,8 +238,7 @@ const DashboardUser = () => {
               {/* ===== BẢNG GIAO DỊCH GẦN ĐÂY ===== */}
               <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
                 <h2 className="text-xl font-medium text-gray-800 mb-4 flex items-center gap-2">
-                  <Calendar className="w-5 h-5 text-indigo-500" />5 Giao dịch
-                  Gần đây
+                  <Calendar className="w-5 h-5 text-indigo-500" />Giao dịch gần đây
                 </h2>
 
                 {stats.recentTransactions.length > 0 ? (

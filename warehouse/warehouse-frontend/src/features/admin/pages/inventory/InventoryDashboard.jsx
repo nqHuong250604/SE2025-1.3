@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Topbar from "../../components/Topbar";
 import Sidebar from "../../components/Sidebar";
-// Import thêm các icon đẹp mắt cho Dashboard
 import { 
   FiSearch, FiEdit3, FiRefreshCw, FiMapPin, 
   FiBox, FiAlertTriangle, FiCheckCircle, FiXOctagon 
@@ -133,8 +132,8 @@ const InventoryDashboard = () => {
           {/* Header Section */}
           <div className="flex justify-between items-end">
             <div>
-              <h1 className="text-2xl font-bold text-gray-800">Quản lý kho hàng</h1>
-              <p className="text-gray-500 mt-1">Theo dõi tồn kho thực tế, hàng giữ và vị trí.</p>
+              <h1 className="text-2xl font-bold text-gray-800">Quản lý tồn kho</h1>
+              <p className="text-gray-500 text-sm">Theo dõi tồn kho thực tế, hàng giữ và vị trí.</p>
             </div>
             <button 
               onClick={fetchData}
@@ -148,28 +147,28 @@ const InventoryDashboard = () => {
           {/* Stat Cards với Icon mới */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <StatCard 
-              title="Tổng SKU" 
+              title="Tổng sản phẩm" 
               value={stats.total_items} 
               icon={<FiBox size={24} />}
               color="text-blue-600" 
               bg="bg-blue-50"
             />
             <StatCard 
-              title="Tổng Tồn Kho" 
+              title="Tổng tồn kho" 
               value={stats.total_quantity.toLocaleString()} 
               icon={<FiCheckCircle size={24} />}
               color="text-green-600" 
               bg="bg-green-50"
             />
             <StatCard 
-              title="Sắp hết hàng" 
+              title="Hàng sắp hết" 
               value={stats.low_stock} 
               icon={<FiAlertTriangle size={24} />}
               color="text-yellow-600" 
               bg="bg-yellow-50"
             />
             <StatCard 
-              title="Đã hết hàng" 
+              title="Hàng đã hết" 
               value={stats.out_of_stock} 
               icon={<FiXOctagon size={24} />}
               color="text-red-600" 
@@ -195,11 +194,11 @@ const InventoryDashboard = () => {
               <thead className="bg-gray-50 text-gray-600 text-xs uppercase font-semibold tracking-wider">
                 <tr>
                   <th className="p-4 border-b">Sản phẩm</th>
-                  <th className="p-4 border-b text-center">Tổng tồn</th>
-                  <th className="p-4 border-b text-center">Đang giữ</th>
-                  <th className="p-4 border-b text-center">Khả dụng</th>
+                  <th className="p-4 border-b text-center">Tổng tồn kho</th>
+                  <th className="p-4 border-b text-center">Số lượng đặt trước</th>
+                  <th className="p-4 border-b text-center">Tồn kho sẵn có</th>
                   <th className="p-4 border-b">Vị trí</th>
-                  <th className="p-4 border-b">Cập nhật cuối</th>
+                  <th className="p-4 border-b">Thời gian cập nhật</th>
                   <th className="p-4 border-b text-center">Hành động</th>
                 </tr>
               </thead>
@@ -272,7 +271,7 @@ const InventoryDashboard = () => {
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4 backdrop-blur-sm">
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden animate-fade-in-up">
             <div className="p-6 border-b bg-gray-50">
-              <h3 className="text-lg font-bold text-gray-800">Điều chỉnh Kho hàng</h3>
+              <h3 className="text-lg font-bold text-gray-800">Điều chỉnh kho hàng</h3>
               <div className="text-sm text-gray-500 mt-1">
                 {/* Hiển thị tên sản phẩm trong Modal */}
                 {productMap[editingItem.product_id]?.name || `Product #${editingItem.product_id}`}
@@ -293,7 +292,7 @@ const InventoryDashboard = () => {
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Tổng tồn (Qty)</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Tổng tồn kho (Qty)</label>
                   <input
                     type="number"
                     min="0"
@@ -303,7 +302,7 @@ const InventoryDashboard = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Đang giữ (Reserved)</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Đặt trước (Reserved)</label>
                   <input
                     type="number"
                     min="0"
@@ -315,7 +314,7 @@ const InventoryDashboard = () => {
               </div>
 
               <div className="bg-blue-50 p-4 rounded-lg flex justify-between items-center border border-blue-100">
-                <span className="text-sm text-blue-800 font-medium">Khả dụng mới:</span>
+                <span className="text-sm text-blue-800 font-medium">Tồn kho còn lại:</span>
                 <span className="text-xl font-bold text-blue-700">
                   {editingItem.quantity - editingItem.reserved_quantity}
                 </span>

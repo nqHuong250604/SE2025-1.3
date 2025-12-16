@@ -6,7 +6,6 @@ import ForgotPassword from "./features/auth/ForgotPassword/ForgotPassword";
 import Dashboard from "./features/admin/pages/dashboard/DashBoard";
 import ReportsDashboard from "./features/admin/pages/reports/ReportsDashboard";
 import InventoryDashboard from "./features/admin/pages/inventory/InventoryDashboard";
-import ShipmentDashboard from "./features/admin/pages/shipments/ShipmentDashboard";
 import CustomerDashboard from "./features/admin/pages/customers/CustomerDashboard";
 import NotificationDashboard from "./features/admin/pages/notifications/NotificationDashboard";
 import SettingDashboard from "./features/admin/pages/settings/SettingDashboard";
@@ -109,14 +108,6 @@ export default function App() {
               element={
                 <ProtectedRoute>
                   <TransactionDashboard />
-                </ProtectedRoute>
-              }
-            ></Route>
-            <Route
-              path="/admin/shipments"
-              element={
-                <ProtectedRoute>
-                  <ShipmentDashboard />
                 </ProtectedRoute>
               }
             ></Route>

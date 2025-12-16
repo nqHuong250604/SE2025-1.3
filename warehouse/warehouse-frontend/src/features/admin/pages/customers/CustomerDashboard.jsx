@@ -46,44 +46,44 @@ const CustomerDashboard = () => {
 
         <main className="flex-1 overflow-auto p-6 space-y-6">
 
-          {/* TITLE + ADD BUTTON */}
+          {/* TIÊU ĐỀ + NÚT THÊM */}
           <div className="flex justify-between items-center">
             <div>
-              <h1 className="text-xl font-semibold">Customer Management</h1>
-              <p className="text-gray-500">
-                Manage customer information and relationships
+              <h1 className="text-2xl font-bold text-gray-800">Quản lý khách hàng</h1>
+              <p className="text-gray-500 text-sm">
+                Quản lý thông tin và mối quan hệ khách hàng
               </p>
             </div>
 
             <button className="bg-black text-white px-4 py-2 rounded-lg shadow hover:bg-gray-900">
-              + Add Customer
+              + Thêm khách hàng
             </button>
           </div>
 
-          {/* SEARCH + TABLE BLOCK */}
+          {/* KHỐI TÌM KIẾM + BẢNG */}
           <div className="bg-white border rounded-xl shadow-sm">
 
-            {/* SEARCH INPUT */}
+            {/* Ô TÌM KIẾM */}
             <div className="p-4 flex items-center gap-3 border-b">
               <FiSearch className="text-gray-500 text-lg" />
               <input
                 type="text"
-                placeholder="Search customers..."
+                placeholder="Tìm kiếm khách hàng..."
                 className="w-full outline-none"
               />
             </div>
 
-            {/* TABLE */}
+            {/* BẢNG KHÁCH HÀNG */}
             <table className="w-full text-left">
               <thead>
                 <tr className="bg-gray-50 border-b text-gray-600 text-sm">
-                  <th className="p-4">Customer</th>
-                  <th className="p-4">Contact</th>
-                  <th className="p-4">Orders</th>
-                  <th className="p-4">Total Spent</th>
-                  <th className="p-4">Status</th>
-                  <th className="p-4">Last Order</th>
-                  <th className="p-4">Actions</th>
+                  <th className="p-4">Khách hàng</th>
+                  <th className="p-4">Liên hệ</th>
+                  <th className="p-4">Đơn hàng</th>
+                  <th className="p-4">Tổng chi tiêu</th>
+                  <th className="p-4">Trạng thái</th>
+                  <th className="p-4">Đơn hàng gần nhất</th>
+                  <th className="p-4">Thao tác</th>
                 </tr>
               </thead>
 
@@ -115,7 +115,7 @@ const CustomerDashboard = () => {
                             : "bg-red-100 text-red-700"
                         }`}
                       >
-                        {c.status}
+                        {c.status === "Active" ? "Đang hoạt động" : "Ngừng hoạt động"}
                       </span>
                     </td>
 
@@ -123,10 +123,10 @@ const CustomerDashboard = () => {
 
                     <td className="p-4 space-x-2">
                       <button className="px-3 py-1 border rounded-lg hover:bg-gray-100">
-                        View
+                        Xem
                       </button>
                       <button className="px-3 py-1 border rounded-lg hover:bg-gray-100">
-                        Edit
+                        Sửa
                       </button>
                     </td>
 

@@ -203,7 +203,7 @@ function InventoryManagementPage() {
             <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-7">
               <h2 className="text-xl font-bold text-gray-900 flex items-center">
                 <Package className="h-6 w-6 mr-2 text-indigo-600" />
-                Dữ Liệu Tồn Kho
+                Dữ liệu tồn Kho
               </h2>
 
               <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">

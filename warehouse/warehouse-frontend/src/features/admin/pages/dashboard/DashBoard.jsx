@@ -79,9 +79,7 @@ const Dashboard = () => {
           totalCustomers: data.total_customers
             ? data.total_customers.toLocaleString()
             : "N/A",
-          revenue: data.revenue
-            ? `${data.revenue.toLocaleString()} ₫`
-            : "N/A",
+          revenue: data.revenue ? `${data.revenue.toLocaleString()} ₫` : "N/A",
         });
       } catch (err) {
         console.error("Lỗi tải dữ liệu dashboard:", err);
@@ -104,9 +102,7 @@ const Dashboard = () => {
       try {
         const params = { limit: 4 };
         const transactionsArray = await getRecentTransactions(params);
-        const formattedTxs = transactionsArray.map(
-          formatTransactionToShipment
-        );
+        const formattedTxs = transactionsArray.map(formatTransactionToShipment);
         setRecentTransactions(formattedTxs);
       } catch (err) {
         console.error("Lỗi tải giao dịch gần đây:", err);
@@ -157,7 +153,7 @@ const Dashboard = () => {
         <div className="p-6 overflow-y-auto h-[calc(100vh-80px)] space-y-6">
           {/* HEADER */}
           <div>
-            <h1 className="text-xl font-semibold">Bảng điều khiển</h1>
+            <h1 className="text-2xl font-bold text-gray-800">Trang chủ</h1>
             <p className="text-gray-500 text-sm">
               Tổng quan hoạt động logistics của hệ thống
             </p>
@@ -172,13 +168,13 @@ const Dashboard = () => {
               icon={<Package className="text-blue-500 w-8 h-8" />}
             />
             <StatCard
-              title="Tổng số khách hàng"
+              title="Tổng số nhân viên kho"
               value={kpis.totalCustomers}
               change="+5% so với tháng trước"
               icon={<Users className="text-purple-600 w-8 h-8" />}
             />
             <StatCard
-              title="Doanh thu"
+              title="Doanh thu (Chỉ tính với đơn OUT)"
               value={kpis.revenue}
               change="+15% so với tháng trước"
               icon={<DollarSign className="text-orange-500 w-8 h-8" />}
@@ -189,14 +185,10 @@ const Dashboard = () => {
           <div className="grid grid-cols-[2fr_1fr] gap-6">
             {/* LEFT */}
             <div className="bg-white rounded-xl shadow p-5">
-              <h2 className="font-semibold text-lg mb-4">
-                Giao dịch gần đây
-              </h2>
+              <h2 className="font-semibold text-lg mb-4">Giao dịch gần đây</h2>
 
               {recentTransactions.length > 0 ? (
-                recentTransactions.map((tx) => (
-                  <Shipment key={tx.id} {...tx} />
-                ))
+                recentTransactions.map((tx) => <Shipment key={tx.id} {...tx} />)
               ) : (
                 <p className="text-gray-500 italic">
                   Không có giao dịch nào gần đây.
@@ -207,21 +199,13 @@ const Dashboard = () => {
             {/* RIGHT */}
             <div className="space-y-6">
               <div className="bg-white shadow rounded-xl p-5">
-                <h2 className="font-semibold text-lg mb-4">
-                  Thao tác nhanh
-                </h2>
+                <h2 className="font-semibold text-lg mb-4">Thao tác nhanh</h2>
                 <QuickAction
                   icon={<PlusCircle />}
                   title="Tạo đơn vận chuyển mới"
                 />
-                <QuickAction
-                  icon={<Search />}
-                  title="Theo dõi đơn hàng"
-                />
-                <QuickAction
-                  icon={<UserPlus />}
-                  title="Thêm khách hàng"
-                />
+                <QuickAction icon={<Search />} title="Theo dõi đơn hàng" />
+                <QuickAction icon={<UserPlus />} title="Thêm khách hàng" />
               </div>
 
               <div className="bg-white shadow rounded-xl p-5">
@@ -269,18 +253,21 @@ const StatCard = ({ title, value, change, icon }) => (
 );
 
 const Shipment = ({ id, company, productName, status, color }) => (
-  <div className="flex items-center justify-between p-4 mb-3 border rounded-xl bg-white shadow-sm hover:shadow transition">
-    <div>
-      <p className="font-semibold">{id}</p>
-      <p className="text-gray-500 text-sm">{company}</p>
+  <div className="flex items-center justify-between p-3 mb-3 border rounded-xl bg-white shadow-sm hover:shadow transition">
+    {/* LEFT */}
+    <div className="leading-tight">
+      <p className="text-sm font-medium text-gray-700">{id}</p>
+      <p className="text-xs text-gray-500">{company}</p>
     </div>
 
-    <div className="text-right mr-4">
-      <p className="font-medium">{productName}</p>
+    {/* CENTER */}
+    <div className="text-right mr-4 max-w-[220px]">
+      <p className="text-sm text-gray-600 truncate">{productName}</p>
     </div>
 
+    {/* STATUS */}
     <span
-      className={`px-3 py-1 rounded-md text-xs font-semibold whitespace-nowrap ${color}`}
+      className={`px-2.5 py-1 rounded-md text-[11px] font-medium whitespace-nowrap ${color}`}
     >
       {status}
     </span>

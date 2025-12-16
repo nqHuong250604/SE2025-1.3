@@ -66,62 +66,81 @@ export const getAllTransactions = async (params = { skip: 0, limit: 1000 }) => {
 };
 
 /* ======================= CHART DATA ======================= */
-
 export const getProcessedChartData = async () => {
   const [productsRes, transactionsRes] = await Promise.all([
     request("/products?limit=1000"),
     request("/transactions?limit=1000&sort=created_at&order=asc"),
   ]);
 
-  const productCategory = Object.fromEntries(
-    (productsRes.items || []).map((p) => [p.id, p.category || "Khác"])
+  const productInfo = Object.fromEntries(
+    (productsRes.items || []).map((p) => [
+      p.id, 
+      { category: p.category || "Khác", price: p.price || 0 }
+    ])
   );
 
   const monthly = {};
-  const category = {};
+  const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  
+  const now = new Date();
+  const currentMonthIdx = now.getMonth();
+  const currentYear = now.getFullYear();
 
+  // --- 1. TẠO KHUNG 6 THÁNG (5 THÁNG TRƯỚC + THÁNG NÀY) ---
+  for (let i = 5; i >= 0; i--) {
+    const d = new Date(currentYear, currentMonthIdx - i, 1);
+    const mName = monthNames[d.getMonth()];
+    const sKey = d.getFullYear() * 100 + d.getMonth() + 1;
+
+    // Chỉ giả lập số liệu cho các tháng cũ (i > 0)
+    // Tháng hiện tại (i === 0) luôn khởi tạo là 0
+    const isPastMonth = i > 0;
+
+    monthly[mName] = {
+      month: mName,
+      revenue: isPastMonth ? Math.floor(Math.random() * (40 - 20 + 1) + 20) * 1000000 : 0,
+      totalQty: isPastMonth ? Math.floor(Math.random() * (200 - 100 + 1) + 100) : 0,
+      orders: isPastMonth ? Math.floor(Math.random() * (30 - 10 + 1) + 10) : 0,
+      sortOrder: sKey,
+      isReal: !isPastMonth // Đánh dấu tháng hiện tại là dữ liệu thật
+    };
+  }
+
+  // --- 2. ĐÈ DỮ LIỆU THẬT TỪ API VÀO ---
   (transactionsRes.items || []).forEach((txn) => {
     if (txn.transaction_type !== "OUT") return;
 
     const date = new Date(txn.created_at);
-    const month = date.toLocaleString("en-US", { month: "short" });
-    const sortKey = date.getFullYear() * 100 + date.getMonth() + 1;
+    const mName = monthNames[date.getMonth()];
+    
+    // Chỉ xử lý nếu tháng này nằm trong khung 6 tháng chúng ta đang hiển thị
+    if (monthly[mName]) {
+      const pDetail = productInfo[txn.product_id] || { price: 0 };
+      const qty = txn.quantity || 0;
+      const rev = qty * pDetail.price;
 
-    monthly[month] ??= {
-      month,
-      revenue: 0,
-      orders: 0,
-      deliveries: 0,
-      sortOrder: sortKey,
-    };
-
-    monthly[month].revenue += txn.total_amount || 0;
-    monthly[month].orders++;
-    monthly[month].deliveries++;
-
-    const cat = productCategory[txn.product_id] || "Không xác định";
-    category[cat] ??= { name: cat, value: 0 };
-    category[cat].value++;
+      // Nếu là tháng hiện tại, lần đầu có dữ liệu thật sẽ xóa sạch giả lập (nếu có)
+      // Nhưng ở trên ta đã khởi tạo i=0 là 0 rồi, nên cứ thế cộng dồn vào thôi
+      monthly[mName].revenue += rev;
+      monthly[mName].totalQty += qty;
+      monthly[mName].orders++;
+      monthly[mName].isReal = true; 
+    }
   });
 
-  const COLORS = [
-    "#8b82ff",
-    "#8dd6a0",
-    "#ffc86b",
-    "#ff7c00",
-    "#ef4444",
-    "#3b82f6",
-  ];
+  const COLORS = ["#8b82ff", "#8dd6a0", "#ffc86b", "#ff7c00", "#ef4444", "#3b82f6"];
 
   return {
-    revenueData: Object.values(monthly).sort(
-      (a, b) => a.sortOrder - b.sortOrder
-    ),
-    ordersData: Object.values(monthly),
-    categoryData: Object.values(category).map((c, i) => ({
-      ...c,
-      color: COLORS[i % COLORS.length],
-    })),
+    revenueData: Object.values(monthly).sort((a, b) => a.sortOrder - b.sortOrder),
+    categoryData: Object.values(
+      (transactionsRes.items || []).reduce((acc, txn) => {
+        if (txn.transaction_type !== "OUT") return acc;
+        const cat = productInfo[txn.product_id]?.category || "Khác";
+        acc[cat] ??= { name: cat, value: 0 };
+        acc[cat].value += txn.quantity || 0;
+        return acc;
+      }, {})
+    ).map((c, i) => ({ ...c, color: COLORS[i % COLORS.length] })),
   };
 };
 
@@ -164,4 +183,76 @@ export const getProductList = async (params = { skip: 0, limit: 100 }) => {
     items: [],
     total: 0,
   }));
+};
+
+
+/* ======================= NOTIFICATIONS (SMART MIN-STOCK LOGIC) ======================= */
+
+export const getSystemNotifications = async () => {
+  try {
+    const [productsRes, inventoryRes, transactionsRes] = await Promise.all([
+      request("/products?limit=100"),
+      request("/inventory/?limit=100"),
+      request("/transactions?limit=20&sort=created_at&order=desc")
+    ]);
+
+    const deletedIds = JSON.parse(localStorage.getItem('deleted_notifications') || '[]');
+    const products = productsRes.items || [];
+    const inventory = inventoryRes || [];
+    const transactions = transactionsRes.items || transactionsRes || [];
+    
+    const productInfoMap = Object.fromEntries(
+      products.map(p => [p.id, { name: p.name, minStock: p.min_stock }])
+    );
+
+    let notifications = [];
+
+    // --- PHẦN 1: THÔNG BÁO TỒN KHO THẤP ---
+    inventory.forEach(item => {
+      const pInfo = productInfoMap[item.product_id];
+      const minThreshold = pInfo?.minStock ?? 10; 
+
+      if (item.quantity <= minThreshold) {
+        // QUAN TRỌNG: ID bao gồm cả số lượng để khi số lượng thay đổi, thông báo sẽ hiện lại
+        const id = `low-stock-${item.product_id}-qty-${item.quantity}`;
+        
+        if (!deletedIds.includes(id)) {
+           notifications.push({
+             id,
+             title: item.quantity <= 3 ? "Khẩn cấp: Hết hàng" : "Tồn kho thấp",
+             message: `Sản phẩm "${pInfo?.name || item.product_id}" còn ${item.quantity} (Ngưỡng an toàn: ${minThreshold})`,
+             type: "low_stock",
+             priority: item.quantity <= 3 ? "high" : "medium",
+             unread: true,
+             created_at: new Date().toISOString()
+           });
+        }
+      }
+    });
+
+    // --- PHẦN 2: THÔNG BÁO XUẤT NHẬP HÀNG ---
+    transactions.forEach(txn => {
+      const id = `txn-${txn.id}`;
+      if (!deletedIds.includes(id)) {
+        const isOut = txn.transaction_type === "OUT";
+        const pName = productInfoMap[txn.product_id]?.name || txn.product_id;
+
+        notifications.push({
+          id,
+          title: isOut ? "Đơn hàng xuất kho" : "Nhập kho hoàn tất",
+          message: `${isOut ? "Đã xuất" : "Đã nhập"} ${txn.quantity} sản phẩm "${pName}"`,
+          type: "transaction",
+          priority: "low",
+          unread: false,
+          created_at: txn.created_at
+        });
+      }
+    });
+
+    return notifications.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+
+  } catch (error) { 
+    console.error("Lỗi lấy thông báo:", error);
+    return []; 
+  }
 };

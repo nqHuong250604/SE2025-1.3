@@ -17,37 +17,37 @@ import {
 export default function SupportDashboard() {
   const faqs = [
     {
-      question: "How do I track a shipment?",
+      question: "Làm thế nào để theo dõi đơn hàng?",
       answer:
-        "You can track a shipment by entering the tracking number in the 'Shipment Tracking' page. The system will display real-time updates on the package location and delivery status.",
+        "Bạn có thể theo dõi đơn hàng bằng cách nhập mã vận đơn vào trang 'Theo dõi đơn hàng'. Hệ thống sẽ hiển thị trạng thái và vị trí đơn hàng theo thời gian thực.",
     },
     {
-      question: "How do I add new inventory items?",
+      question: "Làm thế nào để thêm mặt hàng tồn kho mới?",
       answer:
-        "Navigate to the 'Inventory Management' page and click the 'Add Item' button. Fill in the required information including SKU, name, category, stock level, and location.",
+        "Truy cập trang 'Quản lý kho' và nhấn nút 'Thêm mặt hàng'. Điền đầy đủ thông tin như SKU, tên, danh mục, số lượng tồn và vị trí.",
     },
     {
-      question: "Can I export reports?",
+      question: "Tôi có thể xuất báo cáo không?",
       answer:
-        "Yes, you can export reports from the 'Reports & Analytics' page. Click on any chart or table and select the export option to download data in CSV or PDF format.",
+        "Có. Bạn có thể xuất báo cáo tại trang 'Báo cáo & Phân tích'. Nhấn vào biểu đồ hoặc bảng và chọn xuất dữ liệu dưới dạng CSV hoặc PDF.",
     },
     {
-      question: "How do I reset my password?",
+      question: "Làm thế nào để đặt lại mật khẩu?",
       answer:
-        "Go to Settings > Security and use the password reset form. You'll need to enter your current password and create a new one.",
+        "Vào Cài đặt > Bảo mật và sử dụng biểu mẫu đặt lại mật khẩu. Bạn cần nhập mật khẩu hiện tại và mật khẩu mới.",
     },
     {
-      question: "How do I manage user permissions?",
+      question: "Quản lý phân quyền người dùng như thế nào?",
       answer:
-        "Only administrators can manage user permissions. Go to 'User Management' and click 'Edit' next to any user to modify their role and permissions.",
+        "Chỉ quản trị viên mới có quyền quản lý người dùng. Vào 'Quản lý người dùng' và chọn 'Chỉnh sửa' để thay đổi vai trò và quyền.",
     },
   ];
 
   const [openIndex, setOpenIndex] = useState(null);
-
   const toggleFAQ = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
+
   return (
     <div className="flex h-screen bg-gray-100 overflow-hidden text-[14px]">
       <Sidebar />
@@ -55,75 +55,68 @@ export default function SupportDashboard() {
       <div className="flex flex-col flex-1 overflow-y-auto">
         <Topbar />
 
-        {/* MAIN CONTENT */}
         <div className="p-4 space-y-5">
-          {/* Page Header */}
-          <div className="mb-2">
-            <h1 className="text-xl font-semibold">Help & Support</h1>
-            <p className="text-gray-600 text-sm">
-              Find answers and get assistance with LogiTrack
+          {/* HEADER */}
+          <div>
+            <h1 className="text-2xl font-bold text-gray-800">Trợ giúp & Hỗ trợ</h1>
+            <p className="text-sm text-gray-500">
+              Tìm câu trả lời và nhận hỗ trợ cho hệ thống LogiTrack
             </p>
           </div>
 
-          {/* Search Box */}
+          {/* SEARCH */}
           <div className="bg-white p-3 shadow-sm rounded-lg flex items-center gap-3">
-            {/* Input with icon */}
             <div className="relative flex-1">
               <Search className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
               <input
                 type="text"
-                placeholder="Search help articles..."
+                placeholder="Tìm kiếm bài viết hỗ trợ..."
                 className="w-full pl-9 pr-3 py-1 bg-gray-100 rounded-md text-sm outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
-
             <button className="px-4 py-1 bg-black text-white text-sm rounded-md hover:bg-gray-800">
-              Search
+              Tìm kiếm
             </button>
           </div>
 
-          {/* GRID */}
           <div className="grid grid-cols-1 xl:grid-cols-3 gap-5">
-            {/* LEFT SIDE */}
+            {/* LEFT */}
             <div className="col-span-2 space-y-5">
-              {/* Quick Links */}
-              <div className="bg-white p-4 shadow-sm rounded-lg space-y-3">
-                <h2 className="font-normal text-base mb-5">Quick Links</h2>
+              {/* QUICK LINKS */}
+              <div className="bg-white p-4 shadow-sm rounded-lg">
+                <h2 className="text-base mb-5">Liên kết nhanh</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   <QuickItem
                     icon={<Book />}
-                    title="Getting Started Guide"
-                    desc="Basics of using the system"
+                    title="Hướng dẫn bắt đầu"
+                    desc="Những kiến thức cơ bản khi sử dụng hệ thống"
                   />
                   <QuickItem
                     icon={<FileText />}
-                    title="User Manual"
-                    desc="Documentation for all features"
+                    title="Tài liệu người dùng"
+                    desc="Hướng dẫn chi tiết toàn bộ chức năng"
                   />
                   <QuickItem
                     icon={<PlayCircle />}
-                    title="Video Tutorials"
-                    desc="Step-by-step guides"
+                    title="Video hướng dẫn"
+                    desc="Hướng dẫn từng bước"
                   />
                   <QuickItem
                     icon={<Code />}
-                    title="API Documentation"
-                    desc="Developer API reference"
+                    title="Tài liệu API"
+                    desc="Tài liệu dành cho lập trình viên"
                   />
                 </div>
               </div>
 
               {/* FAQ */}
               <div className="bg-white p-4 shadow-sm rounded-lg">
-                <h2 className="font-normal text-base mb-5">
-                  Frequently Asked Questions
-                </h2>
+                <h2 className="text-base mb-5">Câu hỏi thường gặp</h2>
                 <div className="divide-y text-sm">
                   {faqs.map((faq, idx) => (
                     <div key={idx}>
                       <button
-                        className="w-full flex justify-between items-center py-3.5 px-2 
-                     hover:bg-gray-50 hover:underline font-medium cursor-pointer"
+                        className="w-full flex justify-between items-center py-3 px-2 hover:bg-gray-50 hover:underline font-medium"
                         onClick={() => toggleFAQ(idx)}
                       >
                         <span>{faq.question}</span>
@@ -134,11 +127,7 @@ export default function SupportDashboard() {
                         )}
                       </button>
                       {openIndex === idx && (
-                        <div
-                          className={`overflow-hidden transition-all duration-300 text-gray-600 px-2 ${
-                            openIndex === idx ? "max-h-96 py-2" : "max-h-0"
-                          }`}
-                        >
+                        <div className="px-2 py-2 text-gray-600">
                           {faq.answer}
                         </div>
                       )}
@@ -147,70 +136,65 @@ export default function SupportDashboard() {
                 </div>
               </div>
 
-              {/* System Status */}
+              {/* SYSTEM STATUS */}
               <div className="bg-white p-4 shadow-sm rounded-lg">
-                <h2 className="font-normal text-base mb-5">System Status</h2>
-                <div className="space-y-2 text-sm">
-                  <StatusItem
-                    label="All Systems Operational"
-                    status="Healthy"
-                  />
-                  <StatusItem label="API Services" status="Online" />
-                  <StatusItem label="Database" status="Connected" />
+                <h2 className="text-base mb-5">Trạng thái hệ thống</h2>
+                <div className="space-y-2">
+                  <StatusItem label="Tất cả hệ thống hoạt động bình thường" status="Ổn định" />
+                  <StatusItem label="Dịch vụ API" status="Đang hoạt động" />
+                  <StatusItem label="Cơ sở dữ liệu" status="Đã kết nối" />
                 </div>
               </div>
             </div>
 
-            {/* RIGHT SIDE */}
-            <div className="col-span-1 space-y-5">
-              {/* Contact Support */}
-              <div className="bg-white p-4 shadow-sm rounded-lg space-y-4">
-                <h2 className="font-normal text-base mb-5">Contact Support</h2>
-
-                <div className="flex flex-col items-center gap-3 w-full">
-                  <MiniButton icon={<MessageCircle />} label="Live Chat" />
-                  <MiniButton icon={<Mail />} label="Email Support" />
-                  <MiniButton icon={<Phone />} label="Call Support" />
+            {/* RIGHT */}
+            <div className="space-y-5">
+              {/* CONTACT */}
+              <div className="bg-white p-4 shadow-sm rounded-lg">
+                <h2 className="text-base mb-5">Liên hệ hỗ trợ</h2>
+                <div className="flex flex-col gap-3">
+                  <MiniButton icon={<MessageCircle />} label="Chat trực tiếp" />
+                  <MiniButton icon={<Mail />} label="Hỗ trợ qua Email" />
+                  <MiniButton icon={<Phone />} label="Gọi hỗ trợ" />
                 </div>
 
-                <div className="bg-gray-100 p-3 rounded-md text-xs text-gray-600 w-full">
-                  <p className="font-semibold text-sm">Support Hours:</p>
-                  <p>Mon - Fri: 9 AM - 6 PM</p>
-                  <p>Sat: 10 AM - 4 PM</p>
+                <div className="bg-gray-100 p-3 rounded-md text-xs text-gray-600 mt-4">
+                  <p className="font-semibold text-sm">Giờ hỗ trợ:</p>
+                  <p>Thứ 2 - Thứ 6: 9:00 - 18:00</p>
+                  <p>Thứ 7: 10:00 - 16:00</p>
                 </div>
               </div>
 
-              {/* Recent Updates */}
+              {/* UPDATES */}
               <div className="bg-white p-4 shadow-sm rounded-lg">
-                <h2 className="font-normal text-base mb-3">Recent Updates</h2>
-                <div className="space-y-3 text-sm">
+                <h2 className="text-base mb-3">Cập nhật gần đây</h2>
+                <div className="space-y-3">
                   <UpdateItem
                     version="2.1.0"
-                    date="March 8, 2024"
-                    desc="Enhanced tracking features"
+                    date="08/03/2024"
+                    desc="Cải thiện tính năng theo dõi"
                   />
                   <UpdateItem
                     version="2.0.5"
-                    date="Feb 28, 2024"
-                    desc="Bug fixes and improvements"
+                    date="28/02/2024"
+                    desc="Sửa lỗi và tối ưu hệ thống"
                   />
                   <UpdateItem
                     version="2.0.0"
-                    date="Feb 15, 2024"
-                    desc="Major UI overhaul"
+                    date="15/02/2024"
+                    desc="Nâng cấp giao diện lớn"
                   />
                 </div>
               </div>
 
-              {/* Feedback */}
+              {/* FEEDBACK */}
               <div className="bg-white p-4 shadow-sm rounded-lg">
-                <h2 className="font-normal text-base mb-3">Feedback</h2>
+                <h2 className="text-base mb-3">Phản hồi</h2>
                 <p className="text-xs text-gray-600 mb-2">
-                  Help us improve the system by sharing your feedback.
+                  Hãy chia sẻ ý kiến của bạn để giúp hệ thống ngày càng tốt hơn.
                 </p>
-
-                <button className="w-full p-2 bg-white text-black text-sm font-medium rounded-md border border-gray-300 hover:bg-gray-200 transition-colors">
-                  Send Feedback
+                <button className="w-full p-2 border rounded-md hover:bg-gray-200">
+                  Gửi phản hồi
                 </button>
               </div>
             </div>
@@ -220,6 +204,9 @@ export default function SupportDashboard() {
     </div>
   );
 }
+
+/* COMPONENTS giữ nguyên */
+
 
 /* ----------------- COMPONENTS ----------------- */
 

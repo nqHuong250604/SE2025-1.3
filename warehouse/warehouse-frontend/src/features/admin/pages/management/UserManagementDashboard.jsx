@@ -5,7 +5,6 @@ import {
   Search,
   Edit2,
   Trash2,
-  Plus,
   Users,
   CheckCircle,
   DollarSign,
@@ -13,129 +12,132 @@ import {
 } from "lucide-react";
 
 const UserManagementDashboard = () => {
-  const [users, setUsers] = useState([
+  const [users] = useState([
     {
       id: 1,
       name: "John Smith",
       email: "john.smith@logitrack.com",
       role: "Admin",
-      department: "Operations",
+      department: "Vận hành",
       status: "Active",
-      lastLogin: "2024-03-10 2:30 PM",
-      permissions: "Full Access",
+      lastLogin: "2024-03-10 14:30",
+      permissions: "Toàn quyền truy cập",
     },
     {
       id: 2,
       name: "Sarah Johnson",
       email: "sarah.j@logitrack.com",
       role: "Manager",
-      department: "Logistics",
+      department: "Hậu cần",
       status: "Active",
-      lastLogin: "2024-03-10 1:15 PM",
-      permissions: "Manage Orders, View Reports",
+      lastLogin: "2024-03-10 13:15",
+      permissions: "Quản lý đơn hàng, Xem báo cáo",
     },
     {
       id: 3,
       name: "Mike Davis",
       email: "mike.davis@logitrack.com",
       role: "Operator",
-      department: "Warehouse",
+      department: "Kho",
       status: "Inactive",
-      lastLogin: "2024-03-05 4:20 PM",
-      permissions: "View Inventory, Update Stock",
+      lastLogin: "2024-03-05 16:20",
+      permissions: "Xem tồn kho, Cập nhật kho",
     },
     {
       id: 4,
       name: "Lisa Chen",
       email: "lisa.chen@logitrack.com",
       role: "Analyst",
-      department: "Analytics",
+      department: "Phân tích",
       status: "Active",
-      lastLogin: "2024-03-10 11:45 AM",
-      permissions: "View Reports, Export Data",
+      lastLogin: "2024-03-10 11:45",
+      permissions: "Xem báo cáo, Xuất dữ liệu",
     },
   ]);
 
   return (
     <div className="flex h-screen bg-gray-100">
       <Sidebar />
+
       <div className="flex flex-col flex-1 overflow-hidden">
         <Topbar />
+
         <div className="p-6 overflow-y-auto h-[calc(100vh-80px)] space-y-6">
-          {/* Header */}
+          {/* HEADER */}
           <div>
-            <h1 className="text-lg font-semibold">User Management</h1>
+            <h1 className="text-2xl font-bold text-gray-800">Quản lý người dùng</h1>
             <p className="text-gray-500 text-sm">
-              Manage team members and access permissions
+              Quản lý thành viên và phân quyền truy cập hệ thống
             </p>
           </div>
 
-          {/* Stats Cards */}
+          {/* THỐNG KÊ */}
           <div className="grid grid-cols-4 gap-4">
             <StatCard
-              title="Total Users"
+              title="Tổng người dùng"
               value="24"
               color="blue"
               icon={<Users />}
             />
             <StatCard
-              title="Active Users"
+              title="Đang hoạt động"
               value="21"
               color="green"
               icon={<CheckCircle />}
             />
             <StatCard
-              title="Admins"
+              title="Quản trị viên"
               value="3"
               color="purple"
               icon={<DollarSign />}
             />
             <StatCard
-              title="Pending Invites"
+              title="Lời mời chờ duyệt"
               value="2"
               color="yellow"
               icon={<AlertTriangle />}
             />
           </div>
 
-          {/* User Table */}
+          {/* BẢNG NGƯỜI DÙNG */}
           <div className="bg-white rounded-xl shadow p-5">
-            {/* Toolbar */}
+            {/* TOOLBAR */}
             <div className="flex flex-col md:flex-row md:items-center gap-4 mb-4">
-              {/* Search input */}
+              {/* TÌM KIẾM */}
               <div className="relative flex-1">
                 <input
                   type="text"
-                  placeholder="Search users..."
+                  placeholder="Tìm kiếm người dùng..."
                   className="w-full rounded-lg p-2 pl-10 text-sm bg-gray-200 text-gray-800 placeholder-gray-500 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 w-4 h-4" />
               </div>
 
-              {/* Role filter */}
+              {/* LỌC THEO VAI TRÒ */}
               <select className="border rounded-lg p-2 w-full md:w-48 text-sm bg-gray-200 text-gray-800 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                <option value="All">All Roles</option>
-                <option value="Admin">Admin</option>
-                <option value="Manager">Manager</option>
-                <option value="Operator">Operator</option>
-                <option value="Analyst">Analyst</option>
+                <option value="All">Tất cả vai trò</option>
+                <option value="Admin">Quản trị viên</option>
+                <option value="Manager">Quản lý</option>
+                <option value="Operator">Nhân viên</option>
+                <option value="Analyst">Phân tích</option>
               </select>
             </div>
 
-            {/* Table */}
+            {/* TABLE */}
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse text-sm">
                 <thead>
                   <tr className="border-b text-gray-500">
-                    <th className="py-3 px-2">User</th>
-                    <th className="py-3 px-2">Role</th>
-                    <th className="py-3 px-2">Department</th>
-                    <th className="py-3 px-2">Status</th>
-                    <th className="py-3 px-2">Last Login</th>
-                    <th className="py-3 px-2">Permissions</th>
-                    <th className="py-3 px-2">Actions</th>
+                    <th className="py-3 px-2">Người dùng</th>
+                    <th className="py-3 px-2">Vai trò</th>
+                    <th className="py-3 px-2">Phòng ban</th>
+                    <th className="py-3 px-2">Trạng thái</th>
+                    <th className="py-3 px-2">Đăng nhập gần nhất</th>
+                    <th className="py-3 px-2">Quyền hạn</th>
+                    <th className="py-3 px-2">Thao tác</th>
                   </tr>
                 </thead>
+
                 <tbody>
                   {users.map((user) => (
                     <tr key={user.id} className="border-b hover:bg-gray-50">
@@ -143,21 +145,27 @@ const UserManagementDashboard = () => {
                         <p className="font-medium">{user.name}</p>
                         <p className="text-gray-400 text-xs">{user.email}</p>
                       </td>
+
                       <td className="py-3 px-2">
                         <RoleBadge role={user.role} />
                       </td>
+
                       <td className="py-3 px-2">{user.department}</td>
+
                       <td className="py-3 px-2">
                         <StatusBadge status={user.status} />
                       </td>
+
                       <td className="py-3 px-2">{user.lastLogin}</td>
+
                       <td className="py-3 px-2">{user.permissions}</td>
+
                       <td className="py-3 px-2 flex gap-2">
                         <button className="flex items-center gap-1 text-black border border-gray-300 rounded px-2 py-1 text-xs hover:bg-gray-100">
-                          <Edit2 className="w-4 h-4 text-black" /> Edit
+                          <Edit2 className="w-4 h-4" /> Sửa
                         </button>
                         <button className="flex items-center gap-1 text-red-600 border border-gray-300 rounded px-2 py-1 text-xs hover:bg-gray-100">
-                          <Trash2 className="w-4 h-4" /> Remove
+                          <Trash2 className="w-4 h-4" /> Xóa
                         </button>
                       </td>
                     </tr>
@@ -167,44 +175,47 @@ const UserManagementDashboard = () => {
             </div>
           </div>
 
-          {/* Role Permissions Box */}
+          {/* PHÂN QUYỀN THEO VAI TRÒ */}
           <div className="bg-white rounded-xl shadow p-5">
-            <h2 className="mb-3 text-sm text-gray-700">Role Permissions</h2>
+            <h2 className="mb-3 text-sm text-gray-700">
+              Quyền hạn theo vai trò
+            </h2>
+
             <div className="grid grid-cols-4 gap-4">
               <RolePermissionCard
-                title="Admin"
+                title="Quản trị viên"
                 permissions={[
-                  "Full system access",
-                  "User management",
-                  "System settings",
-                  "All reports",
+                  "Toàn quyền hệ thống",
+                  "Quản lý người dùng",
+                  "Cài đặt hệ thống",
+                  "Tất cả báo cáo",
                 ]}
               />
               <RolePermissionCard
-                title="Manager"
+                title="Quản lý"
                 permissions={[
-                  "Manage orders",
-                  "View reports",
-                  "Customer management",
-                  "Inventory oversight",
+                  "Quản lý đơn hàng",
+                  "Xem báo cáo",
+                  "Quản lý khách hàng",
+                  "Giám sát kho",
                 ]}
               />
               <RolePermissionCard
-                title="Operator"
+                title="Nhân viên"
                 permissions={[
-                  "Update inventory",
-                  "Process shipments",
-                  "View orders",
-                  "Basic reports",
+                  "Cập nhật tồn kho",
+                  "Xử lý vận chuyển",
+                  "Xem đơn hàng",
+                  "Báo cáo cơ bản",
                 ]}
               />
               <RolePermissionCard
-                title="Analyst"
+                title="Phân tích"
                 permissions={[
-                  "View all reports",
-                  "Export data",
-                  "Analytics dashboard",
-                  "Performance metrics",
+                  "Xem báo cáo",
+                  "Xuất dữ liệu",
+                  "Bảng phân tích",
+                  "Chỉ số hiệu suất",
                 ]}
               />
             </div>
@@ -215,7 +226,8 @@ const UserManagementDashboard = () => {
   );
 };
 
-/* --- COMPONENTS --- */
+/* ===== COMPONENTS ===== */
+
 const StatCard = ({ title, value, color, icon }) => {
   const colors = {
     blue: "text-blue-600 bg-blue-100",
@@ -223,17 +235,13 @@ const StatCard = ({ title, value, color, icon }) => {
     purple: "text-purple-600 bg-purple-100",
     yellow: "text-yellow-600 bg-yellow-100",
   };
+
   return (
     <div className="bg-white p-4 rounded-xl shadow flex items-center gap-3 text-sm">
-      <div
-        className={`p-2 rounded-full ${colors[color]} flex items-center justify-center`}
-      >
-        {icon &&
-          React.cloneElement(icon, {
-            className: `w-5 h-5 ${colors[color].split(" ")[0]}`,
-          })}
+      <div className={`p-2 rounded-full ${colors[color]}`}>
+        {React.cloneElement(icon, { className: "w-5 h-5" })}
       </div>
-      <div className="flex flex-col">
+      <div>
         <p className="text-gray-500">{title}</p>
         <h3 className="font-semibold">{value}</h3>
       </div>
@@ -242,31 +250,29 @@ const StatCard = ({ title, value, color, icon }) => {
 };
 
 const RoleBadge = ({ role }) => {
-  const colors = {
-    Admin: "bg-red-100 text-red-600",
-    Manager: "bg-blue-100 text-blue-600",
-    Operator: "bg-green-100 text-green-600",
-    Analyst: "bg-purple-100 text-purple-600",
+  const map = {
+    Admin: ["Quản trị viên", "bg-red-100 text-red-600"],
+    Manager: ["Quản lý", "bg-blue-100 text-blue-600"],
+    Operator: ["Nhân viên", "bg-green-100 text-green-600"],
+    Analyst: ["Phân tích", "bg-purple-100 text-purple-600"],
   };
+
   return (
-    <span
-      className={`px-2 py-1 rounded-md text-xs font-medium ${colors[role]}`}
-    >
-      {role}
+    <span className={`px-2 py-1 rounded-md text-xs font-medium ${map[role][1]}`}>
+      {map[role][0]}
     </span>
   );
 };
 
 const StatusBadge = ({ status }) => {
-  const colors = {
-    Active: "bg-green-100 text-green-600",
-    Inactive: "bg-gray-100 text-gray-600",
+  const map = {
+    Active: ["Đang hoạt động", "bg-green-100 text-green-600"],
+    Inactive: ["Ngừng hoạt động", "bg-gray-100 text-gray-600"],
   };
+
   return (
-    <span
-      className={`px-2 py-1 rounded-md text-xs font-medium ${colors[status]}`}
-    >
-      {status}
+    <span className={`px-2 py-1 rounded-md text-xs font-medium ${map[status][1]}`}>
+      {map[status][0]}
     </span>
   );
 };

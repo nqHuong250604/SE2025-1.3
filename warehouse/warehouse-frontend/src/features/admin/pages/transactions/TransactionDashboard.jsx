@@ -154,8 +154,8 @@ export default function TransactionDashboard() {
           {/* HEADER */}
           <div className="flex justify-between items-center">
             <div>
-              <h1 className="text-2xl font-bold text-gray-800">Quản lý kho hàng</h1>
-              <p className="text-gray-500">Xem chi tiết các giao dịch Nhập (IN) và Xuất (OUT)</p>
+              <h1 className="text-2xl font-bold text-gray-800">Quản lý giao dịch</h1>
+              <p className="text-gray-500 text-sm">Xem chi tiết các giao dịch nhập (IN) và xuất (OUT)</p>
             </div>
             <button
               onClick={() => setIsCreateModalOpen(true)}
@@ -434,20 +434,24 @@ export default function TransactionDashboard() {
 }
 
 const KpiCard = ({ title, value, icon, color }) => {
-  const colorMap = {
-    indigo: "bg-indigo-50 text-indigo-600",
-    green: "bg-emerald-50 text-emerald-600",
-    blue: "bg-blue-50 text-blue-600",
-    orange: "bg-orange-50 text-orange-600",
+  const iconColorMap = {
+    indigo: "text-indigo-600",
+    green: "text-emerald-600",
+    blue: "text-blue-600",
+    orange: "text-orange-500",
   };
+
   return (
-    <div className="bg-white border rounded-xl p-5 flex justify-between items-center shadow-sm">
+    <div className="bg-white p-5 rounded-xl shadow flex items-center justify-between">
       <div>
-        <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">{title}</p>
-        <h3 className="text-xl font-black mt-0.5 text-gray-800">{value}</h3>
+        <p className="text-gray-500 text-sm">{title}</p>
+        <h3 className="text-2xl font-semibold text-gray-800">
+          {value}
+        </h3>
       </div>
-      <div className={`w-10 h-10 rounded-lg flex items-center justify-center text-xl ${colorMap[color]}`}>
-        {icon}
+
+      <div className={`w-8 h-8 ${iconColorMap[color]}`}>
+        {React.cloneElement(icon, { size: 32 })}
       </div>
     </div>
   );

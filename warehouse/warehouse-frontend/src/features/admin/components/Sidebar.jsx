@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Home,
-  Truck,
   Box,
   ShoppingCart,
   Users,
@@ -31,7 +30,6 @@ const Sidebar = () => {
   const menu = [
     { label: "Dashboard", icon: <Home size={18} /> },
     { label: "Reports & Analytics", icon: <BarChart size={18} /> },
-    { label: "Shipments Tracking", icon: <Truck size={18} /> },
     { label: "Transactions", icon: <ShoppingCart size={18} /> },
     { label: "Inventory", icon: <Box size={18} /> },
     { label: "Customers", icon: <Users size={18} /> },
@@ -44,7 +42,6 @@ const Sidebar = () => {
   const routeMap = {
     Dashboard: "/admin/dashboard",
     "Reports & Analytics": "/admin/report",
-    "Shipments Tracking": "/admin/shipments",
     Transactions: "/admin/transactions",
     Inventory: "/admin/inventory",
     Customers: "/admin/customers",

@@ -30,7 +30,7 @@ const TransactionHeader = ({ loading, setView, setDetailData }) => {
           }}
           disabled={loading}
         >
-          <Plus className="w-4 h-4" /> Tạo Giao dịch
+          <Plus className="w-4 h-4" /> Tạo giao dịch
         </ActionPill>
       </div>
     </div>
