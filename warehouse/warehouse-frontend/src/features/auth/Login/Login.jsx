@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+// ... (Import các assets)
 import logo from "../../../assets/icons/logo.svg";
 import Saly from "../../../assets/icons/Saly-1.svg";
 import Google from "../../../assets/icons/google.svg";
@@ -7,16 +8,19 @@ import Facebook from "../../../assets/icons/Facebook.svg";
 import Apple from "../../../assets/icons/apple.svg";
 import "./Login.css";
 
-import { loginAPI } from "../authServices";
+// 💡 IMPORT CẢ HAI HÀM API CẦN THIẾT
+import { loginAPI, getCurrentUserAPI, logout } from "../authServices"; 
+// Đảm bảo file service của bạn có cả 3 hàm này
+
+// --- CẤU HÌNH FULL NAME ADMIN ĐỂ PHÂN QUYỀN TẠM THỜI ---
+const ADMIN_FULL_NAME_CHECK = "admin"; // Đã đăng ký là "ADMIN", nên kiểm tra với "admin" (không phân biệt hoa thường)
+// --------------------------------------------------------
 
 const Login = () => {
   const navigate = useNavigate();
 
-  // State quản lý dữ liệu nhập vào
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  
-  // State quản lý trạng thái UI
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -25,36 +29,50 @@ const Login = () => {
   };
 
   const handleLogin = async (e) => {
-    e.preventDefault(); // Ngăn reload trang
-    setErrorMessage(""); // Reset lỗi cũ
-    setLoading(true); // Bật trạng thái loading
+    e.preventDefault(); 
+    setErrorMessage(""); 
+    setLoading(true); 
 
     try {
-      // Gọi API
-      const data = await loginAPI(username, password);
+      // 1. GỌI API ĐĂNG NHẬP (Xác thực và lấy Token)
+      const loginResponse = await loginAPI(username, password);
 
-      console.log("Login Success:", data);
-
-      // --- XỬ LÝ KHI THÀNH CÔNG ---
-      // 1. Lưu token (Tùy vào response trả về, ví dụ access_token)
-      if (data.access_token) {
-          localStorage.setItem("accessToken", data.access_token);
+      // 2. Lưu token (đã được xử lý trong loginAPI, nhưng kiểm tra lại)
+      if (loginResponse.access_token) {
+        localStorage.setItem("accessToken", loginResponse.access_token);
       }
       
-      // 2. Chuyển hướng
-      navigate("/user"); 
+      // 3. GỌI API LẤY THÔNG TIN NGƯỜI DÙNG (Cần có Token để gọi)
+      const userData = await getCurrentUserAPI();
+      
+      let redirectPath = "/user"; // Mặc định chuyển hướng tới /user
+      
+      // 4. PHÂN QUYỀN DỰA TRÊN FULL NAME CỦA USERDATA TRẢ VỀ
+      const userFullName = userData.full_name || userData.fullName || ""; 
+
+      // Kiểm tra full name có khớp với tên ADMIN đã đăng ký không
+      if (userFullName.toLowerCase() === ADMIN_FULL_NAME_CHECK) {
+          redirectPath = "/admin";
+      }
+
+      console.log(`Login Success. Full Name: ${userFullName}. Redirecting to ${redirectPath}`);
+      
+      // 5. Chuyển hướng
+      navigate(redirectPath); 
 
     } catch (error) {
-      console.error(error);
+      console.error("Login/Auth Error:", error);
+      // Xóa token nếu quá trình xác thực hoặc lấy thông tin thất bại
+      logout(); 
       setErrorMessage(error.message);
     } finally {
-      setLoading(false); // Tắt loading dù thành công hay thất bại
+      setLoading(false);
     }
   };
 
   return (
     <div className="login-container">
-      {/* Bên trái */}
+      {/* ... (Phần UI không đổi) ... */}
       <div className="login-left">
         <img src={logo} alt="logo" className="logo-web" onClick={handleClick} />
         <div className="login-text">
@@ -70,7 +88,6 @@ const Login = () => {
         <img src={Saly} alt="Login Illustration" />
       </div>
 
-      {/* Bên phải */}
       <div className="login-right"></div>
 
       <div className="login-form">
@@ -104,13 +121,12 @@ const Login = () => {
 
         {/* Form Login */}
         <form onSubmit={handleLogin}>
-            {/* Hiển thị lỗi nếu có */}
             {errorMessage && <p style={{ color: "red", fontSize: "14px", marginBottom: "10px" }}>{errorMessage}</p>}
 
           <label>Enter your user name or email address</label>
           <input
-            type="text" // Đổi thành text để nhập username
-            placeholder="Username"
+            type="text" 
+            placeholder="Username or Email"
             required
             value={username}
             onChange={(e) => setUsername(e.target.value)}

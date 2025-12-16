@@ -6,7 +6,6 @@ import ForgotPassword from "./features/auth/ForgotPassword/ForgotPassword";
 import Dashboard from "./features/admin/pages/dashboard/DashBoard";
 import ReportsDashboard from "./features/admin/pages/reports/ReportsDashboard";
 import InventoryDashboard from "./features/admin/pages/inventory/InventoryDashboard";
-import OrderDashboard from "./features/admin/pages/order/OrderDashboard";
 import ShipmentDashboard from "./features/admin/pages/shipments/ShipmentDashboard";
 import CustomerDashboard from "./features/admin/pages/customers/CustomerDashboard";
 import NotificationDashboard from "./features/admin/pages/notifications/NotificationDashboard";
@@ -20,6 +19,7 @@ import SettingUser from "./features/user/pages/SettingUser";
 import TransactionPage from "./features/user/pages/TransactionPage";
 import ProtectedRoute from "./services/ProtectedRoute";
 import { AuthProvider } from "./services/AuthContext";
+import TransactionDashboard from "./features/admin/pages/transactions/TransactionDashboard";
 export default function App() {
   return (
     <>
@@ -105,10 +105,10 @@ export default function App() {
               }
             ></Route>
             <Route
-              path="/admin/orders"
+              path="/admin/transactions"
               element={
                 <ProtectedRoute>
-                  <OrderDashboard />
+                  <TransactionDashboard />
                 </ProtectedRoute>
               }
             ></Route>

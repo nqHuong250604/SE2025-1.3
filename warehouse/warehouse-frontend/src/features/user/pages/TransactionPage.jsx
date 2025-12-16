@@ -6,6 +6,7 @@ import {
   getTransactionDetail,
   listProducts,
   createTransaction,
+  listRawInventory,
 } from "../services/userService";
 
 import TransactionHeader from "./transactions/TransactionHeader";
@@ -98,13 +99,32 @@ export default function TransactionPage() {
     setSearch(qStr);
     if (!qStr.trim()) return setSearchResult([]);
     try {
-      const res = await listProducts();
-      const all = res?.data?.items ?? res?.data ?? [];
-      const filtered = all.filter((p) =>
-        safeLower(p.name).includes(qStr.toLowerCase())
-      );
+      // 1. Gọi song song cả danh sách sản phẩm và danh sách kho
+      const [resProducts, resInventory] = await Promise.all([
+        listProducts(),
+        listRawInventory()
+      ]);
+
+      const allProds = resProducts?.data?.items ?? resProducts?.data ?? [];
+      const allInv = resInventory?.data?.items ?? resInventory?.data ?? [];
+      // 2. Lọc sản phẩm theo tên và map stock_quantity từ inventory
+      const filtered = allProds
+        .filter((p) => safeLower(p.name).includes(qStr.toLowerCase()))
+        .map((p) => {
+          console.log(p)
+          // Tìm thông tin kho khớp với product_id
+          const invData = allInv.find((inv) => inv.product_id === p.id);
+          console.log(invData)
+          return {
+            ...p,
+            stock_quantity: invData ? invData.available_quantity : 0 
+          };
+        });
+
       setSearchResult(filtered.slice(0, 6));
-    } catch (err) { console.error(err); }
+    } catch (err) { 
+      console.error("Lỗi khi lấy dữ liệu sản phẩm và kho:", err); 
+    }
   };
 
   const addProduct = (p) => {
@@ -132,7 +152,7 @@ export default function TransactionPage() {
       quantity: Number(item.quantity) || 1,
       unit_price: Math.max(0, Number(item.unit_price) || 0),
       reference_number: `WEB-TXN-${Date.now()}`,
-      notes: `Giao dịch ${type} - ${item.product_name || item.name} (SL: ${item.quantity})`,
+      notes: `${item.product_name || item.name} (Quantity: ${item.quantity})`,
       performed_by: performedBy,
     };
     try {

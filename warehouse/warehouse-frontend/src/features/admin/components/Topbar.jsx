@@ -1,10 +1,30 @@
 import React from "react";
-import { Search, PlusCircle } from "lucide-react";
+import { Search, LogOut, User } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
-const Topbar = () => {
+import { logout } from "../../auth/authServices"; 
+
+const Topbar = ({ username = "Admin" }) => { 
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    try {
+      // 1. GỌI HÀM LOGOUT THỰC TẾ (Xóa token khỏi LocalStorage)
+      logout(); 
+      
+      // 2. CHUYỂN HƯỚNG về trang đăng nhập
+      navigate("/login");
+
+    } catch (error) {
+      console.error("Logout failed:", error);
+      // Xử lý lỗi nếu cần (thường không cần vì logout đơn giản)
+    }
+  };
+
   return (
     <div className="flex items-center justify-between bg-white px-6 py-3 shadow-sm">
-      <div className="flex items-center bg-gray-100 px-3 py-2 rounded-lg w-1/3">
+      {/* Search */}
+      <div className="flex items-center bg-gray-100 px-4 py-2 rounded-xl w-1/3">
         <Search size={18} className="text-gray-500 mr-2" />
         <input
           className="bg-transparent outline-none text-sm w-full"
@@ -12,22 +32,26 @@ const Topbar = () => {
         />
       </div>
 
-      <div className="flex items-center gap-4">
-        <button className="flex items-center gap-2 bg-blue-500 text-white px-3 py-2 rounded-lg text-sm hover:bg-blue-600">
-          <PlusCircle size={16} /> New Order
-        </button>
-
-        <div className="flex items-center gap-2">
-          <img
-            src="https://i.pravatar.cc/40"
-            alt="avatar"
-            className="rounded-full w-8 h-8"
-          />
-          <div>
-            <p className="text-sm font-semibold">Harsh Vani</p>
-            <p className="text-xs text-gray-500">Deportation Manager</p>
-          </div>
+      {/* Right - Modern */}
+      <div className="group flex items-center gap-3 bg-gray-50 px-4 py-2 rounded-2xl border hover:shadow-md transition">
+        {/* Avatar */}
+        <div className="flex items-center justify-center w-9 h-9 rounded-full bg-gradient-to-br from-gray-200 to-gray-300">
+          <User size={18} className="text-gray-700" />
         </div>
+
+        {/* Name */}
+        <span className="text-sm font-medium text-gray-800">
+          {username}
+        </span>
+
+        {/* Logout (hover) */}
+        <button
+          onClick={handleLogout}
+          className="ml-2 opacity-0 group-hover:opacity-100 transition text-red-500 hover:text-red-600"
+          title="Đăng xuất"
+        >
+          <LogOut size={18} />
+        </button>
       </div>
     </div>
   );
