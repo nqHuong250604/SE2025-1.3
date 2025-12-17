@@ -73,10 +73,16 @@ API này cung cấp các chức năng quản lý kho hàng với đầy đủ t�
     openapi_url="/openapi.json"
 )
 
-# CORS Middleware
+# CORS Middleware - Cấu hình chi tiết để cho phép Frontend Render truy cập
+origins = [
+    "http://localhost:3000",          # Local của bạn
+    "http://localhost:5173",          # Local nếu dùng Vite
+    "https://se2025-1-3-1.onrender.com", # LINK FRONTEND CỦA BẠN TRÊN RENDER
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Trong production, nên chỉ định cụ thể domain
+    allow_origins=origins,            # Thay vì ["*"], hãy dùng danh sách origins
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
