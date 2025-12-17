@@ -1,6 +1,9 @@
 // src/services/adminServices.js
 
-const API_BASE_URL = "http://localhost:3000/api/v1";
+// Tự động chọn URL dựa trên môi trường đang chạy
+const API_BASE_URL = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
+  ? "http://localhost:3000/api/v1"           // Dùng khi chạy trên Laptop của bạn
+  : "https://test-backend-sxs8.onrender.com/api/v1"; // Dùng khi đã đưa lên Render
 
 /**
  * Helper fetch dùng chung

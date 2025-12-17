@@ -121,6 +121,7 @@ const Login = () => {
 
         {/* Form Login */}
         <form onSubmit={handleLogin}>
+            {/* Hiển thị lỗi nếu có */}
             {errorMessage && <p style={{ color: "red", fontSize: "14px", marginBottom: "10px" }}>{errorMessage}</p>}
 
           <label>Enter your user name or email address</label>
