@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // --- Cấu hình chung ---
 const API_BASE_URL = window.location.hostname === "localhost" 
-    ? "http://localhost:8000" // Link khi bạn mở web ở máy (nhớ check lại port 8000 hay 3000)
+    ? "http://localhost:3000" // Link khi bạn mở web ở máy (nhớ check lại port 8000 hay 3000)
     : "https://test-backend-sxs8.onrender.com"; // Link khi bạn mở web đã deploy
 const ACCESS_TOKEN_KEY = 'accessToken';
 // ----------------------

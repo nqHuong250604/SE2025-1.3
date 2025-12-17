@@ -20,13 +20,12 @@ pwd_context = CryptContext(
 
 
 def get_password_hash(password: str) -> str:
-    # Truncate tối đa 72 bytes (UTF-8)
-    password_bytes = password.encode("utf-8")[:72]
-    return pwd_context.hash(password_bytes)
+    # Truyền trực tiếp string, passlib sẽ tự xử lý việc encode
+    return pwd_context.hash(password)
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:
-    password_bytes = plain_password.encode("utf-8")[:72]
-    return pwd_context.verify(password_bytes, hashed_password)
+    # Truyền trực tiếp string vào để tránh lỗi xung đột bytes/str
+    return pwd_context.verify(plain_password, hashed_password)
 
 
 

@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const REST_API_LOGISTICS_BASE_URL = window.location.hostname === "localhost" 
-    ? "http://localhost:8000" // Link khi chạy dưới máy (sửa lại port cho đúng với FastAPI của bạn)
-    : "https://test-backend-sxs8.onrender.com"; // Link khi đã lên Render
+    ? "http://localhost:3000/api/v1" // Link khi chạy dưới máy (sửa lại port cho đúng với FastAPI của bạn)
+    : "https://test-backend-sxs8.onrender.com/api/v1"; // Link khi đã lên Render
 
 const createAxiosInstance = () => {
     const username = localStorage.getItem("username");
