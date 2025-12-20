@@ -1,0 +1,2 @@
+cd D:\Web\SE2025-1.3\warehouse\warehouse-frontend
+npm test -- testsadmin
