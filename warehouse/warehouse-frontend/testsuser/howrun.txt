@@ -1,0 +1,2 @@
+cài thư viện: npm install -D vitest jsdom @testing-library/react @testing-library/jest-dom @testing-library/user-event
+chạy: python -m testsuser
