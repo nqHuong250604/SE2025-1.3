@@ -76,6 +76,34 @@ Hệ thống tập trung vào bốn nhóm chức năng chính:
    Người dùng có thể tạo báo cáo tổng hợp theo ngày, tuần hoặc tháng, với các chỉ tiêu như tổng số lượng nhập, tổng số lượng xuất và giá trị tồn kho. Các báo cáo này có thể được trích xuất ra file CSV hoặc Excel để phục vụ công tác lưu trữ hoặc trình bày nội bộ.
 
 ---
+## 🎨 THIẾT KẾ GIAO DIỆN (UI/UX DESIGN)
+
+Giao diện người dùng của hệ thống được thiết kế trước bằng công cụ **Figma** theo hướng *design-first* nhằm đảm bảo tính nhất quán về trải nghiệm người dùng (UX) và hỗ trợ hiệu quả cho quá trình phát triển frontend.
+
+### Mục tiêu thiết kế
+- Thống nhất trải nghiệm người dùng (User Experience – UX) trên toàn bộ hệ thống
+- Giảm xung đột và sai lệch trong quá trình phát triển frontend
+- Làm cơ sở trực quan cho việc kết nối giữa **backend API** và **frontend**
+- Hỗ trợ kiểm thử giao diện và đánh giá tính khả dụng trước khi triển khai
+
+### Link thiết kế Figma
+🔗 **Figma Design:**  
+https://www.figma.com/design/d8osM8NnvIKsAyQ9IOCkk0/Warehouse-project
+
+### Các màn hình giao diện chính
+- **Dashboard tổng quan tồn kho**  
+  Hiển thị các chỉ số quan trọng như tổng số sản phẩm, số lượng tồn kho và biểu đồ nhập – xuất theo thời gian.
+
+- **Danh sách sản phẩm và chi tiết sản phẩm**  
+  Cung cấp bảng dữ liệu sản phẩm với chức năng tìm kiếm, lọc và chỉnh sửa thông tin chi tiết.
+
+- **Form nhập kho – xuất kho**  
+  Cho phép ghi nhận các giao dịch nhập và xuất hàng, tự động cập nhật số lượng tồn kho.
+
+- **Trang báo cáo và thống kê**  
+  Tổng hợp dữ liệu nhập – xuất – tồn kho theo thời gian, hỗ trợ phân tích và ra quyết định quản lý.
+
+---
 
 ## ⚙️ YÊU CẦU PHI CHỨC NĂNG
 
