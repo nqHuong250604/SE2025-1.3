@@ -211,20 +211,50 @@ Với việc kết hợp giữa **FastAPI, ReactJS và PostgreSQL**, dự án �
 
 2.  **Cấu Trúc Dự Án Frontend:**
    ```
-    warehouse-frontend/
+warehouse-frontend/
 ├── src/
-│   ├── components/         
+│   ├── components/
+│   │   ├── Button.jsx
+│   │   ├── Modal.jsx
+│   │   ├── Table.jsx
+│   │   └── Layout.jsx
+│   │
 │   ├── features/
 │   │   ├── admin/
 │   │   │   ├── components/
-│   │   │   └── pages/      # dashboard/, inventory/, customers/...
+│   │   │   │   └── AdminSidebar.jsx
+│   │   │   └── pages/
+│   │   │       ├── Dashboard.jsx
+│   │   │       ├── InventoryList.jsx
+│   │   │       ├── ProductList.jsx
+│   │   │       ├── WarehouseList.jsx
+│   │   │       ├── OrderList.jsx
+│   │   │       ├── CustomerList.jsx
+│   │   │       ├── Reports.jsx
+│   │   │       └── Settings.jsx
+│   │   │
 │   │   └── user/
-│   │       ├── components/ 
-│   │       └── pages/      # dashboard/, profile/, transactions/...
-│   ├── services/           
-│   ├── App.jsx             
-│   └── main.jsx           
-    ```
+│   │       ├── components/
+│   │       │   └── UserSidebar.jsx
+│   │       └── pages/
+│   │           ├── Dashboard.jsx
+│   │           ├── Profile.jsx
+│   │           ├── MyOrders.jsx
+│   │           └── Notifications.jsx
+│   │
+│   ├── services/
+│   │   ├── api.js
+│   │   └── authService.js
+│   │
+│   ├── routes/
+│   │   └── index.js
+│   │
+│   ├── App.jsx
+│   └── index.js
+│
+└── package.json          
+
+ ```
 
 3.  **API Service (`src/services/api.js`):**
     ```javascript
