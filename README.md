@@ -1,5 +1,5 @@
 
-## 📋 Tổng Quan Dự Án
+## Tổng Quan Dự Án
 
 - **Tên dự án:** Hệ Thống Quản Lý Kho Hàng (Warehouse Management System)
 - **Tech Stack:**
@@ -9,7 +9,7 @@
   - **Version Control:** GitHub
 ---
 
-## 🧩 ĐỀ BÀI DỰ ÁN
+## ĐỀ BÀI DỰ ÁN
 
 Trong bối cảnh nền kinh tế hiện đại và sự phát triển nhanh chóng của thương mại điện tử, hoạt động logistics đóng vai trò cực kỳ quan trọng trong việc vận hành chuỗi cung ứng và đảm bảo hiệu quả phân phối sản phẩm. Một trong những thách thức lớn nhất của các doanh nghiệp hiện nay là việc quản lý kho hàng – nơi lưu trữ, điều phối và kiểm soát luồng hàng hóa giữa nhà sản xuất, đại lý và người tiêu dùng.  
 
@@ -19,7 +19,7 @@ Hệ thống được phát triển trên nền tảng **FastAPI (Python)** cho 
 
 ---
 
-## 🎯 MỤC TIÊU DỰ ÁN
+## MỤC TIÊU DỰ ÁN
 
 Mục tiêu chính của dự án là **xây dựng một hệ thống quản lý kho hàng thông minh**, có khả năng ghi nhận, lưu trữ và theo dõi toàn bộ quá trình **nhập – xuất – tồn kho** theo thời gian thực. Hệ thống hướng đến việc hỗ trợ doanh nghiệp **giảm thiểu sai sót thủ công**, **nâng cao hiệu suất làm việc**, **tăng tính chính xác của dữ liệu tồn kho**, và **tối ưu hóa quy trình vận hành kho hàng**.
 
@@ -56,7 +56,7 @@ Việc kết hợp **FastAPI + Swagger/OpenAPI + ReactJS** không chỉ giúp d�
 
 ---
 
-## 🧱 PHẠM VI VÀ YÊU CẦU CỦA HỆ THỐNG
+## PHẠM VI VÀ YÊU CẦU CỦA HỆ THỐNG
 
 Hệ thống được thiết kế nhằm đáp ứng các nhu cầu thực tế trong việc quản lý kho hàng của một doanh nghiệp nhỏ đến trung bình, bao gồm quản lý danh mục sản phẩm, giao dịch nhập – xuất hàng, theo dõi tồn kho và lập báo cáo tổng hợp.  
 Ứng dụng được triển khai dưới dạng **nền tảng web**, người dùng có thể truy cập thông qua trình duyệt, không cần cài đặt phức tạp.
@@ -76,7 +76,7 @@ Hệ thống tập trung vào bốn nhóm chức năng chính:
    Người dùng có thể tạo báo cáo tổng hợp theo ngày, tuần hoặc tháng, với các chỉ tiêu như tổng số lượng nhập, tổng số lượng xuất và giá trị tồn kho. Các báo cáo này có thể được trích xuất ra file CSV hoặc Excel để phục vụ công tác lưu trữ hoặc trình bày nội bộ.
 
 ---
-## 🎨 THIẾT KẾ GIAO DIỆN (UI/UX DESIGN)
+## THIẾT KẾ GIAO DIỆN (UI/UX DESIGN)
 
 Giao diện người dùng của hệ thống được thiết kế trước bằng công cụ **Figma** theo hướng *design-first* nhằm đảm bảo tính nhất quán về trải nghiệm người dùng (UX) và hỗ trợ hiệu quả cho quá trình phát triển frontend.
 
@@ -87,7 +87,7 @@ Giao diện người dùng của hệ thống được thiết kế trước b�
 - Hỗ trợ kiểm thử giao diện và đánh giá tính khả dụng trước khi triển khai
 
 ### Link thiết kế Figma
-🔗 **Figma Design:**  
+**Figma Design:**  
 https://www.figma.com/design/d8osM8NnvIKsAyQ9IOCkk0/Warehouse-project
 
 ### Các màn hình giao diện chính
@@ -105,7 +105,29 @@ https://www.figma.com/design/d8osM8NnvIKsAyQ9IOCkk0/Warehouse-project
 
 ---
 
-## ⚙️ YÊU CẦU PHI CHỨC NĂNG
+## HỆ THỐNG TRIỂN KHAI THỰC TẾ (LIVE DEPLOYMENT)
+
+Dự án hiện đã được triển khai hoàn chỉnh và vận hành trực tuyến trên nền tảng Cloud (Render), sẵn sàng cho các trải nghiệm thực tế tại địa chỉ:
+
+**Link truy cập hệ thống:** [**https://se2025-1-3-1.onrender.com/**](https://se2025-1-3-1.onrender.com/)
+
+### Điểm Nhấn Vận Hành
+
+Hệ thống được tối ưu hóa để đáp ứng các yêu cầu khắt khe trong quản trị logistics hiện đại:
+
+* **Giao diện (Frontend) Chuyên Nghiệp:**
+    * Phát triển trên nền tảng **ReactJS** với cấu trúc **Feature-based Architecture**, giúp mã nguồn dễ dàng mở rộng và bảo trì.
+    * Phân tách trải nghiệm người dùng tối ưu thông qua các phân hệ: **Quản trị viên (Admin)** (Dashboard, Inventory, Customers) và **Người dùng (User)** (Transactions, Profile).
+* **Hệ thống (Backend) Hiệu Năng Cao:**
+    * Xây dựng bằng **FastAPI (Python)**, đảm bảo tốc độ phản hồi cực nhanh và tích hợp sẵn chuẩn **OpenAPI** minh bạch.
+    * Cấu trúc API được tổ chức khoa học, hỗ trợ đầy đủ các thao tác CRUD và quản lý luồng dữ liệu phức tạp.
+* **Dữ liệu Thời Gian Thực (Real-time Data):**
+    * Toàn bộ thông tin về sản phẩm, lịch sử giao dịch và biến động tồn kho được cập nhật và lưu trữ tức thời vào cơ sở dữ liệu.
+    * Đảm bảo tính chính xác, minh bạch, giảm thiểu hoàn toàn sai sót so với các phương pháp quản lý thủ công.
+
+---
+
+## YÊU CẦU PHI CHỨC NĂNG
 
 Bên cạnh các chức năng chính, dự án cũng phải đáp ứng một số yêu cầu phi chức năng nhằm đảm bảo hệ thống hoạt động hiệu quả và có khả năng mở rộng trong tương lai:
 
@@ -117,7 +139,7 @@ Bên cạnh các chức năng chính, dự án cũng phải đáp ứng một s�
 
 ---
 
-## 💡 Ý NGHĨA ỨNG DỤNG
+## Ý NGHĨA ỨNG DỤNG
 
 Dự án không chỉ là một bài thực hành kỹ thuật, mà còn có giá trị thực tiễn cao trong việc **ứng dụng công nghệ vào quản trị kho logistics**. Việc xây dựng hệ thống này giúp sinh viên hiểu rõ hơn về **luồng dữ liệu trong vận hành chuỗi cung ứng**, **các thao tác nghiệp vụ kho hàng** và **cách tối ưu hóa hoạt động lưu trữ – vận chuyển bằng phần mềm**.  
 
@@ -125,14 +147,14 @@ Trong tương lai, hệ thống có thể được phát triển mở rộng v�
 
 ---
 
-## 🚀 KẾT LUẬN
+## KẾT LUẬN
 
 Với việc kết hợp giữa **FastAPI, ReactJS và PostgreSQL**, dự án “Hệ thống Quản lý Kho Hàng” thể hiện quy trình phát triển một ứng dụng web hoàn chỉnh từ backend đến frontend, vừa đảm bảo tính thực tế, vừa mang ý nghĩa học thuật cao. Dự án giúp người học củng cố kiến thức về phát triển API, thiết kế hệ thống, lập trình hướng đối tượng, xử lý dữ liệu, và làm việc nhóm trong môi trường phần mềm chuyên nghiệp.  
 Đây là bước khởi đầu quan trọng cho việc ứng dụng công nghệ vào quản lý logistics hiện đại, góp phần thúc đẩy quá trình số hóa và tự động hóa trong doanh nghiệp.
 
 ---
 
-## 👥 Phân Công Chi Tiết Với FastAPI & GitHub
+## Phân Công Chi Tiết Với FastAPI & GitHub
 
 ### 1. Vũ Bá Anh: FastAPI Backend & Swagger
     **Cấu Trúc API:**
@@ -188,27 +210,20 @@ Với việc kết hợp giữa **FastAPI, ReactJS và PostgreSQL**, dự án �
     ```
 
 2.  **Cấu Trúc Dự Án Frontend:**
-    ```
-    frontend/
-    ├── src/
-    │   ├── components/
-    │   │   ├── Product/
-    │   │   │   ├── ProductList.jsx
-    │   │   │   ├── ProductForm.jsx
-    │   │   │   └── ProductItem.jsx
-    │   │   ├── Transaction/
-    │   │   │   ├── TransactionForm.jsx
-    │   │   │   └── TransactionHistory.jsx
-    │   │   └── Layout/
-    │   │       ├── Header.jsx
-    │   │       └── Sidebar.jsx
-    │   ├── services/
-    │   │   └── api.js          # Axios configuration
-    │   ├── pages/
-    │   │   ├── Dashboard.jsx
-    │   │   ├── Products.jsx
-    │   │   └── Transactions.jsx
-    │   └── App.jsx
+   ```
+    warehouse-frontend/
+├── src/
+│   ├── components/         
+│   ├── features/
+│   │   ├── admin/
+│   │   │   ├── components/
+│   │   │   └── pages/      # dashboard/, inventory/, customers/...
+│   │   └── user/
+│   │       ├── components/ 
+│   │       └── pages/      # dashboard/, profile/, transactions/...
+│   ├── services/           
+│   ├── App.jsx             
+│   └── main.jsx           
     ```
 
 3.  **API Service (`src/services/api.js`):**
@@ -341,7 +356,7 @@ git push origin feature/api-integration
 
 4. Frontend Testing & Polish
 
-🧩 Kiểm thử & Hoàn thiện giao diện người dùng (Frontend)
+Kiểm thử & Hoàn thiện giao diện người dùng (Frontend)
 
 **Kiểm thử giao diện:**  
 Sử dụng **React Testing Library** (với React) hoặc **Vue Test Utils** (với Vue) để kiểm thử các *component*, hành vi tương tác và hiển thị dữ liệu.  
@@ -363,7 +378,7 @@ git push origin feature/testing-polish
 
 ---
 
-## 🔄 GitHub Collaboration Workflow
+## GitHub Collaboration Workflow
 
 1.  **Repository Structure:**
     ```
@@ -425,7 +440,7 @@ git push origin feature/testing-polish
               pytest
     ```
 
-## 🚀 Quick Start Commands
+## Quick Start Commands
 
 **Backend:**
 ```bash
