@@ -27,9 +27,7 @@ export const updateInventory = (inventoryId, updateData) =>
 export const reserveProduct = (productId, reserveAmount) =>
     createAxiosInstance().post(`/inventory/reserve/${productId}`, reserveAmount);
 
-// =========================
 // PRODUCTS ENDPOINTS
-// =========================
 export const listProducts = () =>
     createAxiosInstance().get("/products");
 
