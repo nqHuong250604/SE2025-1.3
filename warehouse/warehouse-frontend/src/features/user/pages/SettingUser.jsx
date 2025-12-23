@@ -11,7 +11,6 @@ import {
 } from "react-icons/fi";
 import { AiOutlineDown, AiOutlineUp } from "react-icons/ai";
 
-// ===================== ICON MAPPING (clean & safe) =====================
 const ICONS = {
   bank: FiCreditCard,
   address: FiMapPin,
