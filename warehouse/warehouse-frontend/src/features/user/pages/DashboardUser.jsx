@@ -90,10 +90,7 @@ const DashboardUser = () => {
     fetchData();
   }, []);
 
-  // ============================
   //      Dashboard Card
-  // ============================
-
   const DashboardCard = ({ title, value, subtext, icon, iconColor }) => (
     <div className="bg-white p-5 rounded-2xl shadow-sm border border-gray-100 transition duration-300 hover:shadow-md hover:-translate-y-1">
       <div className="flex items-start justify-between">
@@ -117,10 +114,7 @@ const DashboardUser = () => {
     iconColor: PropTypes.string.isRequired,
   };
 
-  // ============================
   //    Recent Transaction Table
-  // ============================
-
   const RecentTransactionsTable = ({ transactions }) => (
     <div className="overflow-x-auto">
       <table className="min-w-full divide-y divide-gray-200 rounded-lg">
@@ -178,10 +172,6 @@ const DashboardUser = () => {
   RecentTransactionsTable.propTypes = {
     transactions: PropTypes.array.isRequired,
   };
-
-  // ============================
-  //         RETURN UI
-  // ============================
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
