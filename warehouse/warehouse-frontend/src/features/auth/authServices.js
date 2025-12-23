@@ -4,32 +4,21 @@ import axios from 'axios';
 const API_BASE_URL = window.location.hostname === "localhost" 
     ? "http://localhost:3000" // Link khi bạn mở web ở máy (nhớ check lại port 8000 hay 3000)
     : "https://test-backend-sxs8.onrender.com"; // Link khi bạn mở web đã deploy
-const ACCESS_TOKEN_KEY = 'accessToken';
-// ----------------------
+// authServices.js
+const ACCESS_TOKEN_KEY = 'accessToken'; // Thống nhất dùng tên này
 
-// 1. TẠO AXIOS INSTANCE ĐỂ TỰ ĐỘNG GẮN TOKEN 
 const authApi = axios.create({
     baseURL: API_BASE_URL,
-    headers: {
-        'Accept': 'application/json',
-    },
+    headers: { 'Accept': 'application/json' },
 });
 
-// Interceptor Request: Tự động chèn token vào Header
-authApi.interceptors.request.use(
-    (config) => {
-        const token = localStorage.getItem(ACCESS_TOKEN_KEY);
-        if (token) {
-            // Thiết lập Header: Authorization: Bearer <token>
-            config.headers.Authorization = `Bearer ${token}`;
-        }
-        return config;
-    },
-    (error) => {
-        return Promise.reject(error);
+authApi.interceptors.request.use((config) => {
+    const token = localStorage.getItem(ACCESS_TOKEN_KEY);
+    if (token) {
+        config.headers.Authorization = `Bearer ${token}`; // Đảm bảo có dấu cách sau Bearer
     }
-);
-// 
+    return config;
+});
 
 // 2. HÀM ĐĂNG NHẬP (Lấy Token & Lưu Token)
 /**

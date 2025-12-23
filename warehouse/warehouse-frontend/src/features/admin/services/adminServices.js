@@ -5,38 +5,34 @@ const API_BASE_URL = window.location.hostname === "localhost" || window.location
 /**
  * Helper fetch dùng chung
  */
-const request = async (
-  endpoint,
-  { method = "GET", body, headers = {} } = {}
-) => {
+const request = async (endpoint, { method = "GET", body, headers = {} } = {}) => {
+  // SỬA TÊN KEY Ở ĐÂY: đổi 'token' thành 'accessToken' cho giống authServices
+  const token = localStorage.getItem("accessToken"); 
+
   const res = await fetch(`${API_BASE_URL}${endpoint}`, {
     method,
     headers: {
-      Accept: "application/json",
+      "Accept": "application/json",
+      "Authorization": token ? `Bearer ${token}` : "", // Thêm token vào header
       ...(body && { "Content-Type": "application/json" }),
       ...headers,
     },
     ...(body && { body: JSON.stringify(body) }),
   });
 
-  if (!res.ok) {
-    let message = `HTTP Error ${res.status}`;
-    try {
-      const err = await res.json();
-      message = err.message || message;
-    } catch {
-      throw new Error(message);
-    }
-  }
-
-  if (res.status === 204) return { success: true };
-
+  // Chống lỗi "body stream already read"
   const contentType = res.headers.get("content-type");
-  if (!contentType || !contentType.includes("application/json")) {
-    return { success: true };
+  let data = null;
+  if (contentType && contentType.includes("application/json")) {
+    data = await res.json();
   }
 
-  return res.json();
+  if (!res.ok) {
+    const message = data?.detail || `Lỗi ${res.status}`;
+    throw new Error(message);
+  }
+
+  return data;
 };
 
 /* ======================= DASHBOARD ======================= */
