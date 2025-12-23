@@ -99,7 +99,7 @@ const UserManagementDashboard = () => {
     if (window.confirm("Bạn có chắc chắn muốn xóa người dùng này?")) {
       try {
         await deleteUser(id);
-        setUsers(users.filter((u) => u.id !== id));
+        setUsers((prevUsers) => prevUsers.filter((u) => u.id !== id));
       } catch (error) {
         alert("Lỗi khi xóa: " + error.message);
       }
