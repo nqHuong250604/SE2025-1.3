@@ -161,37 +161,61 @@ Với việc kết hợp giữa **FastAPI, ReactJS và PostgreSQL**, dự án �
 ## Phân Công Chi Tiết Với FastAPI & GitHub
 
 ### 1. Vũ Bá Anh: FastAPI Backend & Swagger
-    **Cấu Trúc API:**
-    ```
-    warehouse-backend/
-    ├── app/
-    │   ├── __init__.py
-    │   ├── main.py              # FastAPI app instance
-    │   ├── database.py          # Database connection
-    │   ├── models/              # SQLAlchemy models
-    │   │   ├── __init__.py
-    │   │   ├── product.py
-    │   │   ├── transaction.py
-    │   │   └── inventory.py
-    │   ├── schemas/             # Pydantic schemas
-    │   │   ├── __init__.py
-    │   │   ├── product.py
-    │   │   └── transaction.py
-    │   ├── crud/                # CRUD operations
-    │   │   ├── __init__.py
-    │   │   ├── product.py
-    │   │   └── transaction.py
-    │   └── api/                 # API routes
-    │       ├── __init__.py
-    │       ├── endpoints/
-    │       │   ├── __init__.py
-    │       │   ├── products.py
-    │       │   └── transactions.py
-    │       └── dependencies.py
-    ├── alembic/                 # Database migrations
-    ├── requirements.txt
-    └── README.md
-    ```
+
+#### Trách Nhiệm Chính:
+1.  **Thiết lập dự án & Cấu hình Database:**
+    - Khởi tạo dự án FastAPI.
+    - Cấu hình kết nối Database (PostgreSQL/MySQL) sử dụng SQLAlchemy.
+    - Thiết lập Alembic cho database migration.
+
+2.  **Phát triển Core API & CRUD:**
+    - Xây dựng các Models (SQLAlchemy) và Schemas (Pydantic).
+    - Implement các logic nghiệp vụ CRUD cho: Sản phẩm, Giao dịch, Tồn kho.
+    - Xử lý các dependency injection (DB Session, Security...).
+
+3.  **Tài liệu hóa API (Swagger/OpenAPI):**
+    - Đảm bảo mọi endpoint đều có mô tả, response schema rõ ràng.
+    - Test sơ bộ API trên Swagger UI.
+
+#### Cấu Trúc Backend:
+```
+warehouse-backend/
+├── app/
+│   ├── __init__.py
+│   ├── main.py              # FastAPI app instance
+│   ├── database.py          # Database connection
+│   ├── models/              # SQLAlchemy models
+│   │   ├── __init__.py
+│   │   ├── product.py
+│   │   ├── transaction.py
+│   │   └── inventory.py
+│   ├── schemas/             # Pydantic schemas
+│   │   ├── __init__.py
+│   │   ├── product.py
+│   │   ├── transaction.py
+│   └── crud/                # CRUD operations
+│   │   ├── __init__.py
+│   │   ├── product.py
+│   │   └── transaction.py
+│   └── api/                 # API routes
+│       ├── __init__.py
+│       ├── endpoints/
+│       │   ├── __init__.py
+│       │   ├── products.py
+│       │   └── transactions.py
+│       └── dependencies.py
+├── alembic/                 # Database migrations
+├── requirements.txt
+└── README.md
+```
+
+#### Git Workflow:
+```bash
+git checkout -b feature/backend-init
+# Setup project structure...
+git commit -m "chore: init fastapi project structure"
+git push origin feature/backend-init
+```
 
 
 
