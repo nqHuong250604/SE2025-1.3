@@ -168,6 +168,13 @@ app.include_router(
     tags=["auth"]
 )
 
+from app.api.endpoints import users
+app.include_router(
+    users.router,
+    prefix="/api/v1/users",
+    tags=["users"]
+)
+
 from app.api.endpoints import statistics
 app.include_router(
     statistics.router,
