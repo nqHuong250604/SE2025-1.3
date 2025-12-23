@@ -1,16 +1,11 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-// Đã thêm ChevronDown vào danh sách imports
 import { LogOut, Settings, UserCircle, ChevronDown } from "lucide-react"; 
 import logo from "../../../assets/icons/logo.svg";
-
-// BỔ SUNG IMPORTS TỪ FILE API SERVICE CỦA BẠN
 import { getCurrentUserAPI, logout } from "../../auth/authServices"; 
 
 
-// ==========================================================
 // 1. Logo Component
-// ==========================================================
 const FastShipLogo = ({ navigateTo }) => {
   return (
     <div
@@ -24,17 +19,14 @@ const FastShipLogo = ({ navigateTo }) => {
 };
 
 
-// ==========================================================
-// 2. Profile Dropdown Component (Đã cập nhật logic API)
-// ==========================================================
+// 2. Profile Dropdown Component
 const ProfileDropdown = ({ navigateTo }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
   
   // --- STATE ĐỂ LƯU THÔNG TIN NGƯỜI DÙNG TỪ API ---
   const [userData, setUserData] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  // ----------------------------------------------------
+  const [isLoading, setIsLoading] = useState(true)
 
   // --- LOGIC GỌI API LẤY THÔNG TIN NGƯỜI DÙNG (CHỈ GỌI 1 LẦN) ---
   useEffect(() => {
@@ -46,22 +38,19 @@ const ProfileDropdown = ({ navigateTo }) => {
       }
 
       try {
-        // Gọi API /api/v1/auth/me (token được gửi tự động qua Interceptor)
         const data = await getCurrentUserAPI(); 
         setUserData(data);
       } catch (error) {
         console.error("Lỗi lấy thông tin người dùng:", error);
-        // Nếu token hết hạn/không hợp lệ, tự động đăng xuất
-        handleLogout(false); // Xóa token
-        navigateTo("/login"); // Chuyển hướng
+        handleLogout(false); 
+        navigateTo("/login");
       } finally {
         setIsLoading(false);
       }
     };
     fetchUser();
-  }, [navigateTo]); // navigateTo là dependency vì nó được dùng trong useEffect
+  }, [navigateTo]);
 
-  // Logic đóng dropdown khi click ra ngoài (giữ nguyên)
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
@@ -71,27 +60,21 @@ const ProfileDropdown = ({ navigateTo }) => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
-  // ----------------------------------------------------
 
   // --- HÀM XỬ LÝ ĐĂNG XUẤT ---
   const handleLogout = (shouldRedirect = true) => {
-    logout(); // Hàm xóa token khỏi Local Storage
+    logout(); 
     if (shouldRedirect) {
       navigateTo("/login");
     }
   };
-  // ---------------------------
 
-  // Dữ liệu hiển thị (Đã thay thế giá trị mặc định bằng userData)
   const userName = userData?.full_name || (isLoading ? "Đang tải..." : "Khách");
   const userEmail = userData?.email || (isLoading ? "..." : "Người dùng");
   
-  // Lấy chữ cái đầu tiên của từ cuối cùng trong tên (hoặc '?' nếu không có tên)
   const userInitial = userName.split(" ").slice(-1)[0].charAt(0).toUpperCase() || '?';
   
-  // Nếu đang tải và chưa có dữ liệu, hiển thị placeholder
   if (isLoading && !userData) {
-    // Hiển thị một placeholder đơn giản (Spinner/Skeleton)
     return <div className="w-8 h-8 rounded-full bg-gray-200 animate-pulse"></div>;
   }
 
@@ -136,7 +119,7 @@ const ProfileDropdown = ({ navigateTo }) => {
                 onClick={() => {
                   setIsOpen(false);
                   if (item.action) {
-                    item.action(); // Thực hiện hành động (handleLogout)
+                    item.action();
                   } else {
                     navigateTo(item.path);
                   }
@@ -151,7 +134,6 @@ const ProfileDropdown = ({ navigateTo }) => {
                 {item.label}
               </button>
             ))}
-            {/* Đảm bảo không hiển thị thông tin nếu không có dữ liệu */}
           </div>
         </div>
       )}
@@ -160,9 +142,7 @@ const ProfileDropdown = ({ navigateTo }) => {
 };
 
 
-// ==========================================================
-// 3. Header Chính Component (Giữ nguyên)
-// ==========================================================
+// 3. Header Chính Component 
 const HeaderUser = () => {
   const navigate = useNavigate();
 
