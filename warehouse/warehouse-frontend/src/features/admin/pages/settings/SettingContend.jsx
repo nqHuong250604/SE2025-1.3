@@ -253,7 +253,7 @@ const SettingsContent = () => {
           </div>
         )}
 
-        {/* ================ INTEGRATIONS TAB ================ */}
+        {/* =============== INTEGRATIONS TAB =============== */}
         {activeTab === "integrations" && (
           <div className="bg-white rounded-xl shadow p-4 space-y-2">
             <h2 className="text-base font-normal mb-2">
