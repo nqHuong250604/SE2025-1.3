@@ -202,7 +202,7 @@ export const getSystemNotifications = async () => {
 
     let notifications = [];
 
-    // --- PHẦN 1: THÔNG BÁO TỒN KHO THẤP ---
+    // --- THÔNG BÁO TỒN KHO THẤP ---
     inventory.forEach(item => {
       const pInfo = productInfoMap[item.product_id];
       const minThreshold = pInfo?.minStock ?? 10; 
@@ -225,7 +225,7 @@ export const getSystemNotifications = async () => {
       }
     });
 
-    // --- PHẦN 2: THÔNG BÁO XUẤT NHẬP HÀNG ---
+    // --- THÔNG BÁO XUẤT NHẬP HÀNG ---
     transactions.forEach(txn => {
       const id = `txn-${txn.id}`;
       if (!deletedIds.includes(id)) {
