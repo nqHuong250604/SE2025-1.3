@@ -1,6 +1,3 @@
-// src/services/adminServices.js
-
-// Tự động chọn URL dựa trên môi trường đang chạy
 const API_BASE_URL = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
   ? "http://localhost:3000/api/v1"           // Dùng khi chạy trên Laptop của bạn
   : "https://test-backend-sxs8.onrender.com/api/v1"; // Dùng khi đã đưa lên Render
@@ -89,7 +86,7 @@ export const getProcessedChartData = async () => {
   const currentMonthIdx = now.getMonth();
   const currentYear = now.getFullYear();
 
-  // --- 1. TẠO KHUNG 6 THÁNG (5 THÁNG TRƯỚC + THÁNG NÀY) ---
+  // ---  TẠO KHUNG 6 THÁNG (5 THÁNG TRƯỚC + THÁNG NÀY) ---
   for (let i = 5; i >= 0; i--) {
     const d = new Date(currentYear, currentMonthIdx - i, 1);
     const mName = monthNames[d.getMonth()];
@@ -109,7 +106,7 @@ export const getProcessedChartData = async () => {
     };
   }
 
-  // --- 2. ĐÈ DỮ LIỆU THẬT TỪ API VÀO ---
+  // --- ĐÈ DỮ LIỆU THẬT TỪ API VÀO ---
   (transactionsRes.items || []).forEach((txn) => {
     if (txn.transaction_type !== "OUT") return;
 
@@ -259,3 +256,18 @@ export const getSystemNotifications = async () => {
     return []; 
   }
 };
+
+
+/* ======================= USERS API ======================= */
+
+// Lấy danh sách tất cả người dùng
+export const getUsers = () => request("/users/?limit=100");
+
+// Tạo người dùng mới (Dùng cho Admin tạo hộ)
+export const createUser = (data) => request("/users/", { method: "POST", body: data });
+
+// Cập nhật thông tin (Role, Name, etc.)
+export const updateUser = (id, data) => request(`/users/${id}`, { method: "PUT", body: data });
+
+// Xóa người dùng
+export const deleteUser = (id) => request(`/users/${id}`, { method: "DELETE" });
