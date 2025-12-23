@@ -19,13 +19,25 @@ const request = async (endpoint, { method = "GET", body, headers = {} } = {}) =>
     ...(body && { body: JSON.stringify(body) }),
   });
 
-  // Chống lỗi "body stream already read"
-  const contentType = res.headers.get("content-type");
-  let data = null;
-  if (contentType && contentType.includes("application/json")) {
-    data = await res.json();
+  // 1. Kiểm tra nếu phản hồi không có nội dung (204 No Content)
+  if (res.status === 204) {
+    return null; 
   }
 
+  // 2. Kiểm tra xem Content-Type có phải là JSON không
+  const contentType = res.headers.get("content-type");
+  let data = null;
+  
+  if (contentType && contentType.includes("application/json")) {
+    try {
+      data = await res.json();
+    } catch (e) {
+      console.error("Lỗi parse JSON:", e);
+      data = null;
+    }
+  }
+
+  // 3. Xử lý lỗi HTTP (4xx, 5xx)
   if (!res.ok) {
     const message = data?.detail || `Lỗi ${res.status}`;
     throw new Error(message);
