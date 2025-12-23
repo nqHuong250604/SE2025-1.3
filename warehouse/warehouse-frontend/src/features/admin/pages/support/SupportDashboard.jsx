@@ -205,9 +205,6 @@ export default function SupportDashboard() {
   );
 }
 
-/* COMPONENTS giữ nguyên */
-
-
 /* ----------------- COMPONENTS ----------------- */
 
 const QuickItem = ({ icon, title, desc }) => (
