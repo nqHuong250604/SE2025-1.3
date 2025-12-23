@@ -14,9 +14,7 @@ const createAxiosInstance = () => {
     });
 };
 
-// =========================
 // INVENTORY ENDPOINTS
-// =========================
 export const listRawInventory = () =>
     createAxiosInstance().get("/inventory");
 
