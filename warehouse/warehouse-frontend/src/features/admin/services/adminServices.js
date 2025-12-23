@@ -181,7 +181,7 @@ export const getProductList = async (params = { skip: 0, limit: 100 }) => {
 };
 
 
-/* ======================= NOTIFICATIONS (SMART MIN-STOCK LOGIC) ======================= */
+/* ======================= NOTIFICATIONS ======================= */
 
 export const getSystemNotifications = async () => {
   try {
@@ -258,10 +258,10 @@ export const getSystemNotifications = async () => {
 // Lấy danh sách tất cả người dùng
 export const getUsers = () => request("/users/?limit=100");
 
-// Tạo người dùng mới (Dùng cho Admin tạo hộ)
+// Tạo người dùng mới (Admin tạo tài khoản bất kỳ cấp cho nhân viên)
 export const createUser = (data) => request("/users/", { method: "POST", body: data });
 
-// Cập nhật thông tin (Role, Name, etc.)
+// Cập nhật thông tin
 export const updateUser = (id, data) => request(`/users/${id}`, { method: "PUT", body: data });
 
 // Xóa người dùng
