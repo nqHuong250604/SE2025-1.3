@@ -407,7 +407,7 @@ const UserManagementDashboard = () => {
   );
 };
 
-/* HELPER COMPONENTS ĐÃ TINH CHỈNH */
+/* HELPER COMPONENTS */
 const StatCard = ({ title, value, color, icon }) => {
   const themes = {
     blue: "bg-blue-50 text-blue-600 border-blue-100",
