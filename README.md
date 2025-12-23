@@ -21,11 +21,15 @@ Hệ thống được phát triển trên nền tảng **FastAPI (Python)** cho 
 
 ## MỤC TIÊU DỰ ÁN
 
+### Goal (Mục tiêu tổng quát)
+
 Mục tiêu chính của dự án là **xây dựng một hệ thống quản lý kho hàng thông minh**, có khả năng ghi nhận, lưu trữ và theo dõi toàn bộ quá trình **nhập – xuất – tồn kho** theo thời gian thực. Hệ thống hướng đến việc hỗ trợ doanh nghiệp **giảm thiểu sai sót thủ công**, **nâng cao hiệu suất làm việc**, **tăng tính chính xác của dữ liệu tồn kho**, và **tối ưu hóa quy trình vận hành kho hàng**.
 
 Song song đó, dự án còn giúp sinh viên **nắm vững toàn bộ quy trình phát triển phần mềm hiện đại**, từ thiết kế mô hình dữ liệu, xây dựng RESTful API, thiết kế giao diện người dùng, kiểm thử hệ thống, cho đến triển khai và quản lý mã nguồn trên GitHub. Đây là một dự án mang tính thực hành cao, kết hợp cả kỹ năng kỹ thuật và kỹ năng làm việc nhóm chuyên nghiệp.
 
-Cụ thể, dự án hướng tới việc hoàn thành các mục tiêu sau:
+### Objectives (Mục tiêu cụ thể)
+
+Để đạt được mục tiêu tổng quát nêu trên, dự án hướng tới việc hoàn thành các mục tiêu cụ thể sau:
 
 - **Về kỹ thuật:**  
   Xây dựng **hệ thống API hoàn chỉnh với FastAPI**, hỗ trợ đầy đủ các chức năng CRUD (Create – Read – Update – Delete) cho các đối tượng quản lý như **sản phẩm, giao dịch nhập – xuất, người dùng và tồn kho**.  
