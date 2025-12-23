@@ -6,14 +6,13 @@ const API_BASE_URL = window.location.hostname === "localhost" || window.location
  * Helper fetch dùng chung
  */
 const request = async (endpoint, { method = "GET", body, headers = {} } = {}) => {
-  // SỬA TÊN KEY Ở ĐÂY: đổi 'token' thành 'accessToken' cho giống authServices
   const token = localStorage.getItem("accessToken"); 
 
   const res = await fetch(`${API_BASE_URL}${endpoint}`, {
     method,
     headers: {
       "Accept": "application/json",
-      "Authorization": token ? `Bearer ${token}` : "", // Thêm token vào header
+      "Authorization": token ? `Bearer ${token}` : "", 
       ...(body && { "Content-Type": "application/json" }),
       ...headers,
     },
