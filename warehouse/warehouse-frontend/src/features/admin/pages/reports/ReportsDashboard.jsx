@@ -232,7 +232,7 @@ const ReportsDashboard = () => {
                           stroke: "#fff",
                         }}
                         activeDot={{ r: 8, strokeWidth: 0 }}
-                        animationDuration={1500} // Hiệu ứng vẽ biểu đồ khi load
+                        animationDuration={1500}
                       />
                     </LineChart>
                   </ResponsiveContainer>
