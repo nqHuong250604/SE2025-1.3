@@ -26,10 +26,9 @@ const useFetchData = (fetchFunction, dependencies = []) => {
             }
         };
         fetchData();
-        // Thêm version vào mảng dependencies
     }, [...dependencies, version]); 
 
-    return { data, loading, error, reload }; // Trả về thêm reload
+    return { data, loading, error, reload }; 
 };
 
 export default useFetchData;
