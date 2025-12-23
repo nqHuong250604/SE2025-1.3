@@ -89,7 +89,7 @@ export const getProcessedChartData = async () => {
     const sKey = d.getFullYear() * 100 + d.getMonth() + 1;
 
     // Chỉ giả lập số liệu cho các tháng cũ (i > 0)
-    // Tháng hiện tại (i === 0) luôn khởi tạo là 0
+    // Tháng hiện tại luôn khởi tạo là 0
     const isPastMonth = i > 0;
 
     monthly[mName] = {
@@ -102,7 +102,7 @@ export const getProcessedChartData = async () => {
     };
   }
 
-  // --- ĐÈ DỮ LIỆU THẬT TỪ API VÀO ---
+  // --- ĐÈ DỮ LIỆU THẬT TỪ API ---
   (transactionsRes.items || []).forEach((txn) => {
     if (txn.transaction_type !== "OUT") return;
 
