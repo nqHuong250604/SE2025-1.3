@@ -1,4 +1,3 @@
-# tests/test_products.py
 import random
 
 def test_create_product(client):
@@ -36,7 +35,7 @@ def test_get_products(client):
     assert response.status_code == 200
     data = response.json()
     
-    # Kiểm tra cấu trúc phân trang (Pagination)
+
     assert isinstance(data, dict)
     assert "items" in data
     assert "total" in data
