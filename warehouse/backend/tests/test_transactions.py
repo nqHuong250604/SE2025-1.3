@@ -21,8 +21,7 @@ def test_transaction_workflow(client):
     product = create_dummy_product(client)
     product_id = product["id"]
 
-    # 2. Test Nhập Kho (IN)
-    # Nhập 100 cái
+    # 2. Test Nhập Kho 
     res_in = client.post("/api/v1/transactions", json={
         "product_id": product_id,
         "transaction_type": "IN",
@@ -36,7 +35,6 @@ def test_transaction_workflow(client):
     assert data_in["quantity"] == 100
 
     # 3. Kiểm tra Tồn Kho sau khi nhập
-    # Kỳ vọng: 100
     res_inv = client.get(f"/api/v1/products/{product_id}/inventory")
     assert res_inv.status_code == 200
     inv_data = res_inv.json()
@@ -44,7 +42,6 @@ def test_transaction_workflow(client):
     assert inv_data["available_quantity"] == 100
 
     # 4. Test Xuất Kho (OUT)
-    # Xuất 30 cái
     res_out = client.post("/api/v1/transactions", json={
         "product_id": product_id,
         "transaction_type": "OUT",
@@ -55,7 +52,6 @@ def test_transaction_workflow(client):
     assert res_out.status_code == 201
 
     # 5. Kiểm tra Tồn Kho sau khi xuất
-    # Kỳ vọng: 100 - 30 = 70
     res_inv_final = client.get(f"/api/v1/products/{product_id}/inventory")
     final_inv = res_inv_final.json()
     assert final_inv["quantity"] == 70
