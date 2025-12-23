@@ -13,14 +13,9 @@ function InventoryManagementPage() {
 
   const [message, setMessage] = useState(null);
 
-  // ======================================
-  // 🔍 Search sản phẩm theo ID
-  // ======================================
   const [searchId, setSearchId] = useState("");
 
-  // ======================================
-  // 🔥 Phân trang
-  // ======================================
+  // Phân trang
   const ITEMS_PER_PAGE = 8;
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -31,7 +26,6 @@ function InventoryManagementPage() {
 
   const filteredInventory = searchId
     ? inventory.filter((item) => {
-        // an toàn: convert sang string trước khi gọi toLowerCase()
         const pid = item?.product_id ?? item?.id ?? "";
         return String(pid)
           .toLowerCase()
@@ -46,9 +40,7 @@ function InventoryManagementPage() {
     currentPage * ITEMS_PER_PAGE
   );
 
-  // ======================================
   // FORM SẢN PHẨM
-  // ======================================
   const [newProduct, setNewProduct] = useState({
     id: "",
     name: "",
@@ -133,14 +125,10 @@ function InventoryManagementPage() {
       setMessage({ text: "Lỗi khi thêm sản phẩm", type: "error" });
     }
   };
-
-  // ----------------------------------------------------
-  // BẮT ĐẦU PHẦN THIẾT KẾ HIỆN ĐẠI (PHẦN RETURN)
-  // ----------------------------------------------------
+  
   return (
     <div className="min-h-screen bg-gray-50">
       {" "}
-      {/* Màu nền nhạt, hiện đại hơn */}
       <HeaderUser />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 mt-16">
         <div className="flex flex-col gap-6 py-6">
@@ -305,9 +293,7 @@ function InventoryManagementPage() {
               </div>
             )}
 
-            {/* =================================== */}
-            {/* 🔥 PHÂN TRANG */}
-            {/* =================================== */}
+            {/* PHÂN TRANG */}
             {totalPages > 1 && (
               <div className="flex justify-center mt-6 space-x-2 items-center">
                 {/* Prev */}
@@ -326,8 +312,6 @@ function InventoryManagementPage() {
                 {/* Pages */}
                 {(() => {
                   const pages = [];
-
-                  // Logic giữ nguyên như code gốc của bạn
                   if (totalPages <= 7) {
                     for (let i = 1; i <= totalPages; i++) pages.push(i);
                   } else {
@@ -397,9 +381,7 @@ function InventoryManagementPage() {
           </div>
         )}
 
-        {/* ============================ */}
         {/* FORM THÊM SẢN PHẨM */}
-        {/* ============================ */}
         {showForm && (
           <div className="bg-white rounded-xl shadow-2xl p-6 lg:p-8 border border-gray-100">
             <h2 className="text-xl font-bold text-gray-900 mb-6 border-b pb-3">
@@ -456,8 +438,6 @@ function InventoryManagementPage() {
                     />
                   </div>
                 ))}
-
-                {/* Textarea for Description - Takes up one full row in 3-column layout */}
                 <div className="lg:col-span-3">
                   <label
                     htmlFor="description"
