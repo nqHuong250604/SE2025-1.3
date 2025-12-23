@@ -36,14 +36,12 @@ const Register = () => {
     setError(""); 
 
     try {
-      // Gọi API đăng ký với 3 trường dữ liệu cần thiết
       await registerAPI(formData.email, formData.username, formData.password);
       
       alert("Đăng ký thành công! Vui lòng đăng nhập.");
       navigate("/login"); 
     } catch (err) {
       console.error("Lỗi đăng ký:", err);
-      // Đảm bảo thông báo lỗi được hiển thị dễ hiểu
       setError(err.message || "Đã xảy ra lỗi không xác định."); 
     }
   };
@@ -100,8 +98,6 @@ const Register = () => {
           />
 
           {/* User Name (Full Name) */}
-          {/* Thay vì dùng register-row-inputs 2 cột, giờ ta chỉ cần 1 cột cho User name */}
-          {/* Hoặc nếu bạn muốn giữ layout 2 cột, bạn chỉ cần giữ lại register-row1 */}
           <div className="register-row-inputs">
             <div className="register-row1" style={{ width: '100%' }}> 
               <label>User name</label>
@@ -114,7 +110,6 @@ const Register = () => {
                 onChange={handleChange}
               />
             </div>
-            {/* Đã loại bỏ register-row2 (Phone Number) */}
           </div>
 
           {/* Password */}
