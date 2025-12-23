@@ -45,9 +45,7 @@ export const updateProduct = (productId, product) =>
 export const deleteProduct = (productId) =>
     createAxiosInstance().delete(`/products/${productId}`);
 
-// =========================
 // TRANSACTIONS ENDPOINTS
-// =========================
 export const listTransactions = (limit = 20) =>
     createAxiosInstance().get(`/transactions?limit=${limit}`);
 
