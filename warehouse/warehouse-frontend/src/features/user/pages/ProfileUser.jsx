@@ -4,10 +4,8 @@ import {
     FiUser, FiMail, FiPhone, FiMapPin,
     FiShield, FiPackage, FiEdit3, FiCheck, FiX, FiCamera, FiLoader
 } from "react-icons/fi";
-
 import { getCurrentUserAPI } from '../../auth/authServices'; 
 
-// InfoRow (Giữ nguyên)
 const InfoRow = React.memo(({ label, name, value, type = "text", readOnly = false, editMode, handleChange, icon }) => {
     const isEditable = editMode && !readOnly;
 
@@ -45,7 +43,6 @@ const ProfileUser = () => {
     const [editMode, setEditMode] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
 
-    // Dữ liệu mặc định
     const [editableUser, setEditableUser] = useState({
         fullName: "",
         email: "",
@@ -57,7 +54,6 @@ const ProfileUser = () => {
         status: "Đang hoạt động"
     });
     
-    // State lưu dữ liệu gốc từ API (để hủy chỉnh sửa)
     const [originalUser, setOriginalUser] = useState(null); 
 
     // 1. TẢI DỮ LIỆU NGƯỜI DÙNG TỪ API
@@ -67,11 +63,9 @@ const ProfileUser = () => {
                 const apiData = await getCurrentUserAPI(); 
                 
                 const initialData = {
-                    ...editableUser, // Giữ các giá trị mặc định/readOnly
-                    // Lấy dữ liệu từ API
+                    ...editableUser, 
                     fullName: apiData.full_name || apiData.fullName || "",
                     email: apiData.email || "",
-                    // Giả định phone, address, v.v. là null/empty nếu API không trả về
                     phone: apiData.phone || "",
                     address: apiData.address || "",
                     role: apiData.role || editableUser.role,
@@ -80,7 +74,7 @@ const ProfileUser = () => {
                 };
 
                 setEditableUser(initialData);
-                setOriginalUser(initialData); // Lưu bản gốc
+                setOriginalUser(initialData); 
             } catch (error) {
                 console.error("Failed to load user data:", error.message);
             } finally {
@@ -113,7 +107,6 @@ const ProfileUser = () => {
         setEditMode(false);
     }, [originalUser]);
 
-    // ... (Giữ nguyên infoFields và logic hiển thị)
     const infoFields = [
         { label: "Họ và tên", name: "fullName", icon: <FiUser size={18} /> },
         { label: "Chức vụ", value: editableUser.role, readOnly: true, icon: <FiShield size={18} /> },
