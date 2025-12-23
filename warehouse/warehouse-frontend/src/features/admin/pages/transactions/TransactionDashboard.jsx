@@ -6,7 +6,6 @@ import {
   FiSearch, FiEye, FiLoader, FiTag, FiTrash2, FiX, FiUser, FiCalendar, FiPlus
 } from "react-icons/fi";
 
-// Hook & API
 import useFetchData from "../../services/useFetchData";
 import {
   getRecentTransactions,
@@ -74,7 +73,7 @@ export default function TransactionDashboard() {
     }
   };
 
-  // 4. Logic Tạo giao dịch mới (Đã sửa đổi mã tham chiếu tự tạo)
+  // 4. Logic Tạo giao dịch mới 
   const handleCreateSubmit = async (e) => {
     e.preventDefault();
     
