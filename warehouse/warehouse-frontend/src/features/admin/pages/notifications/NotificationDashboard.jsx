@@ -33,7 +33,6 @@ const NotificationDashboard = () => {
     setNotifications((prev) => prev.filter((n) => n.id !== id));
   };
 
-  // Tính toán số liệu cho Card
   const stats = {
     high: notifications.filter((n) => n.priority === "high" && n.unread).length,
     medium: notifications.filter((n) => n.priority === "medium" && n.unread).length,
@@ -86,7 +85,7 @@ const NotificationDashboard = () => {
             </div>
           </div>
 
-          {/* LIST SECTION - CÓ THANH CUỘN (SCROLLBAR) */}
+          {/* LIST SECTION */}
           <div className="flex-1 overflow-y-auto px-6 pb-6">
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
               {loading ? (
