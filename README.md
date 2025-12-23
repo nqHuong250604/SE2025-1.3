@@ -213,38 +213,56 @@ Với việc kết hợp giữa **FastAPI, ReactJS và PostgreSQL**, dự án �
    ```
 warehouse-frontend/
 ├── src/
-│   ├── components/
-│   │   ├── Button.jsx
-│   │   ├── Modal.jsx
-│   │   ├── Table.jsx
-│   │   └── Layout.jsx
+│   ├── assets/
+│   │   ├── icon/
+│   │       └── ...
+│   │   └── image/
+│   │       └── ...
 │   │
 │   ├── features/
 │   │   ├── admin/
 │   │   │   ├── components/
-│   │   │   │   └── AdminSidebar.jsx
+│   │   │   │   ├── Topbar.jsx
+│   │   │   │   └── Sidebar.jsx
 │   │   │   └── pages/
-│   │   │       ├── Dashboard.jsx
-│   │   │       ├── InventoryList.jsx
-│   │   │       ├── ProductList.jsx
-│   │   │       ├── WarehouseList.jsx
-│   │   │       ├── OrderList.jsx
-│   │   │       ├── CustomerList.jsx
-│   │   │       ├── Reports.jsx
-│   │   │       └── Settings.jsx
-│   │   │
+│   │   │   │   ├── Dashboard.jsx
+│   │   │   │   ├── Inventory.jsx
+│   │   │   │   ├── Transaction.jsx
+│   │   │   │   ├── Reports.jsx
+│   │   │   │   ├── Notifications.jsx
+│   │   │   │   ├── Customer.jsx
+│   │   │   │   ├── UserManagement.jsx
+│   │   │   │   ├── Settings.jsx
+│   │   │   │   └── Support.jsx
+│   │   │   │
+│   │   │   └── services/
+│   │   │   │   ├── adminService.jsx
+│   │   │   │   └── UseFectData.jsx
 │   │   └── user/
-│   │       ├── components/
-│   │       │   └── UserSidebar.jsx
-│   │       └── pages/
-│   │           ├── Dashboard.jsx
-│   │           ├── Profile.jsx
-│   │           ├── MyOrders.jsx
-│   │           └── Notifications.jsx
-│   │
+│   │   │   ├── components/
+│   │   │   │   └── HeaderUser.jsx
+│   │   │   └── pages/
+│   │   │   │   ├── DashboardUser.jsx
+│   │   │   │   ├── InventoryUser.jsx
+│   │   │   │   ├── TransactionUser.jsx
+│   │   │   │   ├── ProfileUser.jsx
+│   │   │   │   └── SettingsUser.jsx
+│   │   │   └── services/
+│   │   │   │   └── userService.jsx
+│   │   └── auth/
+│   │   │   ├── Login.jsx
+│   │   │   ├── Register.jsx
+│   │   │   ├── ForgotPassword.jsx
+│   │   │   └── authService.jsx
+│   │   └── public/
+│   │   │   ├── components/
+│   │   │   │   ├── Footer.jsx
+│   │   │   │   └── Header.jsx
+│   │   │   ├── ...
+│   │   │   └── Home.jsx
 │   ├── services/
-│   │   ├── api.js
-│   │   └── authService.js
+│   │   ├── AuthContext.jsx
+│   │   └── ProtectedRoute.jsx
 │   │
 │   ├── routes/
 │   │   └── index.js
