@@ -35,6 +35,7 @@ def test_get_products(client):
     assert response.status_code == 200
     data = response.json()
     
+
     assert isinstance(data, dict)
     assert "items" in data
     assert "total" in data
