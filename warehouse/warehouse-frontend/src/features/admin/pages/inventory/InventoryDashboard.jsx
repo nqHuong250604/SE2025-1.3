@@ -6,7 +6,6 @@ import {
   FiBox, FiAlertTriangle, FiCheckCircle, FiXOctagon 
 } from "react-icons/fi";
 
-// Import API
 import {
   getInventoryList,
   updateInventory,
@@ -15,7 +14,7 @@ import {
 
 const InventoryDashboard = () => {
   const [inventory, setInventory] = useState([]);
-  const [productMap, setProductMap] = useState({}); // State lưu map id -> thông tin sản phẩm
+  const [productMap, setProductMap] = useState({});
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   
@@ -35,7 +34,6 @@ const InventoryDashboard = () => {
   const fetchData = async () => {
     setLoading(true);
     try {
-      // Gọi 2 API cùng lúc: Lấy kho và Lấy danh sách sản phẩm (để lấy tên)
       const [inventoryData, productsData] = await Promise.all([
         getInventoryList(),
         getProductList({ limit: 1000 }) // Lấy limit lớn để map đủ tên sản phẩm
@@ -80,7 +78,6 @@ const InventoryDashboard = () => {
     fetchData();
   }, []);
 
-  // Các hàm xử lý Modal (Giữ nguyên)
   const handleEditClick = (item) => {
     setEditingItem({ ...item });
     setIsModalOpen(true);
@@ -101,7 +98,7 @@ const InventoryDashboard = () => {
       };
       await updateInventory(editingItem.id, payload);
       handleCloseModal();
-      fetchData(); // Load lại dữ liệu
+      fetchData();
     } catch (error) {
       console.error("Update failed:", error);
     }
@@ -117,8 +114,8 @@ const InventoryDashboard = () => {
     return (
       item.product_id.toString().includes(search) ||
       (item.location && item.location.toLowerCase().includes(search)) ||
-      productName.includes(search) || // Tìm theo tên
-      productSKU.includes(search)     // Tìm theo SKU
+      productName.includes(search) ||
+      productSKU.includes(search)   
     );
   });
 
@@ -144,7 +141,7 @@ const InventoryDashboard = () => {
             </button>
           </div>
 
-          {/* Stat Cards với Icon mới */}
+          {/* Stat Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <StatCard 
               title="Tổng sản phẩm" 
@@ -213,17 +210,14 @@ const InventoryDashboard = () => {
                   </tr>
                 ) : (
                   filteredItems.map((item) => {
-                    // Lấy thông tin sản phẩm từ Map
                     const product = productMap[item.product_id];
                     return (
                       <tr key={item.id} className="hover:bg-blue-50 transition-colors duration-150">
                         <td className="p-4">
                           <div className="flex flex-col">
-                            {/* Hiển thị Tên sản phẩm */}
                             <span className="font-bold text-gray-800 text-sm">
                               {product ? product.name : `Sản phẩm #${item.product_id}`}
                             </span>
-                            {/* Hiển thị SKU và ID */}
                             <span className="text-xs text-gray-500 mt-0.5">
                               SKU: {product ? product.sku : "N/A"} | ID: {item.product_id}
                             </span>
@@ -266,14 +260,13 @@ const InventoryDashboard = () => {
         </main>
       </div>
 
-      {/* EDIT MODAL (Giữ nguyên logic của bạn, chỉ chỉnh lại chút UI nếu cần) */}
+      {/* EDIT MODAL */}
       {isModalOpen && editingItem && (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4 backdrop-blur-sm">
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden animate-fade-in-up">
             <div className="p-6 border-b bg-gray-50">
               <h3 className="text-lg font-bold text-gray-800">Điều chỉnh kho hàng</h3>
               <div className="text-sm text-gray-500 mt-1">
-                {/* Hiển thị tên sản phẩm trong Modal */}
                 {productMap[editingItem.product_id]?.name || `Product #${editingItem.product_id}`}
               </div>
             </div>
