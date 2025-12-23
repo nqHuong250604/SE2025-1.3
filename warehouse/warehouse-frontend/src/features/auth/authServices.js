@@ -4,8 +4,7 @@ import axios from 'axios';
 const API_BASE_URL = window.location.hostname === "localhost" 
     ? "http://localhost:3000" // Link khi bạn mở web ở máy (nhớ check lại port 8000 hay 3000)
     : "https://test-backend-sxs8.onrender.com"; // Link khi bạn mở web đã deploy
-// authServices.js
-const ACCESS_TOKEN_KEY = 'accessToken'; // Thống nhất dùng tên này
+const ACCESS_TOKEN_KEY = 'accessToken'; 
 
 const authApi = axios.create({
     baseURL: API_BASE_URL,
