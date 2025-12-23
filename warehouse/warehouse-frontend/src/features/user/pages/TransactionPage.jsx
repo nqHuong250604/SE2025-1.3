@@ -35,7 +35,6 @@ export default function TransactionPage() {
   const [q, setQ] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
 
-  // Load transactions
   const loadTransactions = async () => {
     setLoading(true);
     try {
@@ -56,13 +55,11 @@ export default function TransactionPage() {
     loadTransactions();
   }, []);
 
-  // Debounce searchTerm -> q
   useEffect(() => {
     const timeout = setTimeout(() => setQ(searchTerm), 300);
     return () => clearTimeout(timeout);
   }, [searchTerm]);
 
-  // Load detail + bổ sung product_name
   const loadDetail = async (id) => {
     try {
       setDetailData(null);
@@ -70,7 +67,6 @@ export default function TransactionPage() {
       let detail = res?.data ?? null;
       if (!detail) return;
 
-      // Lấy danh sách tất cả sản phẩm để map tên
       const productsRes = await listProducts();
       const allProducts = productsRes?.data?.items ?? productsRes?.data ?? [];
 
@@ -214,7 +210,6 @@ export default function TransactionPage() {
       loadTransactions();
     } catch (err) {
       console.error(err);
-      // HIỂN THỊ THÔNG BÁO LỖI CHI TIẾT TỪ SERVER (NẾU CÓ)
       const serverMessage =
         err.response?.data?.message || err.response?.data?.detail;
       if (serverMessage) {
