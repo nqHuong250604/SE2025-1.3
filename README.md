@@ -91,8 +91,8 @@ Giao diện người dùng của hệ thống được thiết kế trước b�
 - Hỗ trợ kiểm thử giao diện và đánh giá tính khả dụng trước khi triển khai
 
 ### Link thiết kế Figma
-**Figma Design:**  
-https://www.figma.com/design/d8osM8NnvIKsAyQ9IOCkk0/Warehouse-project
+**Figma Design:**  [**https://www.figma.com/design/d8osM8NnvIKsAyQ9IOCkk0/Warehouse-project**](https://www.figma.com/design/d8osM8NnvIKsAyQ9IOCkk0/Warehouse-project)
+
 
 ### Các màn hình giao diện chính
 - **Dashboard tổng quan tồn kho**  
@@ -113,7 +113,9 @@ https://www.figma.com/design/d8osM8NnvIKsAyQ9IOCkk0/Warehouse-project
 
 Dự án hiện đã được triển khai hoàn chỉnh và vận hành trực tuyến trên nền tảng Cloud (Render), sẵn sàng cho các trải nghiệm thực tế tại địa chỉ:
 
-**Link truy cập hệ thống:** [**https://se2025-1-3-1.onrender.com/**](https://se2025-1-3-1.onrender.com/)
+**Link truy cập hệ thống:**  [**https://se2025-1-3-1.onrender.com/**](https://se2025-1-3-1.onrender.com/)
+
+**Link tài liệu API (Swagger / OpenAPI):**  [**https://test-backend-sxs8.onrender.com/docs**](https://test-backend-sxs8.onrender.com/docs)
 
 ### Điểm Nhấn Vận Hành
 
@@ -532,5 +534,3 @@ npm start
 # Access: http://localhost:3000
 ```
 
-## Document Swagger
-https://test-backend-sxs8.onrender.com/docs
