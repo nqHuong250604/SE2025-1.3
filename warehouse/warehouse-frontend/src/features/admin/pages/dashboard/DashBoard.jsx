@@ -114,7 +114,6 @@ const Dashboard = () => {
     fetchTransactions();
   }, []);
 
-  /* ===== LOADING ===== */
   if (isLoading) {
     return (
       <div className="flex h-screen bg-gray-100">
