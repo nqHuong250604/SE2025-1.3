@@ -32,7 +32,7 @@ const customers = [
     orders: 18,
     spent: 15230,
     status: "Inactive",
-    lastOrder: "2024-02-15",
+    lastOrder: "2024-02-14",
   }
 ];
 
