@@ -96,7 +96,6 @@ const Dashboard = () => {
     fetchKPIs();
   }, []);
 
-  /* ===== FETCH RECENT TRANSACTIONS ===== */
   useEffect(() => {
     const fetchTransactions = async () => {
       try {
